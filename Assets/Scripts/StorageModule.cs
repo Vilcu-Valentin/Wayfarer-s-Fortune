@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class StorageModule
 {
-    public StorageModuleData _moduleData;
+    public StorageModuleData moduleData;
 
-    public Vector3 _currentPosition;
-    public GameObject _objectRef;
+    public Vector3Int currentPosition;
+    public GameObject objectRef;
 }

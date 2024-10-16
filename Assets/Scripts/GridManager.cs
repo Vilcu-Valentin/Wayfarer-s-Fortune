@@ -5,8 +5,7 @@ public class GridManager : MonoBehaviour
     public int width = 5;
     public int length = 8;
     public int height = 4;
-    [SerializeField] private float cellSize = 1f;
-
+    public float cellSize = 1f;
     private Vector3 gridOrigin;
 
     void Start()
@@ -45,27 +44,15 @@ public class GridManager : MonoBehaviour
                gridPosition.z >= 0 && gridPosition.z < length;
     }
 
-    // Checks if the module is inside the build volume // Later it will also check if there is another module in the way
-    public bool CanPlaceModule(Vector3Int? gridPosition, Vector3Int moduleSize)
+    public bool CanPlaceModule(Vector3Int gridPosition, Vector3Int moduleSize)
     {
-        if(gridPosition != null)
-        {
-            if (gridPosition.Value.x + moduleSize.x > width)
-                return false;
-            if( gridPosition.Value.y + moduleSize.y > height)
-                return false;
-            if(gridPosition.Value.z + moduleSize.z > length)
-                return false;
-            return true;
-        }
-        return false;
+        return IsValidPosition(gridPosition) &&
+               IsValidPosition(gridPosition + moduleSize - Vector3Int.one);
     }
 
-    // Optional: Visualize the grid (this can stay in the GridManager)
     void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
-
         Gizmos.color = Color.white;
         for (int x = 0; x < width; x++)
         {
