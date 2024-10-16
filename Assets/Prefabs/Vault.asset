@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Vault
   m_EditorClassIdentifier: 
   storage_name: Crate
-  size: {x: 2, y: 2, z: 2}
+  size: {x: 3, y: 3, z: 2}
   storage_type: 0
   inventorySize: {x: 5, y: 5, z: 5}
-  graphics: {fileID: 7963389315358056484, guid: 34b47f172e87303448385aa7292d320f,
+  graphics: {fileID: 7963389315358056484, guid: 8ab7b8c3a2ee842439707f22436aff04,
     type: 3}
   icon: {fileID: 0}
