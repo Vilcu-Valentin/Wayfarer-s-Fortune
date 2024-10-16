@@ -23,6 +23,7 @@ public class Wagon : MonoBehaviour
         return storageModules;
     }
 
+    // Calculates if a given 
     public bool IsSpaceOccupied(Vector3Int position, Vector3Int size)
     {
         for (int x = position.x; x < position.x + size.x; x++)
@@ -46,7 +47,12 @@ public class Wagon : MonoBehaviour
     {
         foreach (StorageModule module in storageModules)
         {
-            if (IsPositionWithinModule(position, module.currentPosition, module.moduleData.size))
+            Vector3Int moduleSize = module.moduleData.size;
+            if (module.rotated)
+            {
+                moduleSize = new Vector3Int(moduleSize.z, moduleSize.y, moduleSize.x);
+            }
+            if (IsPositionWithinModule(position, module.currentPosition, moduleSize))
             {
                 return true;
             }

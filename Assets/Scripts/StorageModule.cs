@@ -8,5 +8,6 @@ public class StorageModule
     public StorageModuleData moduleData;
 
     public Vector3Int currentPosition;
+    public bool rotated;
     public GameObject objectRef;
 }

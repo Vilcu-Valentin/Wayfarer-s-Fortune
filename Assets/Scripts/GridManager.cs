@@ -46,6 +46,7 @@ public class GridManager : MonoBehaviour
 
     public bool CanPlaceModule(Vector3Int gridPosition, Vector3Int moduleSize)
     {
+        Debug.Log(moduleSize);
         return IsValidPosition(gridPosition) &&
                IsValidPosition(gridPosition + moduleSize - Vector3Int.one);
     }
