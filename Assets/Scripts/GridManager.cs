@@ -1,3 +1,4 @@
+// Core grid system functionality
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -8,10 +9,7 @@ public class GridManager : MonoBehaviour
     public float cellSize = 1f;
     private Vector3 gridOrigin;
 
-    void Start()
-    {
-        InitializeGrid();
-    }
+    void Start() => InitializeGrid();
 
     void InitializeGrid()
     {
@@ -46,7 +44,6 @@ public class GridManager : MonoBehaviour
 
     public bool CanPlaceModule(Vector3Int gridPosition, Vector3Int moduleSize)
     {
-        Debug.Log(moduleSize);
         return IsValidPosition(gridPosition) &&
                IsValidPosition(gridPosition + moduleSize - Vector3Int.one);
     }
@@ -54,17 +51,18 @@ public class GridManager : MonoBehaviour
     void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
+        DrawGridGizmos();
+    }
+
+    private void DrawGridGizmos()
+    {
         Gizmos.color = Color.white;
         for (int x = 0; x < width; x++)
-        {
             for (int y = 0; y < height; y++)
-            {
                 for (int z = 0; z < length; z++)
                 {
                     Vector3 cellCenter = GridToWorldPosition(new Vector3Int(x, y, z));
                     Gizmos.DrawWireCube(cellCenter, Vector3.one * cellSize * 0.9f);
                 }
-            }
-        }
     }
 }

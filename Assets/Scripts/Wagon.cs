@@ -1,57 +1,72 @@
+// Base wagon class with storage and highlighting functionality
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Wagon : MonoBehaviour
 {
+    [Tooltip("This list will be used for the inventory and other calculations like weight etc.")]
     [SerializeField] private List<StorageModule> storageModules = new List<StorageModule>();
+    [Tooltip("Temporary, is used to highlight the currently selected wagon. Will be removed in the future in favor of just changing the cinemachine camera")]
+    [SerializeField] private MeshRenderer[] highlightMeshes;
+    [Tooltip("The hover camera")]
+    [SerializeField] private CinemachineFreeLook lookCamera;
 
+
+    //Temporary as well will be removed with the highlightMeshes;
+    private Color defaultColor;
+    private Color highlightColor = new Color(1f, 0.92f, 0.016f, 1f);
+
+    // Temporary will be removed with the highlightMeshses;
+    private void Awake()
+    {
+        if (highlightMeshes.Length > 0)
+        {
+            defaultColor = highlightMeshes[0].material.color;
+        }
+    }
+
+    // Add the storageModule we just placed to the List
     public void AddStorageModule(StorageModule module)
     {
         storageModules.Add(module);
-        // Additional logic for handling modules can go here
     }
 
+    // Remove a selected storage module from the wagon
     public void RemoveStorageModule(StorageModule module)
     {
         storageModules.Remove(module);
         Destroy(module.objectRef);
-        // Additional removal logic
     }
 
-    public List<StorageModule> GetStorageModules()
-    {
-        return storageModules;
-    }
-
-    // Calculates if a given 
+    // Takes an virtual object (it's origin and size) and checks for each cell of that object if it intersects with an already existing one
     public bool IsSpaceOccupied(Vector3Int position, Vector3Int size)
     {
         for (int x = position.x; x < position.x + size.x; x++)
-        {
             for (int y = position.y; y < position.y + size.y; y++)
-            {
                 for (int z = position.z; z < position.z + size.z; z++)
                 {
-                    Vector3Int checkPos = new Vector3Int(x, y, z);
-                    if (IsPositionOccupied(checkPos))
+                    if (IsPositionOccupied(new Vector3Int(x, y, z)))
                     {
                         return true;
                     }
                 }
-            }
-        }
         return false;
     }
 
+    // Performs the actual check if the cell occupies an already full position (by going through each storageModule already placed)
     private bool IsPositionOccupied(Vector3Int position)
     {
         foreach (StorageModule module in storageModules)
         {
             Vector3Int moduleSize = module.moduleData.size;
+            // We make sure that we get the rotated size (with the flipped x and z sizes)
             if (module.rotated)
             {
                 moduleSize = new Vector3Int(moduleSize.z, moduleSize.y, moduleSize.x);
             }
+
+            // If the cell intersects with a module we return true -> occupiedPosition
             if (IsPositionWithinModule(position, module.currentPosition, moduleSize))
             {
                 return true;
@@ -60,10 +75,33 @@ public class Wagon : MonoBehaviour
         return false;
     }
 
+
+    // We check if a position, is within the bounding box of a module
     private bool IsPositionWithinModule(Vector3Int position, Vector3Int modulePosition, Vector3Int moduleSize)
     {
         return position.x >= modulePosition.x && position.x < modulePosition.x + moduleSize.x &&
                position.y >= modulePosition.y && position.y < modulePosition.y + moduleSize.y &&
                position.z >= modulePosition.z && position.z < modulePosition.z + moduleSize.z;
+    }
+
+    // Used to set a high priority on this camera
+    public void FocusCamera()
+    {
+        lookCamera.Priority = 100;
+    }
+
+    // Used to set a low priority on this camera
+    public void DeFocusCamera()
+    {
+        lookCamera.Priority = 1;
+    }
+
+    // Will be removed with the highlightMeshes
+    public void SetHighlight(bool isHighlighted)
+    {
+        foreach (var mesh in highlightMeshes)
+        {
+            mesh.material.color = isHighlighted ? highlightColor : defaultColor;
+        }
     }
 }
