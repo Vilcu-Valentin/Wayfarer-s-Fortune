@@ -5,7 +5,6 @@ public class CaravanManager : MonoBehaviour
 {
     [SerializeField] private GameObject wagonPrefab; // Temporary it will be selected from the UI
     [SerializeField] private Vector3 wagonOffset; // Temporary it will be handled differently in the future
-    [SerializeField] private LayerMask buildMask; // TODO: This could probably be moved to the WagonCustomizer
     
     private GridManager currentGridManager;  // Add GridManager reference
     private List<Wagon> wagons = new List<Wagon>();
@@ -13,7 +12,6 @@ public class CaravanManager : MonoBehaviour
 
     public Wagon CurrentWagon { get; private set; }
     public bool HasActiveWagon => CurrentWagon != null;
-    public LayerMask BuildMask => buildMask;
     public GridManager GridManager => currentGridManager;  // Expose GridManager
 
     void Update()

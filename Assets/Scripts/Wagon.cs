@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Wagon : MonoBehaviour
 {
@@ -35,8 +36,25 @@ public class Wagon : MonoBehaviour
     // Remove a selected storage module from the wagon
     public void RemoveStorageModule(StorageModule module)
     {
-        storageModules.Remove(module);
-        Destroy(module.objectRef);
+        // A virtual module the same area as our storage module, but with a height of one
+        Vector3Int virtualModuleSize = module.moduleData.size;
+        if(module.rotated)
+            virtualModuleSize = new Vector3Int(module.moduleData.size.z, 1, module.moduleData.size.x);
+        Vector3Int virtualModulePosition = module.currentPosition;
+        virtualModulePosition.y += module.moduleData.size.y;
+
+        Debug.Log($"Trying to remove module at: {module.currentPosition}, with virtual position {virtualModulePosition} and virtual size {virtualModuleSize}");
+
+        // We check if there is any module above the one we want to delete
+        if (IsSpaceOccupied(virtualModulePosition, virtualModuleSize))
+        {
+            Debug.Log("Cannot remove object! There is a module above");
+        }
+        else
+        {
+            storageModules.Remove(module);
+            Destroy(module.objectRef);
+        }
     }
 
     // Takes an virtual object (it's origin and size) and checks for each cell of that object if it intersects with an already existing one
@@ -74,6 +92,27 @@ public class Wagon : MonoBehaviour
         }
         return false;
     }
+
+    #nullable enable
+    public StorageModule? GetModuleByGridCoords(Vector3Int gridCoords)
+    {
+        foreach(StorageModule module in storageModules)
+        {
+            Vector3Int moduleSize = module.moduleData.size;
+            // We make sure that we get the rotated size (with the flipped x and z sizes)
+            if (module.rotated)
+            {
+                moduleSize = new Vector3Int(moduleSize.z, moduleSize.y, moduleSize.x);
+            }
+
+            // If the gridCoords intersect with a module, we return the module
+            if (IsPositionWithinModule(gridCoords, module.currentPosition, moduleSize))
+            {
+                return module;
+            }
+        }
+        return null; //No module could be found at those coordinates
+    }    
 
 
     // We check if a position, is within the bounding box of a module

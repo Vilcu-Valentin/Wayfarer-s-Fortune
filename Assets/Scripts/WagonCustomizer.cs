@@ -11,6 +11,9 @@ public class WagonCustomizer : MonoBehaviour
     private ModulePlacementPreview previewManager;
     private ModulePlacementValidator placementValidator;
 
+    [SerializeField] private LayerMask buildMask;
+    [SerializeField] private LayerMask moduleMask;
+
     void Start()
     {
         previewManager = new ModulePlacementPreview();
@@ -31,12 +34,36 @@ public class WagonCustomizer : MonoBehaviour
         UpdatePlacementValidator();
         HandleModuleInput();
 
-        // If there is no preview active we return (it means we don't want to customize the object, but we might want to change upgrades)
-        if (!previewManager.IsActive) return;
 
-        // If we do have a preview, we'll continue
-        UpdateModulePlacement();
-        previewManager.UpdateTransform(positionLerpSpeed, rotationLerpSpeed);
+        // If there is no preview active we'll be able to select an already existing item
+        if (!previewManager.IsActive) {
+            ModuleSelector();
+        }
+        else
+        {
+            // If we do have a preview, we'll continue
+            UpdateModulePlacement();
+            previewManager.UpdateTransform(positionLerpSpeed, rotationLerpSpeed);
+        }
+    }
+
+    // When you don't have a module selected, you will be able to select an already placed module
+    private void ModuleSelector()
+    {
+        if (Input.GetMouseButtonDown(1)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, moduleMask))
+            {
+                Vector3Int? selectedCell = caravanManager.GridManager.WorldToGridPosition(hit.transform.position);
+                if (selectedCell != null)
+                {
+                    // temporary this will just be used to select a module, but for now we'll delete it
+                    StorageModule moduleToDelete = caravanManager.CurrentWagon.GetModuleByGridCoords(selectedCell.Value);
+                    if(moduleToDelete != null)
+                        caravanManager.CurrentWagon.RemoveStorageModule(moduleToDelete);
+                }
+            }
+        }
     }
 
     // Creates a placement Validator (basically the script that handles if a module can be placed on that position or not)
@@ -142,7 +169,7 @@ public class WagonCustomizer : MonoBehaviour
     private Vector3Int? GetGridPositionFromMouseRay()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        return Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, caravanManager.BuildMask)
+        return Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, buildMask)
             ? caravanManager.GridManager.WorldToGridPosition(hit.point)
             : null;
     }
