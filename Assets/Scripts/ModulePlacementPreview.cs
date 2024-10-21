@@ -42,13 +42,13 @@ public class ModulePlacementPreview
     {
         if (!IsActive) return;
 
-        previewObject.transform.position = Vector3.Lerp(
+        previewObject.transform.position = Vector3.Slerp(
             previewObject.transform.position,
             targetPosition,
             positionLerpSpeed * Time.deltaTime
         );
 
-        previewObject.transform.rotation = Quaternion.Lerp(
+        previewObject.transform.rotation = Quaternion.Slerp(
             previewObject.transform.rotation,
             targetRotation,
             rotationLerpSpeed * Time.deltaTime

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc209a27ac448e74a86e388cdad8b184, type: 3}
   m_Name: LargeCage
   m_EditorClassIdentifier: 
-  storage_name: Large Cage
-  size: {x: 3, y: 3, z: 2}
+  storage_name: LargeCage
+  size: {x: 5, y: 4, z: 6}
   storage_type: 0
   inventorySize: {x: 5, y: 5, z: 5}
-  graphics: {fileID: 7963389315358056484, guid: 8ab7b8c3a2ee842439707f22436aff04,
+  graphics: {fileID: 7963389315358056484, guid: e59636827716f304b88e7acf214a91d2,
     type: 3}
   icon: {fileID: 0}
