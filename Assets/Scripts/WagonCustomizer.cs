@@ -150,7 +150,8 @@ public class WagonCustomizer : MonoBehaviour
         GameObject placedModule = Instantiate(
             selectedModule.graphics,
             previewManager.GetTargetPosition(),
-            previewManager.GetCurrentRotation()
+            previewManager.GetCurrentRotation(),
+            caravanManager.CurrentWagon.transform
         );
 
         StorageModule newModule = new StorageModule

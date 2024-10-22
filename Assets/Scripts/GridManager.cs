@@ -11,7 +11,7 @@ public class GridManager : MonoBehaviour
 
     void Start() => InitializeGrid();
 
-    void InitializeGrid()
+    public void InitializeGrid()
     {
         gridOrigin = transform.position - new Vector3(width * cellSize / 2, 0, length * cellSize / 2);
     }
