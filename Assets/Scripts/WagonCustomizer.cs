@@ -6,15 +6,18 @@ public class WagonCustomizer : MonoBehaviour
 {
     [SerializeField] CaravanManager caravanManager;
     [SerializeField] InventoryManager inventoryManager;
-    [SerializeField] private StorageModuleData selectedModule;
     [SerializeField] private float positionLerpSpeed = 15f;
     [SerializeField] private float rotationLerpSpeed = 20f;
 
+    private StorageModuleData selectedModule;
     private ModulePlacementPreview previewManager;
     private ModulePlacementValidator placementValidator;
 
     [SerializeField] private LayerMask buildMask;
     [SerializeField] private LayerMask moduleMask;
+
+    public delegate void ModuleSelectedHandler(StorageModule module);
+    public event ModuleSelectedHandler OnModuleSelected;
 
     void Start()
     {
@@ -59,13 +62,15 @@ public class WagonCustomizer : MonoBehaviour
                 Vector3Int? selectedCell = caravanManager.GridManager.WorldToGridPosition(hit.transform.position);
                 if (selectedCell != null)
                 {
-                    /* temporary this will just be used to select a module, but for now we'll delete it
-                    StorageModule moduleToDelete = caravanManager.CurrentWagon.GetModuleByGridCoords(selectedCell.Value);
-                    if(moduleToDelete != null)
-                        caravanManager.CurrentWagon.RemoveStorageModule(moduleToDelete); */
                     StorageModule selectedModule = caravanManager.CurrentWagon.GetModuleByGridCoords(selectedCell.Value);
                     if (selectedModule != null)
-                        inventoryManager.EnterModule(selectedModule);
+                    {
+                        OnModuleSelected?.Invoke(selectedModule);  // Raise the event
+                    }
+                }
+                else
+                {
+                    OnModuleSelected?.Invoke(null);
                 }
             }
         }
@@ -89,14 +94,6 @@ public class WagonCustomizer : MonoBehaviour
 
     private void HandleModuleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            // Start preview on current wagon
-            if (caravanManager.HasActiveWagon)
-            {
-                previewManager.CreatePreview(selectedModule.graphics, caravanManager.CurrentWagon.transform.position);
-            }
-        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             previewManager.Rotate();
@@ -104,6 +101,16 @@ public class WagonCustomizer : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             previewManager.ClearPreview();
+        }
+    }
+
+    public void StartModulePreview(StorageModuleData module)
+    {
+        selectedModule = module;
+        // Start preview on current wagon
+        if (caravanManager.HasActiveWagon)
+        {
+            previewManager.CreatePreview(selectedModule.graphics, caravanManager.CurrentWagon.transform.position);
         }
     }
 

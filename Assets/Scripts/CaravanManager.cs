@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CaravanManager : MonoBehaviour
 {
-    [SerializeField] private GameObject wagonPrefab; // Temporary it will be selected from the UI
     [SerializeField] private Vector3 wagonOffset; // Temporary it will be handled differently in the future
     [SerializeField] private float moveDuration = 0.5f; // Duration for the movement
 
@@ -12,39 +11,14 @@ public class CaravanManager : MonoBehaviour
     private List<Wagon> wagons = new List<Wagon>();
     private int currentWagonIndex = -1;
 
+    public int CurrentWagonIndex => currentWagonIndex; // Read-only access to the current wagon index
+    public int WagonCount => wagons.Count; // Read-only access to the number of wagons
+
     public Wagon CurrentWagon { get; private set; }
     public bool HasActiveWagon => CurrentWagon != null;
     public GridManager GridManager => currentGridManager;  // Expose GridManager
 
-    void Update()
-    {
-        HandleWagonManagement();
-    }
-
-    private void HandleWagonManagement()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            AddWagon();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            FocusPreviousWagon();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            FocusNextWagon();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RemoveWagon();
-        }
-    }
-
-    private void AddWagon()
+    public void AddWagon(GameObject wagonPrefab)
     {
         Vector3 position = CalculateNextWagonPosition();
         GameObject wagonObject = Instantiate(wagonPrefab, position, Quaternion.identity);
@@ -55,7 +29,7 @@ public class CaravanManager : MonoBehaviour
         UpdateWagonHighlights();
     }
 
-    private void RemoveWagon()
+    public void RemoveWagon()
     {
         Wagon wagonToRemove = CurrentWagon;
 
@@ -134,7 +108,7 @@ public class CaravanManager : MonoBehaviour
         return lastWagon.transform.position + wagonOffset;
     }
 
-    private void FocusNextWagon()
+    public void FocusNextWagon()
     {
         if (wagons.Count == 0) return;
         CurrentWagon.DeFocusCamera();
@@ -142,7 +116,7 @@ public class CaravanManager : MonoBehaviour
         CurrentWagon.FocusCamera();
     }
 
-    private void FocusPreviousWagon()
+    public void FocusPreviousWagon()
     {
         if (wagons.Count == 0) return;
         CurrentWagon.DeFocusCamera();

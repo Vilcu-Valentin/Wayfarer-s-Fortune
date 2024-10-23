@@ -9,8 +9,10 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject normalVolume;
     [SerializeField] private GridManager gridManager;
     [SerializeField] private Storage storageManager;
+    [SerializeField] private GameObject buildSpace;
 
     public StorageModule CurrentStorage { get; private set; }
+    public GameObject InventoryScene { get; private set; }
     public bool HasActiveStorage => CurrentStorage != null;
 
     [SerializeField] private ItemData selectedItem;
@@ -22,11 +24,10 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private LayerMask buildMask;
     [SerializeField] private LayerMask moduleMask;
 
-    private List<GameObject> itemsReference;
-
     void Start()
     {
         previewManager = new ModulePlacementPreview();
+        InventoryScene = inventoryScene;
     }
 
 
@@ -97,10 +98,10 @@ public class InventoryManager : MonoBehaviour
 
     private void HandleModuleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             // Start preview 
-            previewManager.CreatePreview(selectedItem.graphics, inventoryScene.transform.position);
+            previewManager.CreatePreview(selectedItem.graphics, InventoryScene.transform.position);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -115,7 +116,6 @@ public class InventoryManager : MonoBehaviour
             ExitModule();
         }
     }
-
 
     private void UpdateModulePlacement()
     {
@@ -164,7 +164,7 @@ public class InventoryManager : MonoBehaviour
             selectedItem.graphics,
             previewManager.GetTargetPosition(),
             previewManager.GetCurrentRotation(),
-            inventoryScene.transform
+            InventoryScene.transform
         );
 
         Item newItem = new Item
@@ -175,7 +175,7 @@ public class InventoryManager : MonoBehaviour
             rotated = previewManager.IsRotated
         };
 
-        itemsReference.Add(placedModule);
+        storageManager.AddItemReference(placedModule);
 
         storageManager.AddItem(newItem);
         previewManager.ClearPreview();
@@ -196,7 +196,9 @@ public class InventoryManager : MonoBehaviour
         this.CurrentStorage = currentStorage;
 
         // Clear any previously spawned objects
-        ClearSpawnedItems();
+        storageManager.ClearSpawnedItems();
+
+        buildSpace.transform.localScale = new Vector3(currentStorage.moduleData.inventorySize.x, 0.05f, currentStorage.moduleData.inventorySize.z);
 
         // Initialize items list if null
         if (CurrentStorage.items == null)
@@ -206,86 +208,21 @@ public class InventoryManager : MonoBehaviour
         else
         {
             // Spawn any existing items
-            SpawnItems();
+            storageManager.SpawnItems();
         }
 
-        inventoryScene.transform.position = currentStorage.objectRef.transform.position;
-        gridManager.InitializeGrid(inventoryScene.transform.position, 1f, currentStorage.moduleData.inventorySize);
+        InventoryScene.transform.position = currentStorage.objectRef.transform.position;
+        gridManager.InitializeGrid(InventoryScene.transform.position, 1f, currentStorage.moduleData.inventorySize);
         UpdateCameraMask(true);
-        inventoryScene.SetActive(true);
-    }
-
-    private void ClearSpawnedItems()
-    {
-        if (itemsReference != null)
-        {
-            foreach (GameObject item in itemsReference)
-            {
-                if (item != null)
-                    Destroy(item);
-            }
-            itemsReference.Clear();
-        }
-        else
-        {
-            itemsReference = new List<GameObject>();
-        }
-    }
-
-    public void SpawnItems()
-    {
-        foreach (Item item in CurrentStorage.items)
-        {
-            if (item == null || item.ItemData == null) continue;
-
-            // Calculate the world position based on the grid position
-            Vector3 worldPosition = CalculateWorldPosition(item);
-            Quaternion rotation = CalculateRotation(item);
-
-            // Spawn the item
-            GameObject spawnedObject = Instantiate(
-                item.ItemData.graphics,
-                worldPosition,
-                rotation,
-                inventoryScene.transform
-            );
-
-            // Update the object reference and add to our tracking list
-            item.objectRef = spawnedObject;
-            itemsReference.Add(spawnedObject);
-        }
-    }
-
-    private Vector3 CalculateWorldPosition(Item item)
-    {
-        Vector3Int moduleSize = item.rotated ?
-            new Vector3Int(item.ItemData.size.z, item.ItemData.size.y, item.ItemData.size.x) :
-            item.ItemData.size;
-
-        // Convert grid position to world position
-        Vector3 worldPosition = gridManager.GridToWorldPosition(item.currentPosition);
-
-        // Adjust for center position like we do in placement
-        worldPosition += new Vector3(
-            moduleSize.x / 2f - 0.5f,
-            moduleSize.y / 2f * gridManager.cellSize,
-            moduleSize.z / 2f - 0.5f
-        );
-
-        return worldPosition;
-    }
-
-    private Quaternion CalculateRotation(Item item)
-    {
-        return item.rotated ? Quaternion.Euler(0, 90, 0) : Quaternion.identity;
+        InventoryScene.SetActive(true);
     }
 
     // Update ExitModule to clear spawned items
     public void ExitModule()
     {
-        ClearSpawnedItems();
+        storageManager.ClearSpawnedItems();
         CurrentStorage = null;
         UpdateCameraMask(false);
-        inventoryScene.SetActive(false);
+        InventoryScene.SetActive(false);
     }
 }

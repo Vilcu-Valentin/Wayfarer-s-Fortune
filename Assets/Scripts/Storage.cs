@@ -6,7 +6,8 @@ public class Storage : MonoBehaviour
 {
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private GridManager gridManager;
- 
+    private List<GameObject> itemsReference;
+
     // Add the storageModule we just placed to the List
     public void AddItem(Item item)
     {
@@ -20,6 +21,76 @@ public class Storage : MonoBehaviour
 
         inventoryManager.CurrentStorage.items.Remove(item);
         Destroy(item.objectRef);
+    }
+
+    public void AddItemReference(GameObject reference)
+    {
+        itemsReference.Add(reference);
+    }
+
+    public void SpawnItems()
+    {
+        foreach (Item item in inventoryManager.CurrentStorage.items)
+        {
+            if (item == null || item.ItemData == null) continue;
+
+            // Calculate the world position based on the grid position
+            Vector3 worldPosition = CalculateWorldPosition(item);
+            Quaternion rotation = CalculateRotation(item);
+
+            // Spawn the item
+            GameObject spawnedObject = Instantiate(
+                item.ItemData.graphics,
+                worldPosition,
+                rotation,
+                inventoryManager.InventoryScene.transform
+            );
+
+            // Update the object reference and add to our tracking list
+            item.objectRef = spawnedObject;
+            itemsReference.Add(spawnedObject);
+        }
+    }
+
+    public void ClearSpawnedItems()
+    {
+        if (itemsReference != null)
+        {
+            foreach (GameObject item in itemsReference)
+            {
+                if (item != null)
+                    Destroy(item);
+            }
+            itemsReference.Clear();
+        }
+        else
+        {
+            itemsReference = new List<GameObject>();
+        }
+    }
+
+    private Vector3 CalculateWorldPosition(Item item)
+    {
+        Vector3Int moduleSize = item.rotated ?
+            new Vector3Int(item.ItemData.size.z, item.ItemData.size.y, item.ItemData.size.x) :
+            item.ItemData.size;
+
+        // Convert grid position to world position
+        Vector3 worldPosition = gridManager.GridToWorldPosition(item.currentPosition);
+
+        // Adjust for center position like we do in placement
+        worldPosition += new Vector3(
+            moduleSize.x / 2f - 0.5f,
+            moduleSize.y / 2f * gridManager.cellSize,
+            moduleSize.z / 2f - 0.5f
+        );
+
+        return worldPosition;
+    }
+
+    private Quaternion CalculateRotation(Item item)
+    {
+        return item.rotated ? Quaternion.Euler(0, 90, 0) : Quaternion.identity;
     }
 
     // Takes an virtual object (it's origin and size) and checks for each cell of that object if it intersects with an already existing one

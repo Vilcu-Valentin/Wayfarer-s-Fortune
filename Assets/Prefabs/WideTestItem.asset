@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: WideTestItem
   m_EditorClassIdentifier: 
   item_name: TestItem
-  size: {x: 2, y: 2, z: 2}
+  size: {x: 2, y: 2, z: 3}
   store_type: 0
-  graphics: {fileID: 5947616081198112520, guid: 2c8c9409917bcf146869843cb3540f18,
+  graphics: {fileID: 6230509163304379256, guid: 24f96ef4ca0889b41909f16651473d59,
     type: 3}
   icon: {fileID: 0}
