@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8546236857993954323}
   - component: {fileID: 4893961132716725726}
   - component: {fileID: -5070095228883471841}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Vault
   m_TagString: Untagged
   m_Icon: {fileID: 0}

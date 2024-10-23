@@ -174,6 +174,7 @@ public class WagonCustomizer : MonoBehaviour
             rotated = previewManager.IsRotated
         };
 
+        placedModule.layer = 7;
         caravanManager.CurrentWagon.AddStorageModule(newModule);
         previewManager.ClearPreview();
     }

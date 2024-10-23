@@ -31,7 +31,7 @@ public class SelectedModuleUI : MonoBehaviour
 
     public void EnterModuleInventory()
     {
-        inventoryManager.EnterModule(selectedModule);
+        inventoryManager.EnterStorage(selectedModule);
         gameObject.SetActive(false);
     }
 }
