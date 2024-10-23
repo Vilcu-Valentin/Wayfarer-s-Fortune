@@ -1,9 +1,11 @@
 // Handles module placement and customization for individual wagons
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WagonCustomizer : MonoBehaviour
 {
     [SerializeField] CaravanManager caravanManager;
+    [SerializeField] InventoryManager inventoryManager;
     [SerializeField] private StorageModuleData selectedModule;
     [SerializeField] private float positionLerpSpeed = 15f;
     [SerializeField] private float rotationLerpSpeed = 20f;
@@ -23,8 +25,8 @@ public class WagonCustomizer : MonoBehaviour
 
     void Update()
     {
-        // If there is no active wagon we make sure to clear the preview
-        if (!caravanManager.HasActiveWagon)
+        // If there is no active wagon, or if we are inside an inventory we make sure to clear the preview and return
+        if (!caravanManager.HasActiveWagon || inventoryManager.HasActiveStorage)
         {
             previewManager.ClearPreview();
             ClearPlacementValidator();
@@ -47,20 +49,23 @@ public class WagonCustomizer : MonoBehaviour
         }
     }
 
-    // When you don't have a module selected, you will be able to select an already placed module
+    // When you don't have a module to place selected, you will be able to select an already placed module
     private void ModuleSelector()
     {
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(0)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, moduleMask))
             {
                 Vector3Int? selectedCell = caravanManager.GridManager.WorldToGridPosition(hit.transform.position);
                 if (selectedCell != null)
                 {
-                    // temporary this will just be used to select a module, but for now we'll delete it
+                    /* temporary this will just be used to select a module, but for now we'll delete it
                     StorageModule moduleToDelete = caravanManager.CurrentWagon.GetModuleByGridCoords(selectedCell.Value);
                     if(moduleToDelete != null)
-                        caravanManager.CurrentWagon.RemoveStorageModule(moduleToDelete);
+                        caravanManager.CurrentWagon.RemoveStorageModule(moduleToDelete); */
+                    StorageModule selectedModule = caravanManager.CurrentWagon.GetModuleByGridCoords(selectedCell.Value);
+                    if (selectedModule != null)
+                        inventoryManager.EnterModule(selectedModule);
                 }
             }
         }

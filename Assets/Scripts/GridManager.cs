@@ -16,6 +16,15 @@ public class GridManager : MonoBehaviour
         gridOrigin = transform.position - new Vector3(width * cellSize / 2, 0, length * cellSize / 2);
     }
 
+    public void InitializeGrid(Vector3 origin, float cellSize, Vector3Int gridSize)
+    {
+        this.cellSize = cellSize;
+        width = gridSize.x;
+        length = gridSize.z;
+        height = gridSize.y;
+        gridOrigin = origin - new Vector3(width * cellSize / 2, 0, length * cellSize / 2);
+    }
+
     public Vector3Int WorldToGridPosition(Vector3 worldPosition)
     {
         Vector3 localPosition = worldPosition - gridOrigin;
