@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   item_name: TestItem
-  size: {x: 2, y: 2, z: 2}
+  size: {x: 1, y: 1, z: 1}
   store_type: 0
   graphics: {fileID: 5947616081198112520, guid: 2c8c9409917bcf146869843cb3540f18,
     type: 3}

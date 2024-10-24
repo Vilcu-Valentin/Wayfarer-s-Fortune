@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Value: 0
   compensation:
     m_OverrideState: 1
-    m_Value: -10
+    m_Value: 0
   limitMin:
     m_OverrideState: 1
     m_Value: 2
@@ -236,7 +236,7 @@ MonoBehaviour:
     m_Value: 0
   type:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 0
   sphericalMode:
     m_OverrideState: 0
     m_Value: 1
@@ -364,7 +364,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 3
   directLightingStrength:
     m_OverrideState: 1
     m_Value: 0.5

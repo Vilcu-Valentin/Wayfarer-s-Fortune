@@ -6,13 +6,15 @@ public class InventoryVisualizer
 {
     private readonly HDAdditionalCameraData hdCamera;
     private readonly GameObject normalVolume;
+    private readonly GameObject outsideLight;
     private readonly LayerMask moduleMask;
     private readonly LayerMask buildMask;
 
-    public InventoryVisualizer(Camera mainCamera, GameObject normalVolume, LayerMask moduleMask, LayerMask buildMask)
+    public InventoryVisualizer(Camera mainCamera, GameObject normalVolume, GameObject outsideLight, LayerMask moduleMask, LayerMask buildMask)
     {
         this.hdCamera = mainCamera.GetComponent<HDAdditionalCameraData>();
         this.normalVolume = normalVolume;
+        this.outsideLight = outsideLight;
         this.moduleMask = moduleMask;
         this.buildMask = buildMask;
     }
@@ -27,12 +29,14 @@ public class InventoryVisualizer
             hdCamera.clearColorMode = HDAdditionalCameraData.ClearColorMode.Color;
             Camera.main.cullingMask = moduleMask | buildMask;
             normalVolume.SetActive(false);
+            outsideLight.SetActive(false);
         }
         else
         {
             hdCamera.clearColorMode = HDAdditionalCameraData.ClearColorMode.Sky;
             Camera.main.cullingMask = -1;
             normalVolume.SetActive(true);
+            outsideLight.SetActive(true);   
         }
     }
 }

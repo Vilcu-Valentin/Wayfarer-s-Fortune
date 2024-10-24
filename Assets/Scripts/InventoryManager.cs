@@ -6,6 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject inventoryScene;
     [SerializeField] private GameObject normalVolume;
+    [SerializeField] private GameObject outsideLight;
     [SerializeField] private GridManager gridManager;
     [SerializeField] private StorageManager storageManager;
     [SerializeField] private GameObject buildSpace;
@@ -17,6 +18,9 @@ public class InventoryManager : MonoBehaviour
 
     private ModulePlacementPreview previewManager;
     private InventoryVisualizer visualizer;
+    private ExplodedViewController explodedViewController;
+
+    private GameObject hoveredObject;
 
     public StorageModule CurrentStorage { get; private set; }
     public GameObject InventoryScene => inventoryScene;
@@ -25,7 +29,8 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         previewManager = new ModulePlacementPreview();
-        visualizer = new InventoryVisualizer(Camera.main, normalVolume, moduleMask, buildMask);
+        visualizer = new InventoryVisualizer(Camera.main, normalVolume, outsideLight, moduleMask, buildMask);
+        explodedViewController = new ExplodedViewController();
     }
 
     private void Update()
@@ -33,11 +38,20 @@ public class InventoryManager : MonoBehaviour
         HandleModuleInput();
 
         if (!previewManager.IsActive)
-            HandleModuleSelection();
-        else
+            HandleModuleSelection(); 
+        else if (!explodedViewController.IsExploded)
         {
             UpdateModulePlacement();
             previewManager.UpdateTransform(positionLerpSpeed, rotationLerpSpeed);
+        }
+        else
+        {
+            previewManager.ClearPreview();
+        }
+
+        if (explodedViewController.IsTransitioning)
+        {
+            explodedViewController.UpdateTransition();
         }
     }
 
@@ -54,22 +68,50 @@ public class InventoryManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
             ExitStorage();
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            explodedViewController.ToggleExplodedView(CurrentStorage.items, gridManager.cellSize);
+        }
     }
 
     // When you don't have a module to place selected, you will be able to select an already placed module
     private void HandleModuleSelection()
     {
-        if (!Input.GetMouseButtonDown(1)) return;
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, moduleMask)) return;
 
-        Vector3Int? selectedCell = gridManager.WorldToGridPosition(hit.transform.position);
+        // TEMPORARY
+        HandleHover(hit.transform.gameObject);
+
+        if (!Input.GetMouseButtonDown(1)) return;
+
+        Debug.Log(hit.transform + " at position" + gridManager.WorldToGridPosition(hit.transform.position));
+
+        Vector3 position = hit.transform.position;
+        if (explodedViewController.IsExploded)
+        {
+            position = explodedViewController.TranslateExplodedToGridPosition(hit.transform.gameObject, gridManager.cellSize);
+            Debug.Log("It was in exploded view, so tranformed position is: " + gridManager.WorldToGridPosition(position));
+        }
+
+        Vector3Int? selectedCell = gridManager.WorldToGridPosition(position);
         if (!selectedCell.HasValue) return;
 
         Item itemToDelete = storageManager.GetModuleAtPosition(selectedCell.Value);
         if (itemToDelete != null)
             storageManager.RemoveItem(itemToDelete);
+    }
+
+    // TEMPORARY
+    private void HandleHover(GameObject currentHover)
+    {
+        if (currentHover != hoveredObject)
+        {
+            if(hoveredObject != null)
+                hoveredObject.GetComponent<Renderer>().material.color = Color.yellow;
+            hoveredObject = currentHover;
+            hoveredObject.GetComponent<Renderer>().material.color = Color.blue;
+        }
     }
 
     private void UpdateModulePlacement()
@@ -109,7 +151,7 @@ public class InventoryManager : MonoBehaviour
         Vector3 newPosition = gridManager.GridToWorldPosition(stackPosition);
         newPosition += new Vector3(
             moduleSize.x / 2f - 0.5f,
-            (moduleSize.y / 2f) * gridManager.cellSize,
+            (moduleSize.y / 2f) * gridManager.cellSize - 0.5f,
             moduleSize.z / 2f - 0.5f
         );
         previewManager.UpdatePosition(newPosition);
@@ -134,7 +176,6 @@ public class InventoryManager : MonoBehaviour
 
         placedModule.layer = 9;
         storageManager.AddItem(newItem);
-        previewManager.ClearPreview();
     }
 
     // Uses a raycast to get the grid position from the wagon)
@@ -161,6 +202,7 @@ public class InventoryManager : MonoBehaviour
 
     public void ExitStorage()
     {
+        explodedViewController.Reset(); // This will handle resetting positions if in exploded view
         storageManager.ClearSpawnedItems();
         CurrentStorage = null;
         visualizer.SetInventoryView(false);

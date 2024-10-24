@@ -152,7 +152,7 @@ public class WagonCustomizer : MonoBehaviour
     {
         Vector3 newPosition = caravanManager.GridManager.GridToWorldPosition(stackPosition);
         newPosition += new Vector3(moduleSize.x / 2f - 0.5f, 0, moduleSize.z / 2f - 0.5f);
-        newPosition.y = (newPosition.y + moduleSize.y / 2f) * caravanManager.GridManager.cellSize;
+        newPosition.y = (newPosition.y + moduleSize.y / 2f) * caravanManager.GridManager.cellSize - 0.5f;
         previewManager.UpdatePosition(newPosition);
     }
 
@@ -176,7 +176,6 @@ public class WagonCustomizer : MonoBehaviour
 
         placedModule.layer = 7;
         caravanManager.CurrentWagon.AddStorageModule(newModule);
-        previewManager.ClearPreview();
     }
 
     // Uses a raycast to get the grid position from the wagon)
