@@ -58,7 +58,11 @@ public class InventoryManager : MonoBehaviour
     private void HandleModuleInput()
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))
+        { 
             previewManager.CreatePreview(selectedItem.graphics, InventoryScene.transform.position);
+            if(explodedViewController.IsExploded)
+                explodedViewController.ToggleExplodedView(CurrentStorage.items, gridManager.cellSize);
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
             previewManager.Rotate();
@@ -79,9 +83,6 @@ public class InventoryManager : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, moduleMask)) return;
-
-        // TEMPORARY
-        HandleHover(hit.transform.gameObject);
 
         if (!Input.GetMouseButtonDown(1)) return;
 
