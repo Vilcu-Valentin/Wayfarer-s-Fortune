@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 public class ExplodedViewController
 {
@@ -41,7 +40,10 @@ public class ExplodedViewController
         CalculateLayerHeights(items, cellSize);
         targetPositions.Clear();
 
-        foreach (var item in items.OrderBy(i => i.Position.y))
+        // Sort items by Y position
+        items.Sort((a, b) => a.Position.y.CompareTo(b.Position.y));
+
+        foreach (var item in items)
         {
             if (item?.ObjectReference == null) continue;
 
@@ -108,8 +110,19 @@ public class ExplodedViewController
     {
         layerHeights.Clear();
 
+        // Find maximum Y position
+        int maxY = 0;
+        foreach (var item in items)
+        {
+            int itemMaxY = item.Position.y + item.Size.y;
+            if (itemMaxY > maxY)
+            {
+                maxY = itemMaxY;
+            }
+        }
+
         // Initialize all possible layers with height 0
-        for (int i = 0; i < items.Max(item => item.Position.y + item.Size.y); i++)
+        for (int i = 0; i < maxY; i++)
         {
             layerHeights[i] = 0;
         }
@@ -141,7 +154,6 @@ public class ExplodedViewController
 
         return adjustedPosition;
     }
-
 
     public void Reset()
     {

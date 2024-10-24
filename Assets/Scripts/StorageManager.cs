@@ -61,7 +61,7 @@ public class StorageManager : MonoBehaviour
         Vector3 gridPos = gridManager.GridToWorldPosition(item.Position);
         return gridPos + new Vector3(
             item.Size.x / 2f - 0.5f,
-            item.Size.y / 2f * gridManager.cellSize,
+            item.Size.y / 2f * gridManager.cellSize - 0.5f,
             item.Size.z / 2f - 0.5f
         );
     }
