@@ -5,7 +5,6 @@ using UnityEngine;
 public class WagonCustomizer : MonoBehaviour
 {
     [SerializeField] CaravanManager caravanManager;
-    [SerializeField] InventoryManager inventoryManager;
     [SerializeField] private float positionLerpSpeed = 15f;
     [SerializeField] private float rotationLerpSpeed = 20f;
 
@@ -29,7 +28,7 @@ public class WagonCustomizer : MonoBehaviour
     void Update()
     {
         // If there is no active wagon, or if we are inside an inventory we make sure to clear the preview and return
-        if (!caravanManager.HasActiveWagon || inventoryManager.HasActiveStorage)
+        if (!caravanManager.HasActiveWagon)
         {
             previewManager.ClearPreview();
             ClearPlacementValidator();
@@ -175,7 +174,7 @@ public class WagonCustomizer : MonoBehaviour
         };
 
         placedModule.layer = 7;
-        caravanManager.CurrentWagon.AddStorageModule(newModule);
+        caravanManager.CurrentWagon.AddStorageModule(newModule);   
     }
 
     // Uses a raycast to get the grid position from the wagon)

@@ -6,7 +6,6 @@ using TMPro;
 public class SelectedModuleUI : MonoBehaviour
 {
     [SerializeField] private CaravanManager caravanManager;
-    [SerializeField] private InventoryManager inventoryManager;
 
     [SerializeField] private TextMeshProUGUI moduleName;
     [SerializeField] private TextMeshProUGUI moduleSize;
@@ -26,12 +25,6 @@ public class SelectedModuleUI : MonoBehaviour
     public void DeleteModule()
     {
         caravanManager.CurrentWagon.RemoveStorageModule(selectedModule);
-        gameObject.SetActive(false);
-    }
-
-    public void EnterModuleInventory()
-    {
-        inventoryManager.EnterStorage(selectedModule);
         gameObject.SetActive(false);
     }
 }

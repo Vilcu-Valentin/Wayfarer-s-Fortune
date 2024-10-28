@@ -6,14 +6,14 @@ using UnityEngine;
 public class Item
 {
     public ItemData ItemData { get; }
-    public Vector3Int Position { get; set; }
     public GameObject ObjectReference { get; set; }
+    public Vector2Int Position { get; set; }
     public bool IsRotated { get; set; }
-    public Vector3Int Size => IsRotated ?
-        new Vector3Int(ItemData.size.z, ItemData.size.y, ItemData.size.x) :
+    public Vector2Int Size => IsRotated ?
+        new Vector2Int(ItemData.size.y, ItemData.size.x) :
         ItemData.size;
 
-    public Item(ItemData data, Vector3Int position, GameObject objRef, bool isRotated = false)
+    public Item(ItemData data, Vector2Int position, GameObject objRef, bool isRotated = false)
     {
         ItemData = data;
         Position = position;
