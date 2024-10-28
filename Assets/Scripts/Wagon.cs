@@ -7,12 +7,11 @@ using UnityEngine.UIElements;
 public class Wagon : MonoBehaviour
 {
     [Tooltip("This list will be used for the inventory and other calculations like weight etc.")]
-    [SerializeField] private List<StorageModule> storageModules = new List<StorageModule>();
+    [SerializeField] public List<StorageModule> storageModules = new List<StorageModule>();
     [Tooltip("Temporary, is used to highlight the currently selected wagon. Will be removed in the future in favor of just changing the cinemachine camera")]
     [SerializeField] private MeshRenderer[] highlightMeshes;
     [Tooltip("The hover camera")]
     [SerializeField] private CinemachineFreeLook lookCamera;
-
 
     //Temporary as well will be removed with the highlightMeshes;
     private Color defaultColor;

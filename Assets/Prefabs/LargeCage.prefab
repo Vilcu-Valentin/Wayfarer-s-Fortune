@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8546236857993954323}
   - component: {fileID: 4893961132716725726}
   - component: {fileID: 6702598211370166242}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: LargeCage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

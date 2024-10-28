@@ -10,4 +10,6 @@ public class StorageModule
     public Vector3Int currentPosition;
     public bool rotated;
     public GameObject objectRef;
+
+    public List<Item> items;
 }

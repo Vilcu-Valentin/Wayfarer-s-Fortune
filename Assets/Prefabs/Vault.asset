@@ -15,7 +15,7 @@ MonoBehaviour:
   storage_name: Crate
   size: {x: 3, y: 3, z: 2}
   storage_type: 0
-  inventorySize: {x: 5, y: 5, z: 5}
+  inventorySize: {x: 7, y: 7, z: 5}
   graphics: {fileID: 7963389315358056484, guid: 8ab7b8c3a2ee842439707f22436aff04,
     type: 3}
   icon: {fileID: 0}

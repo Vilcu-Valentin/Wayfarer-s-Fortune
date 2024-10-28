@@ -17,7 +17,7 @@ public class StorageModuleData : ScriptableObject
     public Vector3Int size;
     public StorageType storage_type;
     [Tooltip("How many inventory slots it has")]
-    public Vector3Int inventorySize;
+    public Vector2Int inventorySize;
 
     [Tooltip("This will be the model that will be displayed when added to the caravan")]
     public GameObject graphics;
