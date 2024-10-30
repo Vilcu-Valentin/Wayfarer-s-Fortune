@@ -164,7 +164,7 @@ public class PrimeMoverController : MonoBehaviour
         else
         {
             // Add rolling resistance
-            float rollingResistanceCoefficient = 0.015f; // Adjust this value to change the rolling resistance
+            float rollingResistanceCoefficient = 0.1f; // Adjust this value to change the rolling resistance
             float rollingResistanceForce = -carRigidbody.GetPointVelocity(tireTransform.position).magnitude * rollingResistanceCoefficient * carRigidbody.mass;
             carRigidbody.AddForceAtPosition(accelDir * rollingResistanceForce, tireTransform.position);
             driveForces.Add(accelDir * rollingResistanceForce);
