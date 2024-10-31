@@ -39,7 +39,7 @@ public class PrimeMoverController : MonoBehaviour
         carRigidbody = GetComponent<Rigidbody>();
 
         // Set the center of mass lower for better stability
-        carRigidbody.centerOfMass = new Vector3(0, 0, 0);
+        carRigidbody.centerOfMass = new Vector3(0, 1f, 0);
 
         // Ensure we have a power curve if none is set
         if (powerCurve == null || powerCurve.length == 0)
@@ -206,18 +206,36 @@ public class PrimeMoverController : MonoBehaviour
     }
 
     private void UpdateWheelVisuals()
-    {
-        // Calculate rotation based on signed vehicle speed (forward/backward)
-        float wheelRadius = 0.75f; // Assuming wheel radius of 0.75m
-        float carSpeed = -Vector3.Dot(carRigidbody.velocity, transform.forward); // Signed speed (forward/backward)
-        float rpm = (carSpeed / (2f * Mathf.PI * wheelRadius)) * 60f; // Convert speed to RPM
-        float rotationAngle = Time.deltaTime * rpm * 360f / 60f;
+{
+    // Assuming wheel radius of 0.75m
+    float wheelRadius = 0.75f;
+    
+    // Calculate rotation angle based on the actual forward speed at each wheel
+    RotateWheel(frontLeftWheel, wheelRadius);
+    RotateWheel(frontRightWheel, wheelRadius);
+    RotateWheel(rearLeftWheel, wheelRadius);
+    RotateWheel(rearRightWheel, wheelRadius);
+}
 
-        // Rotate each wheel mesh (assuming they are child objects of the wheel transforms)
-        if (frontLeftWheel.childCount > 0) frontLeftWheel.GetChild(0).Rotate(0, rotationAngle, 0);
-        if (frontRightWheel.childCount > 0) frontRightWheel.GetChild(0).Rotate(0, rotationAngle, 0);
-        if (rearLeftWheel.childCount > 0) rearLeftWheel.GetChild(0).Rotate(0, rotationAngle , 0);
-        if (rearRightWheel.childCount > 0) rearRightWheel.GetChild(0).Rotate(0, rotationAngle, 0);
+private void RotateWheel(Transform wheel, float radius)
+{
+    // Calculate the forward speed at the wheel position
+    Vector3 wheelVelocity = carRigidbody.GetPointVelocity(wheel.position);
+    float forwardSpeed = Vector3.Dot(wheelVelocity, wheel.forward); // Project velocity onto the wheel's forward direction
+
+    // Convert forward speed to RPM (revolutions per minute)
+    float rpm = -(forwardSpeed / (2f * Mathf.PI * radius)) * 60f;
+
+    // Calculate rotation angle based on RPM
+    float rotationAngle = Time.deltaTime * rpm * 360f / 60f;
+
+    // Rotate the wheel mesh (assuming it’s a child object of the wheel transform)
+    if (wheel.childCount > 0)
+    {
+        Transform wheelMesh = wheel.GetChild(0);
+        wheelMesh.Rotate(0, rotationAngle, 0);
     }
+}
+
 
 }
