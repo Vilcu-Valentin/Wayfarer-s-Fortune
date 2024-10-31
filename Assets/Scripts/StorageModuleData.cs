@@ -12,7 +12,7 @@ public enum StorageType
 [CreateAssetMenu(fileName = "New Storage Module", menuName = "Storage Module")]
 public class StorageModuleData : ScriptableObject
 {
-    public string storage_name;
+    public string id;
     [Tooltip("The size that will take up in the wagon")]
     public Vector3Int size;
     public StorageType storage_type;
