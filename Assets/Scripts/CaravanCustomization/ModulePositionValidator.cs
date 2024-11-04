@@ -8,6 +8,12 @@ public class ModulePositionValidator
     private Vector3 targetPosition;
     private Quaternion targetRotation;
 
+    public void ResetRotation()
+    {
+        isRotated = false;
+        targetRotation = Quaternion.Euler(0, 0, 0);
+    }
+
     // Rotate the preview 90 degrees
     public void Rotate()
     {

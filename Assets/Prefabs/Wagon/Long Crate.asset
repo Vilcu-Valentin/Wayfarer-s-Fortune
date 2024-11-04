@@ -16,5 +16,6 @@ MonoBehaviour:
   size: {x: 4, y: 1, z: 1}
   storage_type: 0
   inventorySize: {x: 10, y: 2}
-  graphics: {fileID: 810242930023799807, guid: bc0bf073c36a6f24fbf9f4708b828ef0, type: 3}
+  graphics: {fileID: 4183671476866197469, guid: bc0bf073c36a6f24fbf9f4708b828ef0,
+    type: 3}
   icon: {fileID: 0}

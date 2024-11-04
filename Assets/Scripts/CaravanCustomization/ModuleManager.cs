@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEditor.MPE;
 
 public class ModuleManager : MonoBehaviour 
 {
     public bool IsActive = false;
-    // TEMPORARY SELECTED MODULE, will be selected from a UI button
-    [SerializeField] private StorageModuleData selectedModule;
+
     [SerializeField] private CinemachineFreeLook lookCamera;
 
     [SerializeField] private Wagon wagon;
@@ -17,20 +17,37 @@ public class ModuleManager : MonoBehaviour
 
     private ModulePlacementValidator placementValidator;
     private ModulePositionValidator positionValidator;
+    private ModulePreviewValidator previewValidator;
+
+    private StorageModuleData selectedModule = null;
 
     public void Start()
     {
         placementValidator = new ModulePlacementValidator(grid, wagon);
         positionValidator = new ModulePositionValidator();
+        previewValidator = new ModulePreviewValidator();
     }
 
     public void Update()
     {
         if(!IsActive) return;
 
-        UpdateModulePosition();
+        if (!selectedModule) return;
+
         if (Input.GetKeyDown(KeyCode.R))
+        { 
             positionValidator.Rotate();
+            previewValidator.Rotate();
+        }
+
+        if(Input.GetMouseButtonDown(1))
+            previewValidator.ClearPreview();
+
+        if (previewValidator.IsActive)
+        {
+            UpdateModulePosition();
+            previewValidator.UpdateTransform(10f, 15f);
+        }
     }
 
     // Maybe rename this to something better ?
@@ -47,8 +64,15 @@ public class ModuleManager : MonoBehaviour
         // We now get the stack position of the module 
         Vector3Int stackPosition = placementValidator.GetStackPosition(adjustedPosition, moduleSize);
 
+        previewValidator.UpdatePosition(grid.GridToAdjustedWorldPosition(stackPosition, moduleSize));
+
+        // Checks to see if it's a valid position
+        bool canPlace = placementValidator.IsPlacementValid(stackPosition, moduleSize);
+        // Change the preivew color
+        previewValidator.SetColor(canPlace ? Color.green : Color.red);
+
         // If the position is valid and we press LMB we can place the module
-        if (placementValidator.IsPlacementValid(stackPosition, moduleSize) && Input.GetMouseButtonDown(0))
+        if (canPlace && Input.GetMouseButtonDown(0))
         {
             CreateModule(stackPosition);
         }
@@ -64,6 +88,14 @@ public class ModuleManager : MonoBehaviour
         };
 
         wagon.AddStorageModule(newModule);
+    }
+
+    // Maybe better naming ?
+    public void StartModule(StorageModuleData module)
+    {
+        selectedModule = module;
+        positionValidator.ResetRotation();
+        previewValidator.CreatePreview(module.graphics, transform.position);
     }
 
     // Returns the position of a selected grid cell

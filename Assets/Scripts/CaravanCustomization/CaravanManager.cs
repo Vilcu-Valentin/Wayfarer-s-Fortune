@@ -65,6 +65,11 @@ public class CaravanManager : MonoBehaviour
         CurrentWagon.FocusCamera();
     }
 
+    public void StartCurrentWagonModule(StorageModuleData module)
+    {
+        CurrentWagon.StartModule(module);
+    }
+
     private void SetActiveWagon(int index)
     {
         if (index < 0 || index >= wagons.Count) return;
