@@ -4,9 +4,9 @@ using UnityEngine;
 public class Wagon : MonoBehaviour
 {
     [Tooltip("This list will be used for the inventory and other calculations like weight etc.")]
-    [SerializeField] public List<StorageModule> storageModules = new List<StorageModule>();
+    public List<StorageModule> storageModules = new List<StorageModule>();
     [SerializeField] private GridManager grid;
-    // Add the storageModule we just placed to the List
+
     public void AddStorageModule(StorageModule module)
     {
         storageModules.Add(module);

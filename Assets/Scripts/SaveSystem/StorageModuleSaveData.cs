@@ -5,7 +5,8 @@ using UnityEngine;
 [Serializable]
 public class StorageModuleSaveData
 {
-    public string moduleId; // Identifier for the module prefab
+    public string moduleId;
     public Vector3Int position;
     public bool isRotated;
+    public float rotation;
 }

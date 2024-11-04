@@ -11,7 +11,7 @@ public class GridManager : MonoBehaviour
 
     public Transform buildVolume;
 
-    void Start() => InitializeGrid();
+    void Awake() => InitializeGrid();
 
     public void InitializeGrid()
     {
