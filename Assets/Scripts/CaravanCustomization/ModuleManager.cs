@@ -34,20 +34,44 @@ public class ModuleManager : MonoBehaviour
 
         if (!selectedModule) return;
 
-        if (Input.GetKeyDown(KeyCode.R))
-        { 
-            positionValidator.Rotate();
-            previewValidator.Rotate();
-        }
-
         if(Input.GetMouseButtonDown(1))
             previewValidator.ClearPreview();
 
         if (previewValidator.IsActive)
         {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                positionValidator.Rotate();
+                previewValidator.Rotate();
+            }
+
             UpdateModulePosition();
             previewValidator.UpdateTransform(10f, 15f);
         }
+        else
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                SelectModule();
+            }
+        }
+    }
+
+    public void SelectModule()
+    {
+        Vector3Int? gridCell = GetModulePositionFromMouseRay();
+        if (gridCell == null) return;
+
+        StorageModule selectedModule = GetModuleByGridCoords(gridCell.Value);
+        if (selectedModule == null) return;
+
+        if (placementValidator.IsSpaceOccupiedAbove(selectedModule))
+        {
+            Debug.Log("There is a module above! Can't remove!");
+            return;
+        }    
+
+        wagon.RemoveStorageModule(selectedModule);
     }
 
     // Maybe rename this to something better ?
@@ -98,12 +122,29 @@ public class ModuleManager : MonoBehaviour
         previewValidator.CreatePreview(module.graphics, transform.position);
     }
 
+    // Returns a module from a grid position (cell)
+    public StorageModule GetModuleByGridCoords(Vector3Int gridCoords)
+    {
+        foreach (StorageModule module in wagon.storageModules)
+            if (placementValidator.IsPositionWithinModule(gridCoords, module.currentPosition, module.Size)) return module;
+
+        return null;
+    }
+
     // Returns the position of a selected grid cell
     private Vector3Int? GetGridPositionFromMouseRay()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         return Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, buildMask)
             ? grid.WorldToGridPosition(hit.point)
+            : null;
+    }
+
+    private Vector3Int? GetModulePositionFromMouseRay()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        return Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, buildMask)
+            ? grid.WorldToGridPosition(hit.transform.position)
             : null;
     }
 

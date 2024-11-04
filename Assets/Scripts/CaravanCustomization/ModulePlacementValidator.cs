@@ -58,6 +58,19 @@ public class ModulePlacementValidator
         return true;
     }
 
+    // Returns true if the any space above the current module is occupied
+    public bool IsSpaceOccupiedAbove(StorageModule module)
+    {
+        Vector3Int virtualModulePosition = module.currentPosition;
+        Vector3Int virtualModuleSize = module.rotated
+            ? new Vector3Int(module.moduleData.size.z, 1, module.moduleData.size.x)
+            : module.moduleData.size;
+
+        virtualModulePosition.y += module.moduleData.size.y;
+
+        return IsSpaceOccupied(virtualModulePosition, virtualModuleSize);
+    }
+
     // It takes a virtual object (position and size), and for each cell in that it checks if it intersects with a module
     public bool IsSpaceOccupied(Vector3Int position, Vector3Int size)
     {
@@ -84,7 +97,7 @@ public class ModulePlacementValidator
     }
 
     // Performs some calculations to check if a cell is within the bounds of a module
-    private bool IsPositionWithinModule(Vector3Int position, Vector3Int modulePosition, Vector3Int moduleSize)
+    public bool IsPositionWithinModule(Vector3Int position, Vector3Int modulePosition, Vector3Int moduleSize)
     {
         return position.x >= modulePosition.x && position.x < modulePosition.x + moduleSize.x &&
                position.y >= modulePosition.y && position.y < modulePosition.y + moduleSize.y &&

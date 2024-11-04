@@ -72,10 +72,4 @@ public class ModulePreviewValidator
             previewObject = null;
         }
     }
-
-
-    // Get the target rotation or final rotation of the placed object
-    public Quaternion GetCurrentRotation() => targetRotation;
-    // Get the final position of the placed object
-    public Vector3 GetTargetPosition() => targetPosition;
 }

@@ -20,8 +20,8 @@ public class Wagon : MonoBehaviour
     // Remove a selected storage module from the wagon
     public void RemoveStorageModule(StorageModule module)
     {
+        Destroy(module.objectRef);
         storageModules.Remove(module);
-        InitModuleGFX();
     }
 
     // TODO: Also add an updateStorageModule so you can move already placed modules
