@@ -13,6 +13,7 @@ public class StorageModule
        moduleData.size;
 
     public bool rotated;
+    public float rotation;
     public GameObject objectRef;
 
     public List<Item> items;

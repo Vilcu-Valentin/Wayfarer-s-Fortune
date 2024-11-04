@@ -72,4 +72,6 @@ public class ModulePreviewValidator
             previewObject = null;
         }
     }
+
+    public float GetCurrentRotation() => previewObject.transform.eulerAngles.y;
 }

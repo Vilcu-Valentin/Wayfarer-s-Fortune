@@ -109,6 +109,7 @@ public class ModuleManager : MonoBehaviour
             moduleData = selectedModule,
             currentPosition = stackPosition,
             rotated = positionValidator.IsRotated,
+            rotation = previewValidator.GetCurrentRotation()
         };
 
         wagon.AddStorageModule(newModule);
