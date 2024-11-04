@@ -5,8 +5,6 @@ using UnityEngine;
 public class CaravanUIManager : MonoBehaviour
 {
     [SerializeField] private CaravanManager caravanManager;
-    [SerializeField] private WagonCustomizer wagonCustomizer;
-    [SerializeField] private SelectedModuleUI selectedModuleUI;
 
     [Header("Wagon navigation and management")]
     [SerializeField] private GameObject prevWagonButton;
@@ -50,39 +48,6 @@ public class CaravanUIManager : MonoBehaviour
         else
         {
             Debug.LogError("No caravan manager has been assigned!");
-        }
-    }
-
-    private void HandleModuleSelected(StorageModule selectedModule)
-    {
-        if(selectedModule != null)
-        {
-            selectedModuleUI.UpdateSelectedModule(selectedModule);
-            moduleCustomUi.SetActive(true);
-        }
-        else
-        {
-            moduleCustomUi.SetActive(false);
-        }
-    }
-
-    private void OnEnable()
-    {
-        if (wagonCustomizer != null)
-        {
-            wagonCustomizer.OnModuleSelected += HandleModuleSelected;  // Subscribe to the event
-        }
-        else
-        {
-            Debug.LogError("WagonCustomizer is not assigned!");
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (wagonCustomizer != null)
-        {
-            wagonCustomizer.OnModuleSelected -= HandleModuleSelected;  // Unsubscribe from the event
         }
     }
 

@@ -1,10 +1,10 @@
-// Module placement preview and validation
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ModulePlacementPreview
+public class ModulePreviewValidator 
 {
     private GameObject previewObject;
-    private bool isRotated;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
 
@@ -16,17 +16,14 @@ public class ModulePlacementPreview
     {
         ClearPreview();
         previewObject = Object.Instantiate(prefab, position, Quaternion.identity);
-        isRotated = false;
         targetPosition = previewObject.transform.position;
         targetRotation = previewObject.transform.rotation;
     }
 
-    // Rotate the preview 90 degrees
     public void Rotate()
     {
         if (IsActive)
         {
-            isRotated = !isRotated;
             targetRotation *= Quaternion.Euler(0, 90, 0);
         }
     }
@@ -74,19 +71,7 @@ public class ModulePlacementPreview
             Object.Destroy(previewObject);
             previewObject = null;
         }
-        isRotated = false;
     }
 
-    // We get the gridSize of the object if it's rotated, we flip x and z sizes.
-    public Vector3Int GetRotatedSize(Vector3Int originalSize)
-    {
-        return isRotated ? new Vector3Int(originalSize.z, originalSize.y, originalSize.x) : originalSize;
-    }
-
-
-    // Get the target rotation or final rotation of the placed object
-    public Quaternion GetCurrentRotation() => targetRotation;
-    // Get the final position of the placed object
-    public Vector3 GetTargetPosition() => targetPosition;
-    public bool IsRotated => isRotated;
+    public float GetCurrentRotation() => previewObject.transform.eulerAngles.y;
 }

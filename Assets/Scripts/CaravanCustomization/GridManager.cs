@@ -9,11 +9,13 @@ public class GridManager : MonoBehaviour
     public float cellSize = 1f;
     private Vector3 gridOrigin;
 
+    public Transform buildVolume;
+
     void Start() => InitializeGrid();
 
     public void InitializeGrid()
     {
-        gridOrigin = transform.position - new Vector3(width * cellSize / 2, -cellSize / 2, length * cellSize / 2);
+        gridOrigin = buildVolume.position - new Vector3(width * cellSize / 2, -cellSize / 2, length * cellSize / 2);
     }
 
     public void InitializeGrid(Vector3 origin, float cellSize, Vector3Int gridSize)
@@ -42,6 +44,14 @@ public class GridManager : MonoBehaviour
             gridPosition.y * cellSize + cellSize / 2,
             gridPosition.z * cellSize + cellSize / 2
         );
+    }
+
+    public Vector3 GridToAdjustedWorldPosition(Vector3Int position, Vector3Int size)
+    {
+        Vector3 adjustedPosition = GridToWorldPosition(position);
+        adjustedPosition += new Vector3(size.x / 2f - 0.5f, 0, size.z / 2f - 0.5f);
+        adjustedPosition.y = (adjustedPosition.y + size.y / 2f) * cellSize - 0.5f;
+        return adjustedPosition;
     }
 
     public bool IsValidPosition(Vector3Int gridPosition)
