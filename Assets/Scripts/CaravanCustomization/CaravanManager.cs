@@ -7,31 +7,27 @@ public class CaravanManager : MonoBehaviour
     [SerializeField] private Vector3 wagonOffset; // Temporary it will be handled differently in the future
     [SerializeField] private float moveDuration = 0.5f; // Duration for the movement
 
-    private GridManager currentGridManager;  // Add GridManager reference
-    private List<Wagon> wagons = new List<Wagon>();
+    private List<ModuleManager> wagons = new List<ModuleManager>();
     private int currentWagonIndex = -1;
 
     public int CurrentWagonIndex => currentWagonIndex; // Read-only access to the current wagon index
     public int WagonCount => wagons.Count; // Read-only access to the number of wagons
-
-    public Wagon CurrentWagon { get; private set; }
-    public bool HasActiveWagon => CurrentWagon != null;
-    public GridManager GridManager => currentGridManager;  // Expose GridManager
+    public ModuleManager CurrentWagon { get; private set; }
+    public List<ModuleManager> Wagons => wagons; // Expose Wagons
 
     public void AddWagon(GameObject wagonPrefab)
     {
         Vector3 position = CalculateNextWagonPosition();
         GameObject wagonObject = Instantiate(wagonPrefab, position, Quaternion.identity);
-        Wagon newWagon = wagonObject.GetComponent<Wagon>();
+        ModuleManager newWagon = wagonObject.GetComponent<ModuleManager>();
 
         wagons.Add(newWagon);
         SetActiveWagon(wagons.Count - 1);  // Set this new wagon as active
-        UpdateWagonHighlights();
     }
 
     public void RemoveWagon()
     {
-        Wagon wagonToRemove = CurrentWagon;
+        ModuleManager wagonToRemove = CurrentWagon;
 
         wagons.Remove(wagonToRemove);
         Destroy(wagonToRemove.gameObject);
@@ -41,6 +37,43 @@ public class CaravanManager : MonoBehaviour
         FocusPreviousWagon();
 
         UpdateWagonPosition();
+    }
+    private Vector3 CalculateNextWagonPosition()
+    {
+        if (wagons.Count == 0)
+        {
+            return transform.position + wagonOffset;
+        }
+
+        ModuleManager lastWagon = wagons[wagons.Count - 1];
+        return lastWagon.transform.position + wagonOffset;
+    }
+
+    public void FocusNextWagon()
+    {
+        if (wagons.Count == 0) return;
+        CurrentWagon.DeFocusCamera();
+        SetActiveWagon((currentWagonIndex + 1) % wagons.Count);
+        CurrentWagon.FocusCamera();
+    }
+
+    public void FocusPreviousWagon()
+    {
+        if (wagons.Count == 0) return;
+        CurrentWagon.DeFocusCamera();
+        SetActiveWagon((currentWagonIndex - 1 + wagons.Count) % wagons.Count);
+        CurrentWagon.FocusCamera();
+    }
+
+    private void SetActiveWagon(int index)
+    {
+        if (index < 0 || index >= wagons.Count) return;
+
+        if(wagons.Count > 1)
+            CurrentWagon.IsActive = false;
+        currentWagonIndex = index;
+        CurrentWagon = wagons[currentWagonIndex];
+        CurrentWagon.IsActive = true;
     }
 
     private void UpdateWagonPosition()
@@ -62,7 +95,6 @@ public class CaravanManager : MonoBehaviour
         // Now move all wagons simultaneously
         StartCoroutine(MoveWagonsSmoothly(targetPositions));
     }
-
     private IEnumerator MoveWagonsSmoothly(List<Vector3> targetPositions)
     {
         float elapsedTime = 0f;
@@ -93,53 +125,6 @@ public class CaravanManager : MonoBehaviour
         {
             wagons[i].transform.position = targetPositions[i];
             wagons[i].GetComponent<GridManager>().InitializeGrid();
-        }
-    }
-
-
-    private Vector3 CalculateNextWagonPosition()
-    {
-        if (wagons.Count == 0)
-        {
-            return transform.position + wagonOffset;
-        }
-
-        Wagon lastWagon = wagons[wagons.Count - 1];
-        return lastWagon.transform.position + wagonOffset;
-    }
-
-    public void FocusNextWagon()
-    {
-        if (wagons.Count == 0) return;
-        CurrentWagon.DeFocusCamera();
-        SetActiveWagon((currentWagonIndex + 1) % wagons.Count);
-        CurrentWagon.FocusCamera();
-    }
-
-    public void FocusPreviousWagon()
-    {
-        if (wagons.Count == 0) return;
-        CurrentWagon.DeFocusCamera();
-        SetActiveWagon((currentWagonIndex - 1 + wagons.Count) % wagons.Count);
-        CurrentWagon.FocusCamera();
-    }
-
-    private void SetActiveWagon(int index)
-    {
-        if (index < 0 || index >= wagons.Count) return;
-
-        currentWagonIndex = index;
-        CurrentWagon = wagons[currentWagonIndex];
-        currentGridManager = CurrentWagon.GetComponent<GridManager>();
-        currentGridManager.InitializeGrid();
-        UpdateWagonHighlights();
-    }
-
-    private void UpdateWagonHighlights()
-    {
-        foreach (var wagon in wagons)
-        {
-            wagon.SetHighlight(wagon == CurrentWagon);
         }
     }
 }

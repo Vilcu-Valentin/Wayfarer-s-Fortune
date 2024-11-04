@@ -24,7 +24,6 @@ public class SelectedModuleUI : MonoBehaviour
 
     public void DeleteModule()
     {
-        caravanManager.CurrentWagon.RemoveStorageModule(selectedModule);
         gameObject.SetActive(false);
     }
 }

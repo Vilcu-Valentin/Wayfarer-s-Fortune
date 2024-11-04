@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10237897347521150}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.031787008, y: -0.3011022, z: 0.0100430725, w: 0.953009}
+  m_LocalRotation: {x: 0.03175756, y: 0.30388227, z: -0.010135798, w: 0.9521262}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -238,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909345083752918700}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.059250504, y: -0.30068746, z: 0.018720133, w: 0.9516964}
+  m_LocalRotation: {x: 0.0591956, y: 0.3034637, z: -0.018892968, w: 0.9508148}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 4352738097715502313}
   - component: {fileID: 5605882604627830058}
   - component: {fileID: 7617810535540894873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DriverPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8861500275892867748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MysticDriveGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 7487677754361553289}
   - component: {fileID: 2963680610352531076}
   - component: {fileID: 4331793411767090635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnginePart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -698,7 +698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4181257322697330671}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05925057, y: -0.3006875, z: 0.018720157, w: 0.9516964}
+  m_LocalRotation: {x: 0.0591956, y: 0.3034637, z: -0.018892968, w: 0.9508148}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -786,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 5509123189736508012}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.5963573, y: 2.5000002, z: -6.5477858}
+  m_LocalPosition: {x: -4.6344986, y: 2.5000002, z: -6.5208454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -811,7 +811,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 100
+  m_Priority: 50
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 313073690995586322}
   m_Follow: {fileID: 313073690995586322}
@@ -835,8 +835,8 @@ MonoBehaviour:
     BarrelClipping: 0.25
     Anamorphism: 0
   m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
+    m_BlendHint: 3
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_MinimumDistanceFromTarget: 3
+  m_MinimumDistanceFromTarget: 5.767
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 4764278509491525368}
   - component: {fileID: 495555411675659945}
   - component: {fileID: 4985405820299412645}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1056,7 +1056,7 @@ GameObject:
   - component: {fileID: 3680859841621195195}
   - component: {fileID: 5344056368268803947}
   - component: {fileID: 7604638710913052470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1318,8 +1318,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6206272180056113383}
+  - component: {fileID: 8598103094412153251}
   - component: {fileID: 1388731257337747212}
-  - component: {fileID: 7977621425149140373}
   m_Layer: 0
   m_Name: MysticDrive
   m_TagString: Untagged
@@ -1345,6 +1345,27 @@ Transform:
   - {fileID: 9204123097304218355}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8598103094412153251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205739289844682037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03e5b7c51b7ef14ba7c9208b316c5ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caravanManager: {fileID: 1388731257337747212}
+  prevWagonButton: {fileID: 0}
+  nextWagonButton: {fileID: 0}
+  addWagonButton: {fileID: 0}
+  removeWagonButton: {fileID: 0}
+  customizeButton: {fileID: 0}
+  buildMode: {fileID: 0}
+  wagonMode: {fileID: 0}
+  moduleCustomUi: {fileID: 0}
 --- !u!114 &1388731257337747212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1357,29 +1378,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c58e8992982c654f99f18d4ca17ad5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wagonPrefab: {fileID: 5489554971096685096, guid: e07308c748dd88c4999d7f798ba45420,
-    type: 3}
   wagonOffset: {x: 10, y: 0, z: 0}
   moveDuration: 0.5
---- !u!114 &7977621425149140373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9205739289844682037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d475b36b56d5a1f4d86592fad2583af5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  caravanManager: {fileID: 1388731257337747212}
-  selectedModule: {fileID: 11400000, guid: 01093809d558ee04293d2fee370d8973, type: 2}
-  positionLerpSpeed: 10
-  rotationLerpSpeed: 15
-  buildMask:
-    serializedVersion: 2
-    m_Bits: 64
-  moduleMask:
-    serializedVersion: 2
-    m_Bits: 128
