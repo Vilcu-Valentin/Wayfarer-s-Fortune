@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc209a27ac448e74a86e388cdad8b184, type: 3}
   m_Name: Vault
   m_EditorClassIdentifier: 
-  storage_name: Crate
+  id: vault
   size: {x: 3, y: 3, z: 2}
   storage_type: 0
   inventorySize: {x: 7, y: 7}

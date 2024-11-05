@@ -4,9 +4,9 @@ using UnityEngine;
 public class Wagon : MonoBehaviour
 {
     [Tooltip("This list will be used for the inventory and other calculations like weight etc.")]
-    [SerializeField] public List<StorageModule> storageModules = new List<StorageModule>();
+    public List<StorageModule> storageModules = new List<StorageModule>();
     [SerializeField] private GridManager grid;
-    // Add the storageModule we just placed to the List
+
     public void AddStorageModule(StorageModule module)
     {
         storageModules.Add(module);
@@ -32,15 +32,25 @@ public class Wagon : MonoBehaviour
     private void PlaceModule(StorageModule selectedModule)
     {
         float yRotation = selectedModule.rotation;
+
+        // Get the world position based on grid rotation and position
         Vector3 placementPosition = grid.GridToAdjustedWorldPosition(selectedModule.currentPosition, selectedModule.Size);
-        // Instantiate the module and set its properties
+
+        // Combine grid rotation with the module's intended rotation
+        Quaternion gridRotation = grid.gridRotation;
+        Quaternion moduleRotation = Quaternion.Euler(0, yRotation, 0);
+
+        // Instantiate the module with combined rotation
         GameObject placedModule = Instantiate(
             selectedModule.moduleData.graphics,
             placementPosition,
-            Quaternion.Euler(0, yRotation, 0),
+            gridRotation * moduleRotation, // Apply grid rotation as base, then module's relative rotation
             transform
         );
+
+        // Additional settings
         selectedModule.objectRef = placedModule;
         placedModule.layer = 7;
     }
+
 }

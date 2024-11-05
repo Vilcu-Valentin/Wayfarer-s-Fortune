@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc209a27ac448e74a86e388cdad8b184, type: 3}
   m_Name: Long Crate
   m_EditorClassIdentifier: 
-  storage_name: Crate
+  id: long_crate
   size: {x: 4, y: 1, z: 1}
   storage_type: 0
   inventorySize: {x: 10, y: 2}

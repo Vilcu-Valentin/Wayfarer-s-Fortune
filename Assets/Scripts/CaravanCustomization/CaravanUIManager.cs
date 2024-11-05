@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CaravanUIManager : MonoBehaviour
 {
-    [SerializeField] private CaravanManager caravanManager;
+    [SerializeField] private Upgrade_CaravanManager caravanManager;
 
     [Header("Wagon navigation and management")]
     [SerializeField] private GameObject prevWagonButton;
