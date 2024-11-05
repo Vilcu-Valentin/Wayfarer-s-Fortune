@@ -68,7 +68,7 @@ public class TrailerController : MonoBehaviour
         // Cast ray to simulate suspension
         Ray tireRay = new Ray(tireTransform.position, -tireTransform.up);
         RaycastHit hit;
-        bool rayDidHit = Physics.SphereCast(tireRay, 0.15f, out hit, suspensionRestDist * 1.5f);
+        bool rayDidHit = Physics.SphereCast(tireRay, 0.1f, out hit, suspensionRestDist * 1.5f);
 
         if (!rayDidHit) return;
 
@@ -150,15 +150,15 @@ public class TrailerController : MonoBehaviour
     private void UpdateWheelVisuals()
     {
         // Calculate rotation based on signed vehicle speed (forward/backward)
-        float wheelRadius = 0.75f; // Assuming wheel radius of 0.75m
+        float wheelRadius = 1f; // Assuming wheel radius of 0.75m
         float carSpeed = -Vector3.Dot(trailerRigidbody.velocity, transform.forward); // Signed speed (forward/backward)
         float rpm = (carSpeed / (2f * Mathf.PI * wheelRadius)) * 60f; // Convert speed to RPM
         float rotationAngle = Time.deltaTime * rpm * 360f / 60f;
 
         // Rotate each wheel mesh (assuming they are child objects of the wheel transforms)
-        if (frontLeftWheel.childCount > 0) frontLeftWheel.GetChild(0).Rotate(0, rotationAngle, 0);
-        if (frontRightWheel.childCount > 0) frontRightWheel.GetChild(0).Rotate(0, rotationAngle, 0);
-        if (rearLeftWheel.childCount > 0) rearLeftWheel.GetChild(0).Rotate(0, rotationAngle, 0);
-        if (rearRightWheel.childCount > 0) rearRightWheel.GetChild(0).Rotate(0, rotationAngle, 0);
+        if (frontLeftWheel.childCount > 0) frontLeftWheel.GetChild(0).Rotate(0, 0, rotationAngle);
+        if (frontRightWheel.childCount > 0) frontRightWheel.GetChild(0).Rotate(0, 0, rotationAngle);
+        if (rearLeftWheel.childCount > 0) rearLeftWheel.GetChild(0).Rotate(0, 0, rotationAngle);
+        if (rearRightWheel.childCount > 0) rearRightWheel.GetChild(0).Rotate(0, 0, rotationAngle);
     }
 }

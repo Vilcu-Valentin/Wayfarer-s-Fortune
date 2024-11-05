@@ -6,5 +6,4 @@ using System;
 public class CaravanSaveData
 {
     public List<WagonSaveData> wagons = new List<WagonSaveData>();
-    public int activeWagonIndex;
 }

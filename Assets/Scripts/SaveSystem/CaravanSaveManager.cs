@@ -13,6 +13,8 @@ public class WagonPrefabEntry
 
 public class CaravanSaveManager : MonoBehaviour
 {
+    [SerializeField] private bool loadOnStart = false;
+
     [SerializeField] private CaravanManager caravanManager;
     [SerializeField] private StorageModuleDatabase storageModuleDatabase;
     [SerializeField] private string saveFileName = "caravan_save.json";
@@ -27,14 +29,17 @@ public class CaravanSaveManager : MonoBehaviour
         wagonPrefabMap = wagonPrefabEntries.ToDictionary(entry => entry.key, entry => entry.prefab);
     }
 
+    private void Start()
+    {
+        if(loadOnStart)
+            LoadCaravan();
+    }
+
     public void SaveCaravan()
     {
         try
         {
-            CaravanSaveData saveData = new CaravanSaveData
-            {
-                activeWagonIndex = caravanManager.CurrentWagonIndex
-            };
+            CaravanSaveData saveData = new CaravanSaveData();
 
             // Get data from each wagon
             for (int i = 0; i < caravanManager.WagonCount; i++)
@@ -99,12 +104,6 @@ public class CaravanSaveManager : MonoBehaviour
 
                 // Add wagon with its modules
                 caravanManager.AddWagon(wagonPrefab, storageModules);
-            }
-
-            // Restore active wagon
-            if (saveData.activeWagonIndex >= 0 && saveData.activeWagonIndex < caravanManager.WagonCount)
-            {
-                caravanManager.SetActiveWagon(saveData.activeWagonIndex);
             }
 
             Debug.Log("Caravan loaded successfully.");

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10237897347521150}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03175756, y: 0.30388227, z: -0.010135798, w: 0.9521262}
+  m_LocalRotation: {x: 0.031757545, y: 0.30388227, z: -0.010135794, w: 0.9521262}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -238,7 +238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909345083752918700}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0591956, y: 0.3034637, z: -0.018892968, w: 0.9508148}
+  m_LocalRotation: {x: 0.05919558, y: 0.3034637, z: -0.018892964, w: 0.9508148}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -698,7 +698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4181257322697330671}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0591956, y: 0.3034637, z: -0.018892968, w: 0.9508148}
+  m_LocalRotation: {x: 0.05919558, y: 0.3034637, z: -0.018892964, w: 0.9508148}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -786,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 5509123189736508012}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6344986, y: 2.5000002, z: -6.5208454}
+  m_LocalPosition: {x: -4.6344986, y: 2.5, z: -6.5208454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -965,7 +965,7 @@ Transform:
   m_GameObject: {fileID: 6103316058141282372}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0.99, y: -0.65, z: 3}
+  m_LocalPosition: {x: 0.99, y: -0.42999995, z: 3}
   m_LocalScale: {x: 3, y: 0.3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1072,7 +1072,7 @@ Transform:
   m_GameObject: {fileID: 6276224110379868231}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0.99, y: -0.65, z: -3}
+  m_LocalPosition: {x: 0.99, y: -0.43, z: -3}
   m_LocalScale: {x: 3, y: 0.3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1319,7 +1319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6206272180056113383}
   - component: {fileID: 8598103094412153251}
-  - component: {fileID: 1388731257337747212}
+  - component: {fileID: 149390507045694577}
   m_Layer: 0
   m_Name: MysticDrive
   m_TagString: Untagged
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03e5b7c51b7ef14ba7c9208b316c5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  caravanManager: {fileID: 1388731257337747212}
+  caravanManager: {fileID: 149390507045694577}
   prevWagonButton: {fileID: 0}
   nextWagonButton: {fileID: 0}
   addWagonButton: {fileID: 0}
@@ -1366,7 +1366,7 @@ MonoBehaviour:
   buildMode: {fileID: 0}
   wagonMode: {fileID: 0}
   moduleCustomUi: {fileID: 0}
---- !u!114 &1388731257337747212
+--- !u!114 &149390507045694577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9205739289844682037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c58e8992982c654f99f18d4ca17ad5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6897dbc7c0a754c45a138953087f94c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wagonOffset: {x: 10, y: 0, z: 0}

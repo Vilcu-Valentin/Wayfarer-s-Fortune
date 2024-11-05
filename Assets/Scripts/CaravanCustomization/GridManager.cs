@@ -11,11 +11,19 @@ public class GridManager : MonoBehaviour
 
     public Transform buildVolume;
 
+    [HideInInspector] public Quaternion gridRotation;
+    private Matrix4x4 rotationMatrix;
+
     void Awake() => InitializeGrid();
 
     public void InitializeGrid()
     {
-        gridOrigin = buildVolume.position - new Vector3(width * cellSize / 2, -cellSize / 2, length * cellSize / 2);
+        // Use transform's global rotation directly
+        gridRotation = transform.rotation * buildVolume.transform.rotation;
+        rotationMatrix = Matrix4x4.Rotate(gridRotation);
+
+        // Adjust grid origin based on global rotation and center point
+        gridOrigin = buildVolume.position - rotationMatrix.MultiplyVector(new Vector3(width * cellSize / 2, -cellSize / 2, length * cellSize / 2));
     }
 
     public void InitializeGrid(Vector3 origin, float cellSize, Vector3Int gridSize)
@@ -24,12 +32,19 @@ public class GridManager : MonoBehaviour
         width = gridSize.x;
         length = gridSize.z;
         height = gridSize.y;
-        gridOrigin = origin - new Vector3(width * cellSize / 2, -cellSize / 2, length * cellSize / 2);
+
+        // Use transform's global rotation directly
+        gridRotation = transform.rotation * buildVolume.transform.rotation;
+        rotationMatrix = Matrix4x4.Rotate(gridRotation);
+
+        gridOrigin = origin - rotationMatrix.MultiplyVector(new Vector3(width * cellSize / 2, -cellSize / 2, length * cellSize / 2));
     }
 
     public Vector3Int WorldToGridPosition(Vector3 worldPosition)
     {
-        Vector3 localPosition = worldPosition - gridOrigin;
+        // Convert world to grid position using inverse of the global rotation
+        Vector3 localPosition = Quaternion.Inverse(gridRotation) * (worldPosition - gridOrigin);
+
         return new Vector3Int(
             Mathf.FloorToInt(localPosition.x / cellSize),
             Mathf.FloorToInt(localPosition.y / cellSize),
@@ -39,18 +54,20 @@ public class GridManager : MonoBehaviour
 
     public Vector3 GridToWorldPosition(Vector3Int gridPosition)
     {
-        return gridOrigin + new Vector3(
+        Vector3 localPosition = new Vector3(
             gridPosition.x * cellSize + cellSize / 2,
             gridPosition.y * cellSize + cellSize / 2,
             gridPosition.z * cellSize + cellSize / 2
         );
+
+        // Apply global rotation to calculate world position
+        return gridOrigin + rotationMatrix.MultiplyPoint3x4(localPosition);
     }
 
     public Vector3 GridToAdjustedWorldPosition(Vector3Int position, Vector3Int size)
     {
         Vector3 adjustedPosition = GridToWorldPosition(position);
-        adjustedPosition += new Vector3(size.x / 2f - 0.5f, 0, size.z / 2f - 0.5f);
-        adjustedPosition.y = (adjustedPosition.y + size.y / 2f) * cellSize - 0.5f;
+        adjustedPosition += rotationMatrix.MultiplyVector(new Vector3(size.x / 2f - 0.5f, size.y / 2f - 0.5f, size.z / 2f - 0.5f)) * cellSize;
         return adjustedPosition;
     }
 
