@@ -19,15 +19,14 @@ public class TrailerController : MonoBehaviour
 
     private Rigidbody trailerRigidbody;
     private List<Vector3> suspensionForces = new List<Vector3>();
-    private List<Vector3> steeringForces = new List<Vector3>();
+    private List<Vector3> slipForces = new List<Vector3>();
     private List<Vector3> rollingResistanceForces = new List<Vector3>();
 
     private void Start()
     {
         trailerRigidbody = GetComponent<Rigidbody>();
 
-        // Set the center of mass lower for stability
-        trailerRigidbody.centerOfMass = new Vector3(0, -0.5f, 0);
+        trailerRigidbody.centerOfMass = new Vector3(0, 3f, 0);
 
         // Default grip curve if not set
         if (tireGripCurve == null || tireGripCurve.length == 0)
@@ -50,7 +49,7 @@ public class TrailerController : MonoBehaviour
     {
         // Clear previous frame's forces
         suspensionForces.Clear();
-        steeringForces.Clear();
+        slipForces.Clear();
         rollingResistanceForces.Clear();
 
         // Apply forces to each wheel
@@ -77,9 +76,6 @@ public class TrailerController : MonoBehaviour
 
         // Apply slip force for realistic trailer dynamics
         ApplySlipForce(tireTransform);
-
-        // Apply rolling resistance to simulate friction
-        ApplyRollingResistance(tireTransform);
     }
 
     private void ApplySuspensionForce(Transform tireTransform, RaycastHit tireRay)
@@ -97,26 +93,20 @@ public class TrailerController : MonoBehaviour
 
     private void ApplySlipForce(Transform tireTransform)
     {
-        Vector3 steeringDir = tireTransform.right;
+        Vector3 slipDir = tireTransform.right;
         Vector3 tireWorldVel = trailerRigidbody.GetPointVelocity(tireTransform.position);
 
-        float steeringVel = Vector3.Dot(steeringDir, tireWorldVel);
-        float gripFactor = tireGripCurve.Evaluate(Mathf.Abs(steeringVel));
-        float desiredVelChange = -steeringVel * gripFactor;
+        float slipVel = Vector3.Dot(slipDir, tireWorldVel);
+        float gripFactor = tireGripCurve.Evaluate(Mathf.Abs(slipVel));
+
+        // Adjust the slip force calculation to be more stable at higher speeds
+        float velocityMagnitude = trailerRigidbody.velocity.magnitude;
+        float clampedGripFactor = Mathf.Clamp(velocityMagnitude / 50f, 0.5f, 1f);
+        float desiredVelChange = -slipVel * gripFactor * clampedGripFactor;
         float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
 
-        trailerRigidbody.AddForceAtPosition(steeringDir * tireMass * desiredAccel, tireTransform.position);
-        steeringForces.Add(steeringDir * tireMass * desiredAccel);
-    }
-
-    private void ApplyRollingResistance(Transform tireTransform)
-    {
-        Vector3 resistanceDir = -trailerRigidbody.GetPointVelocity(tireTransform.position).normalized;
-        float resistanceCoefficient = 0.1f; // Fine-tune this for desired rolling resistance
-        float resistanceForce = resistanceCoefficient * trailerRigidbody.mass;
-
-        trailerRigidbody.AddForceAtPosition(resistanceDir * resistanceForce, tireTransform.position);
-        rollingResistanceForces.Add(resistanceDir * resistanceForce);
+        trailerRigidbody.AddForceAtPosition(slipDir * tireMass * desiredAccel, tireTransform.position);
+        slipForces.Add(slipDir * tireMass * desiredAccel);
     }
 
     private void VisualizeForcesOnTrailer()
@@ -130,35 +120,51 @@ public class TrailerController : MonoBehaviour
             Debug.DrawLine(rearRightWheel.position, rearRightWheel.position + force * 0.1f, Color.green);
         }
 
-        // Slip/steering forces
-        foreach (var force in steeringForces)
+        // Slip/slip forces
+        foreach (var force in slipForces)
         {
-            Debug.DrawLine(frontLeftWheel.position, frontLeftWheel.position + force * 0.1f, Color.blue);
-            Debug.DrawLine(frontRightWheel.position, frontRightWheel.position + force * 0.1f, Color.blue);
-            Debug.DrawLine(rearLeftWheel.position, rearLeftWheel.position + force * 0.1f, Color.blue);
-            Debug.DrawLine(rearRightWheel.position, rearRightWheel.position + force * 0.1f, Color.blue);
+            Debug.DrawLine(frontLeftWheel.position, frontLeftWheel.position + force * 0.1f, Color.red);
+            Debug.DrawLine(frontRightWheel.position, frontRightWheel.position + force * 0.1f, Color.red);
+            Debug.DrawLine(rearLeftWheel.position, rearLeftWheel.position + force * 0.1f, Color.red);
+            Debug.DrawLine(rearRightWheel.position, rearRightWheel.position + force * 0.1f, Color.red);
         }
 
         // Rolling resistance
         foreach (var force in rollingResistanceForces)
         {
-            Debug.DrawLine(rearLeftWheel.position, rearLeftWheel.position + force * 0.1f, Color.red);
-            Debug.DrawLine(rearRightWheel.position, rearRightWheel.position + force * 0.1f, Color.red);
+            Debug.DrawLine(rearLeftWheel.position, rearLeftWheel.position + force * 0.1f, Color.blue);
+            Debug.DrawLine(rearRightWheel.position, rearRightWheel.position + force * 0.1f, Color.blue);
         }
     }
 
     private void UpdateWheelVisuals()
     {
-        // Calculate rotation based on signed vehicle speed (forward/backward)
-        float wheelRadius = 1f; // Assuming wheel radius of 0.75m
-        float carSpeed = -Vector3.Dot(trailerRigidbody.velocity, transform.forward); // Signed speed (forward/backward)
-        float rpm = (carSpeed / (2f * Mathf.PI * wheelRadius)) * 60f; // Convert speed to RPM
+        float wheelRadius = 1f;
+
+        // Calculate rotation angle based on the actual forward speed at each wheel
+        RotateWheel(frontLeftWheel, wheelRadius);
+        RotateWheel(frontRightWheel, wheelRadius);
+        RotateWheel(rearLeftWheel, wheelRadius);
+        RotateWheel(rearRightWheel, wheelRadius);
+    }
+
+    private void RotateWheel(Transform wheel, float radius)
+    {
+        // Calculate the forward speed at the wheel position
+        Vector3 wheelVelocity = trailerRigidbody.GetPointVelocity(wheel.position);
+        float forwardSpeed = Vector3.Dot(wheelVelocity, wheel.forward); // Project velocity onto the wheel's forward direction
+
+        // Convert forward speed to RPM (revolutions per minute)
+        float rpm = -(forwardSpeed / (2f * Mathf.PI * radius)) * 60f;
+
+        // Calculate rotation angle based on RPM
         float rotationAngle = Time.deltaTime * rpm * 360f / 60f;
 
-        // Rotate each wheel mesh (assuming they are child objects of the wheel transforms)
-        if (frontLeftWheel.childCount > 0) frontLeftWheel.GetChild(0).Rotate(0, 0, rotationAngle);
-        if (frontRightWheel.childCount > 0) frontRightWheel.GetChild(0).Rotate(0, 0, rotationAngle);
-        if (rearLeftWheel.childCount > 0) rearLeftWheel.GetChild(0).Rotate(0, 0, rotationAngle);
-        if (rearRightWheel.childCount > 0) rearRightWheel.GetChild(0).Rotate(0, 0, rotationAngle);
+        // Rotate the wheel mesh (assuming it’s a child object of the wheel transform)
+        if (wheel.childCount > 0)
+        {
+            Transform wheelMesh = wheel.GetChild(0);
+            wheelMesh.Rotate(0, 0, rotationAngle);
+        }
     }
 }
