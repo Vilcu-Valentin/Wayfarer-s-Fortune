@@ -17,8 +17,9 @@ public class CaravanUIManager : MonoBehaviour
     [SerializeField] private GameObject buildMode;
     [SerializeField] private GameObject wagonMode;
 
-    [Header("Storage Module Custom UI")]
+    [Header("Storage Module UI")]
     [SerializeField] private GameObject moduleCustomUi;
+
 
     private void Update()
     {

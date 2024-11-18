@@ -6,9 +6,8 @@ using UnityEngine;
 public class Upgrade_CaravanManager : CaravanManager
 {
     [SerializeField] private float moveDuration = 0.5f; // Duration for the movement
-
-    private int currentWagonIndex = -1;
-    public int CurrentWagonIndex => currentWagonIndex; // Read-only access to the current wagon index
+   
+    public int CurrentWagonIndex { get; private set; }
     public Wagon CurrentWagon { get; private set; }
 
     public void AddWagon(GameObject wagonPrefab)
@@ -63,9 +62,10 @@ public class Upgrade_CaravanManager : CaravanManager
             Destroy(wagon.gameObject);
         }
         Wagons.Clear();
-        currentWagonIndex = -1;
+        CurrentWagonIndex = -1;
         CurrentWagon = null;
     }
+
     public void RemoveWagon()
     {
         Wagon wagonToRemove = CurrentWagon;
@@ -73,7 +73,7 @@ public class Upgrade_CaravanManager : CaravanManager
         Wagons.Remove(wagonToRemove);
         Destroy(wagonToRemove.gameObject);
 
-        if (currentWagonIndex == 0)
+        if (CurrentWagonIndex == 0)
             FocusNextWagon();
         FocusPreviousWagon();
 
@@ -94,14 +94,13 @@ public class Upgrade_CaravanManager : CaravanManager
     public void FocusNextWagon()
     {
         if (Wagons.Count == 0) return;
-        SetActiveWagon((currentWagonIndex + 1) % Wagons.Count);
-
+        SetActiveWagon((CurrentWagonIndex + 1) % Wagons.Count);
     }
 
     public void FocusPreviousWagon()
     {
         if (Wagons.Count == 0) return;
-        SetActiveWagon((currentWagonIndex - 1 + Wagons.Count) % Wagons.Count);
+        SetActiveWagon((CurrentWagonIndex - 1 + Wagons.Count) % Wagons.Count);
     }
 
     public void StartCurrentWagonModule(StorageModuleData module)
@@ -120,8 +119,8 @@ public class Upgrade_CaravanManager : CaravanManager
             CurrentWagon.GetComponent<ModuleManager>().DeFocusCamera();
         }
 
-        currentWagonIndex = index;
-        CurrentWagon = Wagons[currentWagonIndex];
+        CurrentWagonIndex = index;
+        CurrentWagon = Wagons[CurrentWagonIndex];
         CurrentWagon.GetComponent<ModuleManager>().FocusCamera();
     }
 
