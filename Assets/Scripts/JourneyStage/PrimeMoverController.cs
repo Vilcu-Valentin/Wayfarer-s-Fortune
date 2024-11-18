@@ -15,10 +15,9 @@ public class Wheel
 [RequireComponent(typeof(Rigidbody))]
 public class PrimeMoverController : MonoBehaviour
 {
-    [Header("Engine Properties")]
+    [Header("DriveTrain Properties")]
     [SerializeField] private float carTopSpeed = 30f;
-    [SerializeField] private AnimationCurve torqueCurve;
-    [SerializeField] private float powerMultiplier;
+    [SerializeField] private EngineData engine;
     [SerializeField] private float maxSteerAngle = 30f;
     [SerializeField] private float maxBrakeForce = 3000f;
 
@@ -47,9 +46,9 @@ public class PrimeMoverController : MonoBehaviour
         carRigidbody.centerOfMass = new Vector3(0, 2f, 0);
 
         // Ensure we have a power curve if none is set
-        if (torqueCurve == null || torqueCurve.length == 0)
+        if (engine.torqueCurve == null || engine.torqueCurve.length == 0)
         {
-            torqueCurve = new AnimationCurve(
+            engine.torqueCurve = new AnimationCurve(
                 new Keyframe(0, 3000),
                 new Keyframe(0.5f, 2000),
                 new Keyframe(1, 1000)
@@ -82,7 +81,7 @@ public class PrimeMoverController : MonoBehaviour
     private void FixedUpdate()
     {
         // Apply forces to each wheel
-        foreach(var wheel in wheels)
+        foreach (var wheel in wheels)
         {
             ApplyWheelForces(wheel);
         }
@@ -151,7 +150,7 @@ public class PrimeMoverController : MonoBehaviour
         {
             float carSpeed = Vector3.Dot(transform.forward, carRigidbody.velocity);
             float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(carSpeed) / carTopSpeed);
-            float availableTorque = torqueCurve.Evaluate(normalizedSpeed) * powerMultiplier * accelInput;
+            float availableTorque = engine.torqueCurve.Evaluate(normalizedSpeed) * engine.power * accelInput;
 
             carRigidbody.AddForceAtPosition(accelDir * availableTorque, wheel.wheelTransform.position);
         }
@@ -165,9 +164,9 @@ public class PrimeMoverController : MonoBehaviour
     }
 
     private void UpdateWheelVisuals()
-    { 
+    {
         // Calculate rotation angle based on the actual forward speed at each wheel
-        foreach(var wheel in wheels)
+        foreach (var wheel in wheels)
         {
             RotateWheel(wheel.wheelTransform, wheelRadius);
         }
@@ -189,7 +188,7 @@ public class PrimeMoverController : MonoBehaviour
         if (wheel.childCount > 0)
         {
             Transform wheelMesh = wheel.GetChild(0);
-            wheelMesh.Rotate(0, rotationAngle, 0);
+            wheelMesh.Rotate(0, 0, -rotationAngle);
         }
     }
 }

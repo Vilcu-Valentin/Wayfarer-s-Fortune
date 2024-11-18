@@ -14,7 +14,7 @@ public class Upgrade_CaravanManager : CaravanManager
 
     public void AddWagon(GameObject wagonPrefab)
     {
-        Vector3 position = CalculateNextWagonPosition();
+        Vector3 position = CalculateNextWagonPosition(wagonPrefab.GetComponent<Wagon>().offset);
         GameObject wagonObject = Instantiate(wagonPrefab, position, Quaternion.identity);
         Wagon newWagon = wagonObject.GetComponent<Wagon>();
 
@@ -27,7 +27,7 @@ public class Upgrade_CaravanManager : CaravanManager
         {
             if (wagonPrefab == null) return false;
 
-            Vector3 position = CalculateNextWagonPosition();
+            Vector3 position = CalculateNextWagonPosition(wagonPrefab.GetComponent<Wagon>().offset);
             GameObject wagonObject = Instantiate(wagonPrefab, position, Quaternion.identity);
             Wagon newWagon = wagonObject.GetComponent<Wagon>();
 
@@ -70,6 +70,7 @@ public class Upgrade_CaravanManager : CaravanManager
     public void RemoveWagon()
     {
         Wagon wagonToRemove = CurrentWagon;
+        Vector3 offset = wagonToRemove.offset;
 
         Wagons.Remove(wagonToRemove);
         Destroy(wagonToRemove.gameObject);
@@ -78,10 +79,10 @@ public class Upgrade_CaravanManager : CaravanManager
             FocusNextWagon();
         FocusPreviousWagon();
 
-        UpdateWagonPosition();
+        UpdateWagonPosition(offset);
     }
 
-    private Vector3 CalculateNextWagonPosition()
+    private Vector3 CalculateNextWagonPosition(Vector3 wagonOffset)
     {
         if (Wagons.Count == 0)
         {
@@ -127,7 +128,7 @@ public class Upgrade_CaravanManager : CaravanManager
         CurrentWagon.GetComponent<ModuleManager>().FocusCamera();
     }
 
-    private void UpdateWagonPosition()
+    private void UpdateWagonPosition(Vector3 wagonOffset)
     {
         // Collect all the target positions for each wagon first
         List<Vector3> targetPositions = new List<Vector3>();

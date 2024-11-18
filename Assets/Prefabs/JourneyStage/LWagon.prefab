@@ -394,13 +394,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4806939095012417999}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.356, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 113437390883698830}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4857815095210297910
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,10 +570,10 @@ ConfigurableJoint:
   m_GameObject: {fileID: 6494957939802321557}
   m_ConnectedBody: {fileID: 0}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.35, z: 4.5}
+  m_Anchor: {x: 0, y: 0.35, z: 7}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 0
-  m_ConnectedAnchor: {x: 0, y: 0, z: -6}
+  m_ConnectedAnchor: {x: 0, y: 0, z: -4}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -583,8 +583,8 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 2
   m_LinearLimitSpring:
-    spring: 200
-    damper: 200
+    spring: 0
+    damper: 0
   m_LinearLimit:
     limit: 0.05
     bounciness: 0
@@ -677,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storageModules: []
   grid: {fileID: -6217368878346658034}
+  offset: {x: 0, y: 0, z: -10}
 --- !u!114 &-6217368878346658034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,8 +690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf6ff9f69e267245986f1a028bf3308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 8
-  length: 5
+  width: 5
+  length: 8
   height: 4
   cellSize: 1
   buildVolume: {fileID: 4377405670548882032}
