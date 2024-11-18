@@ -55,11 +55,15 @@ public class CaravanUIManager : MonoBehaviour
     {
         buildMode.SetActive(false);
         wagonMode.SetActive(true);
+
+        caravanManager.ToggleWagonBuildMode(false);
     }
 
     public void EnterBuildMode()
     {
         buildMode.SetActive(true);
         wagonMode.SetActive(false);
+
+        caravanManager.ToggleWagonBuildMode(true);
     }
 }

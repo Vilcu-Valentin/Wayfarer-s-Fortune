@@ -531,7 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storageModules: []
   grid: {fileID: 4325034767349342453}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 0, z: -11}
 --- !u!114 &4325034767349342453
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -32,8 +32,6 @@ public class ModuleManager : MonoBehaviour
     {
         if(!IsActive) return;
 
-        if (!selectedModule) return;
-
         if(Input.GetMouseButtonDown(1))
             previewValidator.ClearPreview();
 
@@ -57,6 +55,7 @@ public class ModuleManager : MonoBehaviour
         }
     }
 
+    // This is currently removing the module instead of just selecting it
     public void SelectModule()
     {
         Vector3Int? gridCell = GetModulePositionFromMouseRay();

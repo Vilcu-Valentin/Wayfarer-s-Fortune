@@ -12,10 +12,8 @@ public class TrailerController : MonoBehaviour
     [SerializeField] private float tireMass = 20f;
 
     [Header("Wheel Transforms")]
-    [SerializeField] private Transform frontLeftWheel;
-    [SerializeField] private Transform frontRightWheel;
-    [SerializeField] private Transform rearLeftWheel;
-    [SerializeField] private Transform rearRightWheel;
+    [SerializeField] private float wheelRadius = 1f;
+    [SerializeField] private List<Wheel> wheels;
 
     private Rigidbody trailerRigidbody;
     private List<Vector3> suspensionForces = new List<Vector3>();
@@ -53,48 +51,45 @@ public class TrailerController : MonoBehaviour
         rollingResistanceForces.Clear();
 
         // Apply forces to each wheel
-        ApplyWheelForces(frontLeftWheel);
-        ApplyWheelForces(frontRightWheel);
-        ApplyWheelForces(rearLeftWheel);
-        ApplyWheelForces(rearRightWheel);
-
-        // Visualize forces if needed
-        VisualizeForcesOnTrailer();
+        foreach (var wheel in wheels)
+        {
+            ApplyWheelForces(wheel);
+        }
     }
 
-    private void ApplyWheelForces(Transform tireTransform)
+    private void ApplyWheelForces(Wheel wheel)
     {
         // Cast ray to simulate suspension
-        Ray tireRay = new Ray(tireTransform.position, -tireTransform.up);
+        Ray tireRay = new Ray(wheel.wheelTransform.position, -wheel.wheelTransform.up);
         RaycastHit hit;
         bool rayDidHit = Physics.SphereCast(tireRay, 0.1f, out hit, suspensionRestDist * 1.5f);
 
         if (!rayDidHit) return;
 
         // Apply suspension force
-        ApplySuspensionForce(tireTransform, hit);
+        ApplySuspensionForce(wheel, hit);
 
         // Apply slip force for realistic trailer dynamics
-        ApplySlipForce(tireTransform);
+        ApplySlipForce(wheel);
     }
 
-    private void ApplySuspensionForce(Transform tireTransform, RaycastHit tireRay)
+    private void ApplySuspensionForce(Wheel wheel, RaycastHit tireRay)
     {
-        Vector3 springDir = tireTransform.up;
-        Vector3 tireWorldVel = trailerRigidbody.GetPointVelocity(tireTransform.position);
+        Vector3 springDir = wheel.wheelTransform.up;
+        Vector3 tireWorldVel = trailerRigidbody.GetPointVelocity(wheel.wheelTransform.position);
 
         float offset = suspensionRestDist - tireRay.distance;
         float vel = Vector3.Dot(springDir, tireWorldVel);
         float force = (offset * springStrength) - (vel * springDamper);
 
-        trailerRigidbody.AddForceAtPosition(springDir * force, tireTransform.position);
+        trailerRigidbody.AddForceAtPosition(springDir * force, wheel.wheelTransform.position);
         suspensionForces.Add(springDir * force);
     }
 
-    private void ApplySlipForce(Transform tireTransform)
+    private void ApplySlipForce(Wheel wheel)
     {
-        Vector3 slipDir = tireTransform.right;
-        Vector3 tireWorldVel = trailerRigidbody.GetPointVelocity(tireTransform.position);
+        Vector3 slipDir = wheel.wheelTransform.right;
+        Vector3 tireWorldVel = trailerRigidbody.GetPointVelocity(wheel.wheelTransform.position);
 
         float slipVel = Vector3.Dot(slipDir, tireWorldVel);
         float gripFactor = tireGripCurve.Evaluate(Mathf.Abs(slipVel));
@@ -105,47 +100,19 @@ public class TrailerController : MonoBehaviour
         float desiredVelChange = -slipVel * gripFactor * clampedGripFactor;
         float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
 
-        trailerRigidbody.AddForceAtPosition(slipDir * tireMass * desiredAccel, tireTransform.position);
+        trailerRigidbody.AddForceAtPosition(slipDir * tireMass * desiredAccel, wheel.wheelTransform.position);
         slipForces.Add(slipDir * tireMass * desiredAccel);
     }
 
-    private void VisualizeForcesOnTrailer()
-    {
-        // Suspension forces
-        foreach (var force in suspensionForces)
-        {
-            Debug.DrawLine(frontLeftWheel.position, frontLeftWheel.position + force * 0.1f, Color.green);
-            Debug.DrawLine(frontRightWheel.position, frontRightWheel.position + force * 0.1f, Color.green);
-            Debug.DrawLine(rearLeftWheel.position, rearLeftWheel.position + force * 0.1f, Color.green);
-            Debug.DrawLine(rearRightWheel.position, rearRightWheel.position + force * 0.1f, Color.green);
-        }
 
-        // Slip/slip forces
-        foreach (var force in slipForces)
-        {
-            Debug.DrawLine(frontLeftWheel.position, frontLeftWheel.position + force * 0.1f, Color.red);
-            Debug.DrawLine(frontRightWheel.position, frontRightWheel.position + force * 0.1f, Color.red);
-            Debug.DrawLine(rearLeftWheel.position, rearLeftWheel.position + force * 0.1f, Color.red);
-            Debug.DrawLine(rearRightWheel.position, rearRightWheel.position + force * 0.1f, Color.red);
-        }
-
-        // Rolling resistance
-        foreach (var force in rollingResistanceForces)
-        {
-            Debug.DrawLine(rearLeftWheel.position, rearLeftWheel.position + force * 0.1f, Color.blue);
-            Debug.DrawLine(rearRightWheel.position, rearRightWheel.position + force * 0.1f, Color.blue);
-        }
-    }
 
     private void UpdateWheelVisuals()
     {
-        float wheelRadius = 1f;
-
         // Calculate rotation angle based on the actual forward speed at each wheel
-        RotateWheel(frontLeftWheel, wheelRadius);
-        RotateWheel(frontRightWheel, wheelRadius);
-        RotateWheel(rearLeftWheel, wheelRadius);
-        RotateWheel(rearRightWheel, wheelRadius);
+        foreach (var wheel in wheels)
+        {
+            RotateWheel(wheel.wheelTransform, wheelRadius);
+        }
     }
 
     private void RotateWheel(Transform wheel, float radius)

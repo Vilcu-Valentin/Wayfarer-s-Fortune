@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Upgrade_CaravanManager : CaravanManager
 {
-    [SerializeField] private Vector3 wagonOffset; // Temporary it will be handled differently in the future
     [SerializeField] private float moveDuration = 0.5f; // Duration for the movement
 
     private int currentWagonIndex = -1;
@@ -70,7 +69,6 @@ public class Upgrade_CaravanManager : CaravanManager
     public void RemoveWagon()
     {
         Wagon wagonToRemove = CurrentWagon;
-        Vector3 offset = wagonToRemove.offset;
 
         Wagons.Remove(wagonToRemove);
         Destroy(wagonToRemove.gameObject);
@@ -79,7 +77,7 @@ public class Upgrade_CaravanManager : CaravanManager
             FocusNextWagon();
         FocusPreviousWagon();
 
-        UpdateWagonPosition(offset);
+        UpdateWagonPosition();
     }
 
     private Vector3 CalculateNextWagonPosition(Vector3 wagonOffset)
@@ -124,11 +122,15 @@ public class Upgrade_CaravanManager : CaravanManager
 
         currentWagonIndex = index;
         CurrentWagon = Wagons[currentWagonIndex];
-        CurrentWagon.GetComponent<ModuleManager>().IsActive = true;
         CurrentWagon.GetComponent<ModuleManager>().FocusCamera();
     }
 
-    private void UpdateWagonPosition(Vector3 wagonOffset)
+    public void ToggleWagonBuildMode(bool mode)
+    {
+        CurrentWagon.GetComponent<ModuleManager>().IsActive = mode;
+    }
+
+    private void UpdateWagonPosition()
     {
         // Collect all the target positions for each wagon first
         List<Vector3> targetPositions = new List<Vector3>();
@@ -137,9 +139,9 @@ public class Upgrade_CaravanManager : CaravanManager
         {
             Vector3 targetPosition;
             if (i == 0)
-                targetPosition = transform.position + wagonOffset;
+                targetPosition = transform.position + Wagons[i].offset;
             else
-                targetPosition = targetPositions[i - 1] + wagonOffset;
+                targetPosition = targetPositions[i - 1] + Wagons[i].offset;
 
             targetPositions.Add(targetPosition);
         }
