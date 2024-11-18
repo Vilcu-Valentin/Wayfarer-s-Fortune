@@ -480,10 +480,10 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6494957939802321557}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.3
+  m_Mass: 10
+  m_Drag: 0.6
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 1, z: 0}
+  m_CenterOfMass: {x: 0, y: 3, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -512,25 +512,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   suspensionRestDist: 1.15
-  springStrength: 20
-  springDamper: 3
+  springStrength: 200
+  springDamper: 30
   tireGripCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.79738617
-      inSlope: -0.49019566
-      outSlope: -0.49019566
+      value: 0.8
+      inSlope: -0.19951428
+      outSlope: -0.19951428
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 0.3071905
-      inSlope: -0.49019566
-      outSlope: -0.49019566
+      time: 0.20279783
+      value: 0.75953895
+      inSlope: -0.6807732
+      outSlope: -0.6807732
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.060406603
+    - serializedVersion: 3
+      time: 0.33720258
+      value: 0.24048592
+      inSlope: -0.3586942
+      outSlope: -0.3586942
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.41223976
+      outWeight: 0.0796792
+    - serializedVersion: 3
+      time: 0.99717003
+      value: 0.1500048
+      inSlope: -0.13709937
+      outSlope: -0.13709937
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -538,7 +556,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  tireMass: 0.2
+  tireMass: 1
   frontLeftWheel: {fileID: 4411028327883090889}
   frontRightWheel: {fileID: 3988656279979164425}
   rearLeftWheel: {fileID: 4713666101434957286}
@@ -552,23 +570,23 @@ ConfigurableJoint:
   m_GameObject: {fileID: 6494957939802321557}
   m_ConnectedBody: {fileID: 0}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.35, z: 4.5}
+  m_Anchor: {x: 0, y: 0.35, z: 7}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 0
-  m_ConnectedAnchor: {x: 0, y: 0, z: -6}
+  m_ConnectedAnchor: {x: 0, y: 0, z: -4}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
   m_YMotion: 0
-  m_ZMotion: 0
+  m_ZMotion: 1
   m_AngularXMotion: 1
   m_AngularYMotion: 1
   m_AngularZMotion: 2
   m_LinearLimitSpring:
-    spring: 20
+    spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 0
+    limit: 0.05
     bounciness: 0
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -659,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storageModules: []
   grid: {fileID: -6217368878346658034}
+  offset: {x: 0, y: 0, z: -10}
 --- !u!114 &-6217368878346658034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,8 +690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf6ff9f69e267245986f1a028bf3308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 8
-  length: 5
+  width: 5
+  length: 8
   height: 4
   cellSize: 1
   buildVolume: {fileID: 4377405670548882032}

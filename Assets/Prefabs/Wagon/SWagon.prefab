@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storageModules: []
   grid: {fileID: 3128698951784893315}
+  offset: {x: 0, y: 0, z: -5}
 --- !u!114 &3128698951784893315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,11 +65,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf6ff9f69e267245986f1a028bf3308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 3
-  length: 5
+  width: 5
+  length: 3
   height: 3
   cellSize: 1
   buildVolume: {fileID: 3045852515369584353}
+  gridRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &-8001445491495074522
 MonoBehaviour:
   m_ObjectHideFlags: 0

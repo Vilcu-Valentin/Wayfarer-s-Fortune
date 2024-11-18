@@ -19,7 +19,7 @@ public class GridManager : MonoBehaviour
     public void InitializeGrid()
     {
         // Use transform's global rotation directly
-        gridRotation = transform.rotation * buildVolume.transform.rotation;
+        gridRotation = transform.rotation;
         rotationMatrix = Matrix4x4.Rotate(gridRotation);
 
         // Adjust grid origin based on global rotation and center point
