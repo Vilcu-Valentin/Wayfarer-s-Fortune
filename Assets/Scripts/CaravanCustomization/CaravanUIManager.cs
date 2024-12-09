@@ -13,6 +13,7 @@ public class CaravanUIManager : MonoBehaviour
     [SerializeField] private GameObject wagonMode;
     [SerializeField] private GameObject caravanMode;
 
+    [SerializeField] private GameObject removeWagonButton;
 
     private void Update()
     {
@@ -39,6 +40,10 @@ public class CaravanUIManager : MonoBehaviour
                 buildMode.SetActive(true);
             }
 
+            if (caravanManager.CurrentWagon != null)
+                removeWagonButton.SetActive(true);
+            else 
+                removeWagonButton.SetActive(false);
         }
         else
         {

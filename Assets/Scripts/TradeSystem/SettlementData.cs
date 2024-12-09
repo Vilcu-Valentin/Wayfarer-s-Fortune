@@ -30,9 +30,13 @@ public class SettlementData : ScriptableObject, IEquatable<SettlementData>
     public new string name;
     public string size;
     public string occupation;
+    [Tooltip("These are the goods that the city can trade")]
     public List<ItemMarketProfile> goodsPool;
+    [Tooltip("These events are city specific")]
     public List<EventSettlementContext> localEvents;
+    [Tooltip("Any event in this list can get triggered by the zone manager (if it exists in the same zone)")]
     public List<EventData> globalEvents;
+    [Tooltip("These events are always rolled for at the beginning of a season")]
     public List<EventData> seasonalEvents;
 
     public bool Equals(SettlementData other)

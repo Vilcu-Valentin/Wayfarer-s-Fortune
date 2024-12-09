@@ -25,6 +25,30 @@ public class Upgrade_CaravanManager : CaravanManager
     {
         if (CurrentState == CaravanUpgradeState.CaravanMode)
         {
+            // TEMPORARY JUST FOR SHOW TOMMOROW ^^^^
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+
+            if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.X))
+            {
+                // Short click - perform wagon selection
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+                {
+                    CaravanBody selectedWagon = hit.transform.gameObject.GetComponent<CaravanBody>();
+                    if (selectedWagon == null)
+                        selectedWagon = hit.transform.gameObject.GetComponentInParent<CaravanBody>();
+                    if (selectedWagon != null)
+                    {
+                        SetActiveWagon(selectedWagon, false);
+                    }
+                }
+                return;
+            }
+            // TEMPORARY ^^^^
+
             // Left Mouse Button Up
             if (Input.GetMouseButtonDown(0))
             {
