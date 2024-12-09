@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: 4x2WoodenW
   m_EditorClassIdentifier: 
   grip: 0
-  graphics: {fileID: 0}
+  graphics: {fileID: 5441569861007457813, guid: 0862396e9a4b90744af65ed4bd3a6351,
+    type: 3}

@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ebe81e41ad7a347bd25b438b91576c, type: 3}
   m_Name: 2x2
   m_EditorClassIdentifier: 
+  spacing: {x: 6, y: -2}
   health: 0
-  position: []
+  position:
+  - {x: 0, y: -2.25, z: 0}
+  - {x: 0, y: -2.25, z: 0}
+  - {x: 0.1, y: -2.25, z: 0}
   graphics: {fileID: 4587725035690528588, guid: 76f46634cba565a4eab305abbb9b82c0,
     type: 3}
+  wheels: []
