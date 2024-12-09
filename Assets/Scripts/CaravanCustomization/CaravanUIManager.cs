@@ -13,13 +13,6 @@ public class CaravanUIManager : MonoBehaviour
     [SerializeField] private GameObject wagonMode;
     [SerializeField] private GameObject caravanMode;
 
-    [Header("Upgrade dropdowns")]
-    [SerializeField] private Dropdown frames;
-    [SerializeField] private Dropdown wheels;
-    [SerializeField] private Dropdown engines;
-    [SerializeField] private Dropdown canopies;
-
-
     private void Update()
     {
         if(caravanManager != null)

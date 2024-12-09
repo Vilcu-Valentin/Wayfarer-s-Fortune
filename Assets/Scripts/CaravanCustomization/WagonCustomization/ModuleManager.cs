@@ -26,7 +26,11 @@ public class ModuleManager : MonoBehaviour
 
     public void Update()
     {
-        if(!IsActive) return;
+        if (!IsActive)
+        {
+            previewValidator.ClearPreview();
+            return;
+        }
 
         if(Input.GetMouseButtonDown(1))
             previewValidator.ClearPreview();

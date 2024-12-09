@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: 2x2ReinforcedW
   m_EditorClassIdentifier: 
   grip: 0
-  graphics: {fileID: 0}
+  graphics: {fileID: 8773160910649204442, guid: 96fdc75c74db8da46ad3dbd8e6112442,
+    type: 3}
