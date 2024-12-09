@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 3128698951784893315}
   - component: {fileID: -8001445491495074522}
   - component: {fileID: -1470396494167642315}
+<<<<<<< HEAD
+=======
   - component: {fileID: 3484376535237981592}
+>>>>>>> develop
   - component: {fileID: 6586875262569629570}
   m_Layer: 0
   m_Name: SWagon
@@ -105,6 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: 0.15
+<<<<<<< HEAD
+=======
 --- !u!114 &3484376535237981592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookCamera: {fileID: 5354619454722401068}
+>>>>>>> develop
 --- !u!65 &6586875262569629570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,7 +170,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142174062248815479}
   serializedVersion: 2
+<<<<<<< HEAD
+  m_LocalRotation: {x: 0.016983982, y: 0.91382617, z: 0.05524352, w: 0.40197212}
+=======
   m_LocalRotation: {x: 0.01698398, y: 0.91382617, z: 0.055243522, w: 0.40197212}
+>>>>>>> develop
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

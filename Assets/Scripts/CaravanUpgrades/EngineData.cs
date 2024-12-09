@@ -10,6 +10,9 @@ public class EngineData : ScriptableObject
     public float power;
     [Tooltip("This maps a percentage of power based on the rpm")]
     public AnimationCurve torqueCurve;
+<<<<<<< HEAD
+=======
 
     public GameObject graphics;
+>>>>>>> develop
 }

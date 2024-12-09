@@ -7,6 +7,12 @@ public class Wagon : CaravanBody
     public List<StorageModule> storageModules = new List<StorageModule>();
     [SerializeField] private GridManager grid;
 
+<<<<<<< HEAD:Assets/Scripts/CaravanCustomization/Wagon.cs
+    [Tooltip("This is used in the caravan manager for instantiation. X: the length of the wagon; Y: space between this and the previous wagon")]
+    public Vector2 spacing;
+
+=======
+>>>>>>> develop:Assets/Scripts/CaravanCustomization/WagonCustomization/Wagon.cs
     public void AddStorageModule(StorageModule module)
     {
         storageModules.Add(module);

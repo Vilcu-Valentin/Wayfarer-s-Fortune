@@ -228,7 +228,10 @@ GameObject:
   - component: {fileID: 3810343460396881398}
   - component: {fileID: 238361636157479507}
   - component: {fileID: 2641963631166598809}
+<<<<<<< HEAD
+=======
   - component: {fileID: -4185926990320654886}
+>>>>>>> develop
   m_Layer: 0
   m_Name: 2x2
   m_TagString: Untagged
@@ -302,6 +305,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< HEAD
+=======
 --- !u!65 &-4185926990320654886
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -323,3 +328,4 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7.736536, y: 5.2285, z: 4.858618}
   m_Center: {x: -1.314012, y: 1.7682331, z: 0}
+>>>>>>> develop

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Testerly Bills
+  m_EditorClassIdentifier: 
+  name: Testerly Bills
+  size: Enough to overflow insecure buffers.
+  occupation: Testing!
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: a1706c9e162eb3d4c868fb9f66a594c8, type: 2}
+    basePricePerUnit: 100
+    volatility: 0.25
+  localEvents:
+  - eventData: {fileID: 11400000, guid: 96bf962b372d47843a327900e765be2b, type: 2}
+    frequency: 28
+  globalEvents:
+  - {fileID: 11400000, guid: 96c44e1fe704e7f419a1edc389d18189, type: 2}
+  seasonalEvents:
+  - {fileID: 11400000, guid: 61f0ef90789ae0844bc5e6f3a852f438, type: 2}
