@@ -1,9 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+<<<<<<< HEAD
+=======
+
+public enum CaravanUpgradeState
+{
+    CaravanMode,
+    WagonMode,
+    BuildMode
+}
+>>>>>>> develop
 
 public enum CaravanUpgradeState
 {
@@ -16,6 +27,7 @@ public class Upgrade_CaravanManager : CaravanManager
 {
     [SerializeField] private UnityEvent<float> onUpdateDollyLength; // Unity Event to call UpdateDollyLength
 
+<<<<<<< HEAD
     public Wagon CurrentWagon { get; private set; }
     public CaravanUpgradeState CurrentState { get; private set; } = CaravanUpgradeState.CaravanMode;
 
@@ -30,10 +42,16 @@ public class Upgrade_CaravanManager : CaravanManager
     private bool potentialDrag = false;
     private float dragTimer = 0.1f;
 
+=======
+    public CaravanBody CurrentWagon { get; private set; }
+    public CaravanUpgradeState CurrentState { get; private set; } = CaravanUpgradeState.CaravanMode;
+
+>>>>>>> develop
     void Update()
     {
         if (CurrentState == CaravanUpgradeState.CaravanMode)
         {
+<<<<<<< HEAD
             // Left Mouse Button Down
             if (Input.GetMouseButtonDown(0))
             {
@@ -108,10 +126,41 @@ public class Upgrade_CaravanManager : CaravanManager
                 isDragging = true;
                 dragStartZ = draggedWagon.transform.position.z;
                 initialIndex = Wagons.IndexOf(draggedWagon);
+=======
+            // Left Mouse Button Up
+            if (Input.GetMouseButtonDown(0))
+            {
+                // Short click - perform wagon selection
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+                {
+                    CaravanBody selectedWagon = hit.transform.gameObject.GetComponent<CaravanBody>();
+                    if (selectedWagon == null)
+                        selectedWagon = hit.transform.gameObject.GetComponentInParent<CaravanBody>();
+                    if (selectedWagon != null)
+                    {
+                        SetActiveWagon(selectedWagon, true);
+                        SetCaravanState(CaravanUpgradeState.WagonMode);
+                    }
+                }
+            }
+        }
+
+        if(CurrentState != CaravanUpgradeState.BuildMode)
+        {
+            // Right Mouse Button handling remains the same
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (CurrentWagon != null)
+                    CurrentWagon.GetComponent<WagonCamera>().DeFocusCamera();
+                SetCaravanState(CaravanUpgradeState.CaravanMode);
+                CurrentWagon = null;
+>>>>>>> develop
             }
         }
     }
 
+<<<<<<< HEAD
     private void HandleDragging()
     {
         if (draggedWagon == null) return;
@@ -156,6 +205,8 @@ public class Upgrade_CaravanManager : CaravanManager
     }
 
 
+=======
+>>>>>>> develop
     // Public method used by UI
     public void AddWagon(GameObject wagonPrefab)
     {
@@ -193,7 +244,10 @@ public class Upgrade_CaravanManager : CaravanManager
             }
 
             Wagons.Add(newWagon);
+<<<<<<< HEAD
             SetActiveWagon(newWagon, false);
+=======
+>>>>>>> develop
             UpdateDollyLength(position.z);
 
             return true;
@@ -207,12 +261,22 @@ public class Upgrade_CaravanManager : CaravanManager
 
     public void RemoveWagon()
     {
+<<<<<<< HEAD
         if (CurrentWagon == null) return;
         Wagon wagonToRemove = CurrentWagon;
+=======
+        if (CurrentWagon == null || CurrentWagon.GetType() != typeof(Wagon)) return;
+        Wagon wagonToRemove = (Wagon)CurrentWagon;
+>>>>>>> develop
 
         Wagons.Remove(wagonToRemove);
         Destroy(wagonToRemove.gameObject);
 
+<<<<<<< HEAD
+=======
+        SetCaravanState(CaravanUpgradeState.CaravanMode);
+
+>>>>>>> develop
         UpdateWagonPosition();
     }
     // Clears all current wagons.
@@ -235,6 +299,7 @@ public class Upgrade_CaravanManager : CaravanManager
     private void UpdateDollyLength(float zPos)
     {
         onUpdateDollyLength.Invoke(zPos);
+<<<<<<< HEAD
     }
 
     // Make SetActiveWagon public so it can be called by SaveManager
@@ -254,6 +319,29 @@ public class Upgrade_CaravanManager : CaravanManager
     public void ToggleWagonBuildMode(bool mode)
     {
         CurrentWagon.GetComponent<ModuleManager>().IsActive = mode;
+=======
+    }
+
+    // Make SetActiveWagon public so it can be called by SaveManager
+    public void SetActiveWagon(CaravanBody wagon, bool focusCamera)
+    {
+        if (CurrentWagon != null)
+        {
+            if(CurrentWagon.GetType() == typeof(Wagon))
+                CurrentWagon.GetComponent<ModuleManager>().IsActive = false;
+            CurrentWagon.GetComponent<WagonCamera>().DeFocusCamera();
+        }
+
+        CurrentWagon = wagon;
+        if(focusCamera)
+            CurrentWagon.GetComponent<WagonCamera>().FocusCamera();
+    }
+
+    public void ToggleWagonBuildMode(bool mode)
+    {
+        if(CurrentWagon.GetType() == typeof(Wagon))
+            CurrentWagon.GetComponent<ModuleManager>().IsActive = mode;
+>>>>>>> develop
     }
 
 
@@ -272,14 +360,21 @@ public class Upgrade_CaravanManager : CaravanManager
     {
         if (Wagons.Count == 0)
         {
+<<<<<<< HEAD
             // TEMPORARY, the locomotive will also have a spacing parameter, but for now, use this
             return transform.position + new Vector3(0, 0, spacing.y - 5);
+=======
+            return CalculateWagonPosition(locomotive.transform.position, spacing, locomotive.spacing);
+>>>>>>> develop
         }
 
         Wagon lastWagon = Wagons[^1];
         return CalculateWagonPosition(lastWagon.transform.position, spacing, lastWagon.spacing);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
     // Re-calculates wagon position according to their current order in the list
     private void UpdateWagonPosition()
     {
@@ -291,7 +386,12 @@ public class Upgrade_CaravanManager : CaravanManager
             Vector3 targetPosition;
             if (i == 0)
             {
+<<<<<<< HEAD
                 targetPosition = currentPosition + new Vector3(0, 0, Wagons[i].spacing.y - 5);
+=======
+
+                targetPosition = CalculateWagonPosition(locomotive.transform.position, Wagons[i].spacing, locomotive.spacing);
+>>>>>>> develop
             }
             else
             {
