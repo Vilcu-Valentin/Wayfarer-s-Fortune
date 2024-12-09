@@ -1,14 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wagon : MonoBehaviour
+public class Wagon : CaravanBody
 {
     [Tooltip("This list will be used for the inventory and other calculations like weight etc.")]
     public List<StorageModule> storageModules = new List<StorageModule>();
     [SerializeField] private GridManager grid;
-
-    [Tooltip("This is used in the caravan manager for instantiation, how much space should there be between the previous wagon and this one")]
-    public Vector3 offset;
 
     public void AddStorageModule(StorageModule module)
     {

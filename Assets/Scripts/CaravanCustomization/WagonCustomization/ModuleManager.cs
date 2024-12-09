@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-using UnityEditor.MPE;
 
 public class ModuleManager : MonoBehaviour 
 {
     public bool IsActive = false;
-
-    [SerializeField] private CinemachineFreeLook lookCamera;
 
     [SerializeField] private Wagon wagon;
     [SerializeField] private LayerMask buildMask;
@@ -146,18 +142,5 @@ public class ModuleManager : MonoBehaviour
         return Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, buildMask)
             ? grid.WorldToGridPosition(hit.transform.position)
             : null;
-    }
-
-    //TEMPORARY PLACED HERE
-    // Used to set a high priority on this camera
-    public void FocusCamera()
-    {
-        lookCamera.Priority = 100;
-    }
-
-    // Used to set a low priority on this camera
-    public void DeFocusCamera()
-    {
-        lookCamera.Priority = 1;
     }
 }

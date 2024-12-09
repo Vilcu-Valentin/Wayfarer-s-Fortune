@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc923ec7184d7554ab1cb36bd937a2ee, type: 3}
-  m_Name: SterlingEngine
+  m_Name: AetherCore
   m_EditorClassIdentifier: 
-  power: 75
+  power: 800
   torqueCurve:
     serializedVersion: 2
     m_Curve:
@@ -46,5 +46,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  graphics: {fileID: 1334099341832858832, guid: 9fbad03f1b2ae404caa16e89f1dc1456,
+  graphics: {fileID: 1680192408469362216, guid: 043d77e91bf7d584e8a9ec968b942a46,
     type: 3}

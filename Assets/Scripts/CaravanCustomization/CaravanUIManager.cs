@@ -1,49 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CaravanUIManager : MonoBehaviour
 {
     [SerializeField] private Upgrade_CaravanManager caravanManager;
 
-    [Header("Wagon navigation and management")]
-    [SerializeField] private GameObject prevWagonButton;
-    [SerializeField] private GameObject nextWagonButton;
-    [SerializeField] private GameObject addWagonButton;
-    [SerializeField] private GameObject removeWagonButton;
-    [SerializeField] private GameObject customizeButton;
-
     [Header("Caravan modes UI Groups")]
     [SerializeField] private GameObject buildMode;
     [SerializeField] private GameObject wagonMode;
+    [SerializeField] private GameObject caravanMode;
 
-    [Header("Storage Module UI")]
-    [SerializeField] private GameObject moduleCustomUi;
+    [Header("Upgrade dropdowns")]
+    [SerializeField] private Dropdown frames;
+    [SerializeField] private Dropdown wheels;
+    [SerializeField] private Dropdown engines;
+    [SerializeField] private Dropdown canopies;
 
 
     private void Update()
     {
         if(caravanManager != null)
         {
-            if(caravanManager.WagonCount == 0)
-                customizeButton.SetActive(false);
-            else
-                customizeButton.SetActive(true);
+            if(caravanManager.CurrentState == CaravanUpgradeState.CaravanMode)
+            {
+                caravanMode.SetActive(true);
+                wagonMode.SetActive(false);
+                buildMode.SetActive(false);
+            }
 
-            if(caravanManager.CurrentWagonIndex == 0 || caravanManager.WagonCount == 0)
-                prevWagonButton.SetActive(false);  
-            else
-                prevWagonButton.SetActive(true);
-            if(caravanManager.CurrentWagonIndex == caravanManager.WagonCount - 1 || caravanManager.WagonCount == 0)
-                nextWagonButton.SetActive(false);
-            else
-                nextWagonButton.SetActive(true);
+            if (caravanManager.CurrentState == CaravanUpgradeState.WagonMode)
+            {
+                caravanMode.SetActive(false);
+                wagonMode.SetActive(true);
+                buildMode.SetActive(false);
+            }
+
+            if (caravanManager.CurrentState == CaravanUpgradeState.BuildMode)
+            {
+                caravanMode.SetActive(false);
+                wagonMode.SetActive(false);
+                buildMode.SetActive(true);
+            }
 
 
-            if(caravanManager.WagonCount == 0)
-                removeWagonButton.SetActive(false);
-            else
-                removeWagonButton.SetActive(true);
 
         }
         else
@@ -54,17 +56,13 @@ public class CaravanUIManager : MonoBehaviour
 
     public void ExitBuildMode()
     {
-        buildMode.SetActive(false);
-        wagonMode.SetActive(true);
-
         caravanManager.ToggleWagonBuildMode(false);
+        caravanManager.SetCaravanState(CaravanUpgradeState.WagonMode);
     }
 
     public void EnterBuildMode()
     {
-        buildMode.SetActive(true);
-        wagonMode.SetActive(false);
-
         caravanManager.ToggleWagonBuildMode(true);
+        caravanManager.SetCaravanState(CaravanUpgradeState.BuildMode);
     }
 }

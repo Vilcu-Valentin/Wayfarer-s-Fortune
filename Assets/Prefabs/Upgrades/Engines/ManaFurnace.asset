@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc923ec7184d7554ab1cb36bd937a2ee, type: 3}
-  m_Name: SterlingEngine
+  m_Name: ManaFurnace
   m_EditorClassIdentifier: 
-  power: 75
+  power: 160
   torqueCurve:
     serializedVersion: 2
     m_Curve:
@@ -46,5 +46,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  graphics: {fileID: 1334099341832858832, guid: 9fbad03f1b2ae404caa16e89f1dc1456,
-    type: 3}
+  graphics: {fileID: 685298353291965139, guid: 6b54cdb1edc73b345bb093407fe7cd81, type: 3}

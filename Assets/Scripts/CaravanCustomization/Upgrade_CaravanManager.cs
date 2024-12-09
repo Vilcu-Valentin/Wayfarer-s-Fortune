@@ -1,31 +1,80 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
+
+public enum CaravanUpgradeState
+{
+    CaravanMode,
+    WagonMode,
+    BuildMode
+}
 
 public class Upgrade_CaravanManager : CaravanManager
 {
-    [SerializeField] private float moveDuration = 0.5f; // Duration for the movement
-   
-    public int CurrentWagonIndex { get; private set; }
-    public Wagon CurrentWagon { get; private set; }
+    [SerializeField] private UnityEvent<float> onUpdateDollyLength; // Unity Event to call UpdateDollyLength
 
+    public CaravanBody CurrentWagon { get; private set; }
+    public CaravanUpgradeState CurrentState { get; private set; } = CaravanUpgradeState.CaravanMode;
+
+    void Update()
+    {
+        if (CurrentState == CaravanUpgradeState.CaravanMode)
+        {
+            // Left Mouse Button Up
+            if (Input.GetMouseButtonDown(0))
+            {
+                // Short click - perform wagon selection
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+                {
+                    CaravanBody selectedWagon = hit.transform.gameObject.GetComponent<CaravanBody>();
+                    if (selectedWagon == null)
+                        selectedWagon = hit.transform.gameObject.GetComponentInParent<CaravanBody>();
+                    if (selectedWagon != null)
+                    {
+                        SetActiveWagon(selectedWagon, true);
+                        SetCaravanState(CaravanUpgradeState.WagonMode);
+                    }
+                }
+            }
+        }
+
+        if(CurrentState != CaravanUpgradeState.BuildMode)
+        {
+            // Right Mouse Button handling remains the same
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (CurrentWagon != null)
+                    CurrentWagon.GetComponent<WagonCamera>().DeFocusCamera();
+                SetCaravanState(CaravanUpgradeState.CaravanMode);
+                CurrentWagon = null;
+            }
+        }
+    }
+
+    // Public method used by UI
     public void AddWagon(GameObject wagonPrefab)
     {
-        Vector3 position = CalculateNextWagonPosition(wagonPrefab.GetComponent<Wagon>().offset);
-        GameObject wagonObject = Instantiate(wagonPrefab, position, Quaternion.identity);
-        Wagon newWagon = wagonObject.GetComponent<Wagon>();
-
-        Wagons.Add(newWagon);
-        SetActiveWagon(Wagons.Count - 1);  // Set this new wagon as active
+        AddWagonInternal(wagonPrefab, null);
     }
+    // Public method used for loading from save
     public override bool AddWagon(GameObject wagonPrefab, List<StorageModule> storageModules)
     {
+        return AddWagonInternal(wagonPrefab, storageModules);
+    }
+    // Private helper to handle shared logic
+    private bool AddWagonInternal(GameObject wagonPrefab, List<StorageModule> storageModules)
+    {
+        if (wagonPrefab == null)
+            return false;
+
         try
         {
-            if (wagonPrefab == null) return false;
-
-            Vector3 position = CalculateNextWagonPosition(wagonPrefab.GetComponent<Wagon>().offset);
+            Vector3 position = CalculateNextWagonPosition(wagonPrefab.GetComponent<Wagon>().spacing);
             GameObject wagonObject = Instantiate(wagonPrefab, position, Quaternion.identity);
             Wagon newWagon = wagonObject.GetComponent<Wagon>();
 
@@ -44,7 +93,8 @@ public class Upgrade_CaravanManager : CaravanManager
             }
 
             Wagons.Add(newWagon);
-            SetActiveWagon(Wagons.Count - 1);
+            UpdateDollyLength(position.z);
+
             return true;
         }
         catch (Exception e)
@@ -54,6 +104,18 @@ public class Upgrade_CaravanManager : CaravanManager
         }
     }
 
+    public void RemoveWagon()
+    {
+        if (CurrentWagon == null || CurrentWagon.GetType() != typeof(Wagon)) return;
+        Wagon wagonToRemove = (Wagon)CurrentWagon;
+
+        Wagons.Remove(wagonToRemove);
+        Destroy(wagonToRemove.gameObject);
+
+        SetCaravanState(CaravanUpgradeState.CaravanMode);
+
+        UpdateWagonPosition();
+    }
     // Clears all current wagons.
     public override void ResetCaravan()
     {
@@ -62,45 +124,7 @@ public class Upgrade_CaravanManager : CaravanManager
             Destroy(wagon.gameObject);
         }
         Wagons.Clear();
-        CurrentWagonIndex = -1;
         CurrentWagon = null;
-    }
-
-    public void RemoveWagon()
-    {
-        Wagon wagonToRemove = CurrentWagon;
-
-        Wagons.Remove(wagonToRemove);
-        Destroy(wagonToRemove.gameObject);
-
-        if (CurrentWagonIndex == 0)
-            FocusNextWagon();
-        FocusPreviousWagon();
-
-        UpdateWagonPosition();
-    }
-
-    private Vector3 CalculateNextWagonPosition(Vector3 wagonOffset)
-    {
-        if (Wagons.Count == 0)
-        {
-            return transform.position + wagonOffset;
-        }
-
-        Wagon lastWagon = Wagons[Wagons.Count - 1];
-        return lastWagon.transform.position + wagonOffset;
-    }
-
-    public void FocusNextWagon()
-    {
-        if (Wagons.Count == 0) return;
-        SetActiveWagon((CurrentWagonIndex + 1) % Wagons.Count);
-    }
-
-    public void FocusPreviousWagon()
-    {
-        if (Wagons.Count == 0) return;
-        SetActiveWagon((CurrentWagonIndex - 1 + Wagons.Count) % Wagons.Count);
     }
 
     public void StartCurrentWagonModule(StorageModuleData module)
@@ -108,76 +132,88 @@ public class Upgrade_CaravanManager : CaravanManager
         CurrentWagon.GetComponent<ModuleManager>().StartModule(module);
     }
 
-    // Make SetActiveWagon public so it can be called by SaveManager
-    public void SetActiveWagon(int index)
-    {
-        if (index < 0 || index >= Wagons.Count) return;
 
+    private void UpdateDollyLength(float zPos)
+    {
+        onUpdateDollyLength.Invoke(zPos);
+    }
+
+    // Make SetActiveWagon public so it can be called by SaveManager
+    public void SetActiveWagon(CaravanBody wagon, bool focusCamera)
+    {
         if (CurrentWagon != null)
         {
-            CurrentWagon.GetComponent<ModuleManager>().IsActive = false;
-            CurrentWagon.GetComponent<ModuleManager>().DeFocusCamera();
+            if(CurrentWagon.GetType() == typeof(Wagon))
+                CurrentWagon.GetComponent<ModuleManager>().IsActive = false;
+            CurrentWagon.GetComponent<WagonCamera>().DeFocusCamera();
         }
 
-        CurrentWagonIndex = index;
-        CurrentWagon = Wagons[CurrentWagonIndex];
-        CurrentWagon.GetComponent<ModuleManager>().FocusCamera();
+        CurrentWagon = wagon;
+        if(focusCamera)
+            CurrentWagon.GetComponent<WagonCamera>().FocusCamera();
     }
 
     public void ToggleWagonBuildMode(bool mode)
     {
-        CurrentWagon.GetComponent<ModuleManager>().IsActive = mode;
+        if(CurrentWagon.GetType() == typeof(Wagon))
+            CurrentWagon.GetComponent<ModuleManager>().IsActive = mode;
     }
 
+
+    public void SetCaravanState(CaravanUpgradeState newState)
+    {
+        CurrentState = newState;
+    }
+
+    // Calculates and individual wagon's position
+    private Vector3 CalculateWagonPosition(Vector3 basePosition, Vector2 spacing, Vector2 previousSpacing)
+    {
+        return basePosition + new Vector3(0, 0, -previousSpacing.x / 2 - spacing.x / 2 + spacing.y);
+    }
+
+    private Vector3 CalculateNextWagonPosition(Vector2 spacing)
+    {
+        if (Wagons.Count == 0)
+        {
+            return CalculateWagonPosition(locomotive.transform.position, spacing, locomotive.spacing);
+        }
+
+        Wagon lastWagon = Wagons[^1];
+        return CalculateWagonPosition(lastWagon.transform.position, spacing, lastWagon.spacing);
+    }
+    // Re-calculates wagon position according to their current order in the list
     private void UpdateWagonPosition()
     {
-        // Collect all the target positions for each wagon first
         List<Vector3> targetPositions = new List<Vector3>();
+        Vector3 currentPosition = transform.position;
 
         for (int i = 0; i < Wagons.Count; i++)
         {
             Vector3 targetPosition;
             if (i == 0)
-                targetPosition = transform.position + Wagons[i].offset;
+            {
+
+                targetPosition = CalculateWagonPosition(locomotive.transform.position, Wagons[i].spacing, locomotive.spacing);
+            }
             else
-                targetPosition = targetPositions[i - 1] + Wagons[i].offset;
+            {
+                targetPosition = CalculateWagonPosition(targetPositions[i - 1], Wagons[i].spacing, Wagons[i - 1].spacing);
+            }
 
             targetPositions.Add(targetPosition);
         }
 
-        // Now move all wagons simultaneously
-        StartCoroutine(MoveWagonsSmoothly(targetPositions));
-    }
-    private IEnumerator MoveWagonsSmoothly(List<Vector3> targetPositions)
-    {
-        float elapsedTime = 0f;
-        List<Vector3> startingPositions = new List<Vector3>();
-
-        // Store the starting positions of all wagons
-        foreach (var wagon in Wagons)
+        if (targetPositions.Count > 0)
         {
-            startingPositions.Add(wagon.transform.position);
+            UpdateDollyLength(targetPositions[^1].z);
         }
 
-        while (elapsedTime < moveDuration)
-        {
-            // Update the position of each wagon during the lerp
-            for (int i = 0; i < Wagons.Count; i++)
-            {
-                Vector3 intermediatePosition = Vector3.Slerp(startingPositions[i], targetPositions[i], elapsedTime / moveDuration);
-                intermediatePosition.y = Mathf.Lerp(startingPositions[i].y, targetPositions[i].y, elapsedTime / moveDuration);
-                Wagons[i].transform.position = intermediatePosition;
-            }
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        // Ensure all wagons are exactly at their final positions at the end
+        // Start movement for all wagons
         for (int i = 0; i < Wagons.Count; i++)
         {
-            Wagons[i].transform.position = targetPositions[i];
-            Wagons[i].GetComponent<GridManager>().InitializeGrid();
+            var mover = Wagons[i].GetComponent<WagonSmoothMover>();
+            mover?.StartMoving(targetPositions[i]);
         }
     }
+
 }
