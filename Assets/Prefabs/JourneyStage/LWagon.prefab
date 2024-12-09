@@ -557,10 +557,20 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   tireMass: 1
-  frontLeftWheel: {fileID: 4411028327883090889}
-  frontRightWheel: {fileID: 3988656279979164425}
-  rearLeftWheel: {fileID: 4713666101434957286}
-  rearRightWheel: {fileID: 8613063260025082951}
+  wheelRadius: 1
+  wheels:
+  - wheelTransform: {fileID: 4411028327883090889}
+    isSteering: 0
+    isPowered: 0
+  - wheelTransform: {fileID: 3988656279979164425}
+    isSteering: 0
+    isPowered: 0
+  - wheelTransform: {fileID: 4713666101434957286}
+    isSteering: 0
+    isPowered: 0
+  - wheelTransform: {fileID: 8613063260025082951}
+    isSteering: 0
+    isPowered: 0
 --- !u!153 &7918219688061796826
 ConfigurableJoint:
   m_ObjectHideFlags: 0

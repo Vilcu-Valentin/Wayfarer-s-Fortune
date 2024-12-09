@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-using UnityEditor.MPE;
 
 public class ModuleManager : MonoBehaviour 
 {
     public bool IsActive = false;
-
-    [SerializeField] private CinemachineFreeLook lookCamera;
 
     [SerializeField] private Wagon wagon;
     [SerializeField] private LayerMask buildMask;
@@ -31,8 +27,6 @@ public class ModuleManager : MonoBehaviour
     public void Update()
     {
         if(!IsActive) return;
-
-        if (!selectedModule) return;
 
         if(Input.GetMouseButtonDown(1))
             previewValidator.ClearPreview();
@@ -57,6 +51,7 @@ public class ModuleManager : MonoBehaviour
         }
     }
 
+    // This is currently removing the module instead of just selecting it
     public void SelectModule()
     {
         Vector3Int? gridCell = GetModulePositionFromMouseRay();
@@ -147,18 +142,5 @@ public class ModuleManager : MonoBehaviour
         return Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, buildMask)
             ? grid.WorldToGridPosition(hit.transform.position)
             : null;
-    }
-
-    //TEMPORARY PLACED HERE
-    // Used to set a high priority on this camera
-    public void FocusCamera()
-    {
-        lookCamera.Priority = 100;
-    }
-
-    // Used to set a low priority on this camera
-    public void DeFocusCamera()
-    {
-        lookCamera.Priority = 1;
     }
 }
