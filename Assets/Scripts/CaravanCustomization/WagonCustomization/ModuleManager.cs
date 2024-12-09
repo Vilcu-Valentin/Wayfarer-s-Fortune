@@ -26,15 +26,11 @@ public class ModuleManager : MonoBehaviour
 
     public void Update()
     {
-<<<<<<< HEAD:Assets/Scripts/CaravanCustomization/ModuleManager.cs
-        if(!IsActive) return;
-=======
         if (!IsActive)
         {
             previewValidator.ClearPreview();
             return;
         }
->>>>>>> develop:Assets/Scripts/CaravanCustomization/WagonCustomization/ModuleManager.cs
 
         if(Input.GetMouseButtonDown(1))
             previewValidator.ClearPreview();

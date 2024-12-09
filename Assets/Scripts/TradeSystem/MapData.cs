@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Map", menuName = "Map")]
+[CreateAssetMenu(fileName = "New Map", menuName = "TradeSystem/Map")]
 [Serializable]
 public class MapData : ScriptableObject
 {

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ebe81e41ad7a347bd25b438b91576c, type: 3}
   m_Name: 4x2
   m_EditorClassIdentifier: 
-  spacing: {x: 11, y: -2}
+  spacing: {x: 12, y: -2}
   health: 0
   position:
   - {x: 0, y: -1.55, z: 0}
   - {x: 0, y: -1.55, z: 0}
-  - {x: 0, y: -1.55, z: -1}
+  - {x: 1.3, y: -1.55, z: 0}
   graphics: {fileID: 1731650834004402775, guid: 55f412331423c004fb3e5a95ea7093b8,
     type: 3}
+  wheels: []
