@@ -7,8 +7,6 @@ public class CaravanUIManager : MonoBehaviour
     [SerializeField] private Upgrade_CaravanManager caravanManager;
 
     [Header("Wagon navigation and management")]
-    [SerializeField] private GameObject prevWagonButton;
-    [SerializeField] private GameObject nextWagonButton;
     [SerializeField] private GameObject addWagonButton;
     [SerializeField] private GameObject removeWagonButton;
     [SerializeField] private GameObject customizeButton;
@@ -17,8 +15,9 @@ public class CaravanUIManager : MonoBehaviour
     [SerializeField] private GameObject buildMode;
     [SerializeField] private GameObject wagonMode;
 
-    [Header("Storage Module Custom UI")]
+    [Header("Storage Module UI")]
     [SerializeField] private GameObject moduleCustomUi;
+
 
     private void Update()
     {
@@ -29,20 +28,16 @@ public class CaravanUIManager : MonoBehaviour
             else
                 customizeButton.SetActive(true);
 
-            if(caravanManager.CurrentWagonIndex == 0 || caravanManager.WagonCount == 0)
-                prevWagonButton.SetActive(false);  
-            else
-                prevWagonButton.SetActive(true);
-            if(caravanManager.CurrentWagonIndex == caravanManager.WagonCount - 1 || caravanManager.WagonCount == 0)
-                nextWagonButton.SetActive(false);
-            else
-                nextWagonButton.SetActive(true);
-
 
             if(caravanManager.WagonCount == 0)
                 removeWagonButton.SetActive(false);
             else
                 removeWagonButton.SetActive(true);
+
+            if (caravanManager.CurrentWagon != null)
+                removeWagonButton.SetActive(true);
+            else
+                removeWagonButton.SetActive(false);
 
         }
         else
@@ -55,11 +50,17 @@ public class CaravanUIManager : MonoBehaviour
     {
         buildMode.SetActive(false);
         wagonMode.SetActive(true);
+
+        caravanManager.ToggleWagonBuildMode(false);
+        caravanManager.SetCaravanState(CaravanUpgradeState.CaravanMode);
     }
 
     public void EnterBuildMode()
     {
         buildMode.SetActive(true);
         wagonMode.SetActive(false);
+
+        caravanManager.ToggleWagonBuildMode(true);
+        caravanManager.SetCaravanState(CaravanUpgradeState.WagonMode);
     }
 }

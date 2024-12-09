@@ -1,0 +1,102 @@
+{
+    "name": "InputMaster",
+    "maps": [
+        {
+            "name": "TimeManipulation",
+            "id": "0c3590d8-b53a-486f-8eff-e13c01dcee7f",
+            "actions": [
+                {
+                    "name": "AdvanceHour",
+                    "type": "Button",
+                    "id": "0f969199-ee95-45a3-a51f-813ecd2ea3d5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AdvanceDay",
+                    "type": "Button",
+                    "id": "d8285182-a943-48e1-b07b-d2f8ec737068",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AdvanceSeason",
+                    "type": "Button",
+                    "id": "69a8ea45-956b-4fe6-8d4d-a56423e77720",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e93d3c84-1337-4710-8372-1b356aa8ad84",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AdvanceHour",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4751b7e-1a42-4996-b34d-46686065c0dc",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AdvanceDay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32c131ad-3f07-4aa9-ac37-32ae10433d23",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AdvanceSeason",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "SettlementChange",
+            "id": "b06658be-8a0e-4d36-ab70-40f03980380b",
+            "actions": [
+                {
+                    "name": "MoveToFirstNeighbour",
+                    "type": "Button",
+                    "id": "242f4fce-eaba-4000-8c68-d74284acd65f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cd966579-8cc8-42b1-82cf-013be29dbb42",
+                    "path": "<Keyboard>/m",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveToFirstNeighbour",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

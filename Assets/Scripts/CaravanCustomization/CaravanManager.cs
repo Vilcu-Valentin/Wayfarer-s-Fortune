@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class CaravanManager : MonoBehaviour
 {
-    private List<Wagon> wagons = new List<Wagon>();
+    protected List<Wagon> wagons = new List<Wagon>();
 
     public int WagonCount => wagons.Count; // Read-only access to the number of wagons
     public List<Wagon> Wagons => wagons; // Expose Wagons

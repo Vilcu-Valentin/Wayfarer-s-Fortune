@@ -7,8 +7,8 @@ public class Wagon : MonoBehaviour
     public List<StorageModule> storageModules = new List<StorageModule>();
     [SerializeField] private GridManager grid;
 
-    [Tooltip("This is used in the caravan manager for instantiation, how much space should there be between the previous wagon and this one")]
-    public Vector3 offset;
+    [Tooltip("This is used in the caravan manager for instantiation. X: the length of the wagon; Y: space between this and the previous wagon")]
+    public Vector2 spacing;
 
     public void AddStorageModule(StorageModule module)
     {
