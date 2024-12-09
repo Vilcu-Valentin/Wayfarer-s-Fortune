@@ -24,7 +24,7 @@ public struct ItemMarketProfile
     public float volatility;
 }
 
-[CreateAssetMenu(fileName = "New Settlement", menuName = "Settlement")]
+[CreateAssetMenu(fileName = "New Settlement", menuName = "TradeSystem/Settlement")]
 public class SettlementData : ScriptableObject, IEquatable<SettlementData>
 {
     public new string name;

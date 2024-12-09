@@ -12,7 +12,7 @@ public struct EventEffectData
     public int strength;
 }
 
-[CreateAssetMenu(fileName = "NewEvent", menuName = "Event")]
+[CreateAssetMenu(fileName = "NewEvent", menuName = "TradeSystem/Event")]
 public class EventData : ScriptableObject, IEquatable<EventData>
 {
     public new string name;

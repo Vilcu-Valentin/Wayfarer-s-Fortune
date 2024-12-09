@@ -2,13 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StorageType
-{
-    Goods,
-    Fluid,
-    Livestock
-};
-
 [CreateAssetMenu(fileName = "New Storage Module", menuName = "Storage Module")]
 public class StorageModuleData : ScriptableObject
 {

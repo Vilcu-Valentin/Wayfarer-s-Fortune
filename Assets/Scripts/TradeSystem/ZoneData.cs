@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Zone", menuName = "Zone")]
+[CreateAssetMenu(fileName = "New Zone", menuName = "TradeSystem/Zone")]
 public class ZoneData : ScriptableObject
 {
     public new string name;
