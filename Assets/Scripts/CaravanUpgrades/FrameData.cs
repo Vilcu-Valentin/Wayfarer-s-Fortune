@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Frame", menuName = "Upgrades/Frame")]
@@ -15,5 +13,11 @@ public class FrameData : ScriptableObject
 
     [Tooltip("The possible wheels that you can add on this frame, this is just the database")]
     public WheelData[] wheels;
-}
 
+    [Header("Allowed Upgrades")]
+    [Tooltip("Allowed engines for this frame (only applicable if vehicle is Locomotive)")]
+    public EngineData[] allowedEngines;
+
+    [Tooltip("Allowed canopies for this frame (only applicable if vehicle is Wagon)")]
+    public CanopyData[] allowedCanopies;
+}

@@ -5,6 +5,7 @@ public enum VehicleType
     Locomotive,
     Wagon
 }
+
 /// <summary>
 /// Manages upgrades for a specific vehicle (Locomotive or Wagon)
 /// </summary>
@@ -27,7 +28,7 @@ public class UpgradesManager : MonoBehaviour
     [Header("Upgrade Database")]
     public FrameData[] frames;
     public EngineData[] engines;
-    public CanopyData canopies;
+    public CanopyData[] canopies;
 
     /// <summary>
     /// Updates the entire vehicle's graphics and potentially underlying data
@@ -64,12 +65,10 @@ public class UpgradesManager : MonoBehaviour
     {
         if (_currentFrame == null) return;
 
-        _frameTransform.localPosition = transform.position + _currentFrame.position[0];
-        _wheelsTransform.localPosition = transform.position + _currentFrame.position[1];
-        if (_vehicleType == VehicleType.Locomotive)
-            _customAddonTransform.localPosition = transform.position + _currentFrame.position[2];
-        if (_vehicleType == VehicleType.Wagon)
-            _customAddonTransform.localPosition = transform.position + _currentFrame.position[2];
+        // Maintain original positioning logic: localPosition = vehicle's position + frame's position offset
+        _frameTransform.position = transform.position + _currentFrame.position[0];
+        _wheelsTransform.position = transform.position + _currentFrame.position[1];
+        _customAddonTransform.position = transform.position + _currentFrame.position[2];
     }
 
     /// <summary>
@@ -103,13 +102,96 @@ public class UpgradesManager : MonoBehaviour
     public void SetFrame(FrameData frame)
     {
         _currentFrame = frame;
+
+        // Validate current wheels
+        if (_currentFrame.wheels != null && _currentWheels != null)
+        {
+            bool wheelsValid = false;
+            foreach (var allowedWheel in _currentFrame.wheels)
+            {
+                if (allowedWheel == _currentWheels)
+                {
+                    wheelsValid = true;
+                    break;
+                }
+            }
+
+            if (!wheelsValid)
+            {
+                Debug.LogWarning("Current wheels are not compatible with the selected frame. Resetting wheels.");
+                _currentWheels = null;
+            }
+        }
+
+        // Validate current engine/canopy
+        if (_vehicleType == VehicleType.Locomotive && _currentEngine != null)
+        {
+            bool engineValid = false;
+            foreach (var allowedEngine in _currentFrame.allowedEngines)
+            {
+                if (allowedEngine == _currentEngine)
+                {
+                    engineValid = true;
+                    break;
+                }
+            }
+
+            if (!engineValid)
+            {
+                Debug.LogWarning("Current engine is not compatible with the selected frame. Resetting engine.");
+                _currentEngine = null;
+            }
+        }
+
+        if (_vehicleType == VehicleType.Wagon && _currentCanopy != null)
+        {
+            bool canopyValid = false;
+            foreach (var allowedCanopy in _currentFrame.allowedCanopies)
+            {
+                if (allowedCanopy == _currentCanopy)
+                {
+                    canopyValid = true;
+                    break;
+                }
+            }
+
+            if (!canopyValid)
+            {
+                Debug.LogWarning("Current canopy is not compatible with the selected frame. Resetting canopy.");
+                _currentCanopy = null;
+            }
+        }
+
         UpdateVehicleUpgrades();
     }
 
     public void SetWheels(WheelData wheels)
     {
-        _currentWheels = wheels;
-        UpdateVehicleUpgrades();
+        if (_currentFrame == null)
+        {
+            Debug.LogWarning("No frame selected. Cannot set wheels.");
+            return;
+        }
+
+        bool isAllowed = false;
+        foreach (var allowedWheel in _currentFrame.wheels)
+        {
+            if (allowedWheel == wheels)
+            {
+                isAllowed = true;
+                break;
+            }
+        }
+
+        if (isAllowed)
+        {
+            _currentWheels = wheels;
+            UpdateVehicleUpgrades();
+        }
+        else
+        {
+            Debug.LogWarning("Selected wheels are not compatible with the current frame.");
+        }
     }
 
     public void SetEngine(EngineData engine)
@@ -119,8 +201,32 @@ public class UpgradesManager : MonoBehaviour
             Debug.LogWarning("Cannot set engine on a non-Locomotive vehicle!");
             return;
         }
-        _currentEngine = engine;
-        UpdateVehicleUpgrades();
+
+        if (_currentFrame == null)
+        {
+            Debug.LogWarning("No frame selected. Cannot set engine.");
+            return;
+        }
+
+        bool isAllowed = false;
+        foreach (var allowedEngine in _currentFrame.allowedEngines)
+        {
+            if (allowedEngine == engine)
+            {
+                isAllowed = true;
+                break;
+            }
+        }
+
+        if (isAllowed)
+        {
+            _currentEngine = engine;
+            UpdateVehicleUpgrades();
+        }
+        else
+        {
+            Debug.LogWarning("Selected engine is not compatible with the current frame.");
+        }
     }
 
     public void SetCanopy(CanopyData canopy)
@@ -130,8 +236,32 @@ public class UpgradesManager : MonoBehaviour
             Debug.LogWarning("Cannot set canopy on a non-Wagon vehicle!");
             return;
         }
-        _currentCanopy = canopy;
-        UpdateVehicleUpgrades();
+
+        if (_currentFrame == null)
+        {
+            Debug.LogWarning("No frame selected. Cannot set canopy.");
+            return;
+        }
+
+        bool isAllowed = false;
+        foreach (var allowedCanopy in _currentFrame.allowedCanopies)
+        {
+            if (allowedCanopy == canopy)
+            {
+                isAllowed = true;
+                break;
+            }
+        }
+
+        if (isAllowed)
+        {
+            _currentCanopy = canopy;
+            UpdateVehicleUpgrades();
+        }
+        else
+        {
+            Debug.LogWarning("Selected canopy is not compatible with the current frame.");
+        }
     }
 
     // Optional: Methods to retrieve current upgrades
@@ -139,4 +269,22 @@ public class UpgradesManager : MonoBehaviour
     public WheelData GetCurrentWheels() => _currentWheels;
     public EngineData GetCurrentEngine() => _currentEngine;
     public CanopyData GetCurrentCanopy() => _currentCanopy;
+
+    // Optional: Methods to get available upgrades based on current frame
+    public WheelData[] GetAvailableWheels()
+    {
+        return _currentFrame?.wheels;
+    }
+
+    public EngineData[] GetAvailableEngines()
+    {
+        if (_vehicleType != VehicleType.Locomotive) return null;
+        return _currentFrame?.allowedEngines;
+    }
+
+    public CanopyData[] GetAvailableCanopies()
+    {
+        if (_vehicleType != VehicleType.Wagon) return null;
+        return _currentFrame?.allowedCanopies;
+    }
 }

@@ -7,7 +7,7 @@ public class CanopyData : ScriptableObject
 {
     [Tooltip("0 means no height increase. You can have both negative and positive values")]
     public int heightDiff;
-    [Tooltip("0 means no height increase. You can have both negative and positive values")]
+    [Tooltip("0 means no health increase. You can have both negative and positive values")]
     public int healthDiff;
 
     public GameObject graphics;
