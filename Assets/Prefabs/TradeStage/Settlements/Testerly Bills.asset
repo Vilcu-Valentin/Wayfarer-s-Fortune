@@ -27,7 +27,7 @@ MonoBehaviour:
     volatility: 0.25
   localEvents:
   - eventData: {fileID: 11400000, guid: 96bf962b372d47843a327900e765be2b, type: 2}
-    frequency: 28
+    frequency: 32.9
   globalEvents:
   - {fileID: 11400000, guid: 33b44c808cb9d87468771cfae88077ca, type: 2}
   seasonalEvents:

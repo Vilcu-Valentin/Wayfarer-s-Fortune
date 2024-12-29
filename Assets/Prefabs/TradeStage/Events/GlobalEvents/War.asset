@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: War
   description: A war has started
-  leadTime: 3
+  leadTime: 5
   duration: 28
   deathTime: 10
   seasonalModifiers:

@@ -104,6 +104,8 @@ public class Settlement : MonoBehaviour
 
         // Late MapMaster search
         mapMaster = GameObject.Find("MapMaster").GetComponent<MapMaster>();
+
+        transform.name = data.name;
     }
 
     private void OnDestroy()

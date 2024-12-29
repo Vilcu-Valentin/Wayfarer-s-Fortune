@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MapMaster : MonoBehaviour
@@ -19,34 +17,33 @@ public class MapMaster : MonoBehaviour
 
     void Awake()
     {
-        // Init the graph, instantiate gameobjects and keep references to their Settlement components
+        // Initialize the graph and link to existing settlements in the scene
         settlementObjDict = new Dictionary<SettlementData, Settlement>();
         graphAdjList = new Dictionary<SettlementData, List<SettlementData>>();
+
+        // Fetch all Settlement components already placed in the scene
+        Settlement[] settlementsInScene = FindObjectsOfType<Settlement>();
+        foreach (Settlement settlement in settlementsInScene)
+        {
+            if (!settlementObjDict.ContainsKey(settlement.data))
+            {
+                settlementObjDict.Add(settlement.data, settlement);
+                graphAdjList.Add(settlement.data, new List<SettlementData>());
+            }
+        }
+
+        // Set up the adjacency list for roads
         foreach (SerializablePair<SettlementData, SettlementData> road in data.roads)
         {
-            if (!settlementObjDict.ContainsKey(road.value1))
+            if (graphAdjList.ContainsKey(road.value1) && graphAdjList.ContainsKey(road.value2))
             {
-                GameObject settlementGameObject = new GameObject(road.value1.name);
-                Settlement settlementObj = settlementGameObject.AddComponent<Settlement>();
-                settlementObj.data = road.value1;
-                settlementObjDict.Add(road.value1, settlementObj);
-                graphAdjList.Add(road.value1, new List<SettlementData>());
                 graphAdjList[road.value1].Add(road.value2);
-            }
-            else
-                graphAdjList[road.value1].Add(road.value2);
-
-            if (!settlementObjDict.ContainsKey(road.value2))
-            {
-                GameObject settlementGameObject = new GameObject(road.value2.name);
-                Settlement settlementObj = settlementGameObject.AddComponent<Settlement>();
-                settlementObj.data = road.value2;
-                settlementObjDict.Add(road.value2, settlementObj);
-                graphAdjList.Add(road.value2, new List<SettlementData>());
                 graphAdjList[road.value2].Add(road.value1);
             }
             else
-                graphAdjList[road.value2].Add(road.value1);
+            {
+                Debug.LogWarning($"One or both settlements for the road between {road.value1.name} and {road.value2.name} are missing.");
+            }
         }
 
         // Init input actions for testing
@@ -54,7 +51,6 @@ public class MapMaster : MonoBehaviour
         inputMaster.SettlementChange.Enable();
         inputMaster.SettlementChange.MoveToFirstNeighbour.performed += _ => MoveToFirstNeighbour();
     }
-
 
     /// <returns>
     /// Returns the minimum distance measured in roads between source and destination or -1 if a path doesn't exist.
@@ -78,13 +74,15 @@ public class MapMaster : MonoBehaviour
             foreach (SettlementData settlement in currLvl)
             {
                 foreach (SettlementData neighbour in graphAdjList[settlement])
+                {
                     if (neighbour.Equals(destination))
                         return distance;
-                    else if(!discovered.Contains(neighbour))
+                    else if (!discovered.Contains(neighbour))
                     {
                         discovered.Add(neighbour);
                         nextLvl.Add(neighbour);
                     }
+                }
             }
         }
         return -1; // a.k.a. not found
@@ -114,7 +112,7 @@ public class MapMaster : MonoBehaviour
     /// <summary>
     /// Testing only.
     /// </summary>
-    public void MoveToFirstNeighbour() 
+    public void MoveToFirstNeighbour()
     {
         if (graphAdjList[playerLocation].Count >= 1)
             playerLocation = graphAdjList[playerLocation][0];
