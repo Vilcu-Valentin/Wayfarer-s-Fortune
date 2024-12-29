@@ -30,6 +30,11 @@ public class UpgradesManager : MonoBehaviour
     public EngineData[] engines;
     public CanopyData[] canopies;
 
+    public void Start()
+    {
+        UpdateVehicleUpgrades();
+    }
+
     /// <summary>
     /// Updates the entire vehicle's graphics and potentially underlying data
     /// </summary>

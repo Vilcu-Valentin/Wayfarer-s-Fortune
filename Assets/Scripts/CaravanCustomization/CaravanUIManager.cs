@@ -24,7 +24,7 @@ public class CaravanUIManager : MonoBehaviour
      [SerializeField] private TMP_Dropdown canopyDropdown;
 
     private bool isInitializing = true; // Flag to prevent triggering callbacks during initialization
-
+    private CaravanUpgradeState previousState;
     private void Start()
     {
         if (upgradesManager == null)
@@ -62,6 +62,9 @@ public class CaravanUIManager : MonoBehaviour
                     break;
 
                 case CaravanUpgradeState.WagonMode:
+                    upgradesManager = caravanManager.CurrentWagon.GetComponent<UpgradesManager>();
+                    if(caravanManager.CurrentState != previousState)
+                        PopulateFrameDropdown();
                     caravanMode.SetActive(false);
                     wagonMode.SetActive(true);
                     buildMode.SetActive(false);
@@ -79,6 +82,8 @@ public class CaravanUIManager : MonoBehaviour
                 removeWagonButton.SetActive(true);
             else
                 removeWagonButton.SetActive(false);
+
+            previousState = caravanManager.CurrentState;
         }
         else
         {

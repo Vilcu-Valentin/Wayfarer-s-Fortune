@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06ebe81e41ad7a347bd25b438b91576c, type: 3}
-  m_Name: 2x2
+  m_Name: Reinforced_L
   m_EditorClassIdentifier: 
-  spacing: {x: 6, y: -2}
+  spacing: {x: 8, y: -2}
   health: 0
   position:
   - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -1.85, z: 0}
   - {x: 0, y: 0, z: 0}
-  - {x: 0.1, y: 0, z: 0}
-  graphics: {fileID: 4587725035690528588, guid: 76f46634cba565a4eab305abbb9b82c0,
+  graphics: {fileID: 7103856775536955319, guid: c82dd11d9419ae0479eb2f6c6c75300a,
     type: 3}
   wheels:
-  - {fileID: 11400000, guid: eafd6383b92576644bcd50aecd3c4dfd, type: 2}
-  - {fileID: 11400000, guid: 0bcf8e3f923d402468a1c23a49fc2c18, type: 2}
-  allowedEngines:
-  - {fileID: 11400000, guid: 4e059b1d96d376140b8b35cacef43164, type: 2}
-  allowedCanopies: []
+  - {fileID: 11400000, guid: df483e81c276fb1468d7719bdd2fe679, type: 2}
+  allowedEngines: []
+  allowedCanopies:
+  - {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}
+  - {fileID: 11400000, guid: 4068cd4ad89d4ea488e56d5a18eb9c2b, type: 2}
