@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FullMaterial
-  m_Shader: {fileID: 4800000, guid: 3078af9606a5c764f92764a1c4f683e0, type: 3}
+  m_Shader: {fileID: 4800000, guid: 380cb3082bee2a8469376b039ac76e3a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -27,7 +27,9 @@ Material:
     m_Floats:
     - _EnableOutline: 1
     - _Iterations: 1
+    - _MaxDistance: 20
     - _OutlineWidth: 3
     m_Colors:
+    - _ContourColor: {r: 1, g: 0.17118077, b: 0.11635202, a: 1}
     - _InsideColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_BuildTextureStacks: []

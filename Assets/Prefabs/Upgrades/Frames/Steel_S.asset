@@ -21,7 +21,11 @@ MonoBehaviour:
   graphics: {fileID: 8452707222017133373, guid: 6d04013bf1816344f987b84cdecc7d81,
     type: 3}
   wheels:
+  - {fileID: 11400000, guid: 12669c7837d3e804091633526ce70ea1, type: 2}
   - {fileID: 11400000, guid: 5d659a30dbcfd564285be4a36da8bae1, type: 2}
+  - {fileID: 11400000, guid: f427e6725c4cde94fbe2ce0cbdbbd7ff, type: 2}
+  - {fileID: 11400000, guid: 78e79e06e74fd2d4c86cde9fe5d9c8d1, type: 2}
+  - {fileID: 11400000, guid: fc5931c5f6594a149b4c2fcc1c83bcd8, type: 2}
   allowedEngines: []
   allowedCanopies:
   - {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}

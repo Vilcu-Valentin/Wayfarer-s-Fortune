@@ -22,6 +22,10 @@ MonoBehaviour:
     type: 3}
   wheels:
   - {fileID: 11400000, guid: df483e81c276fb1468d7719bdd2fe679, type: 2}
+  - {fileID: 11400000, guid: b25b101896678f54d934f2114dc5b6e1, type: 2}
+  - {fileID: 11400000, guid: b2cf6fa0d4a24004da9e79ebf947a992, type: 2}
+  - {fileID: 11400000, guid: 3d6a677635b8a9f42b454a69d0046142, type: 2}
+  - {fileID: 11400000, guid: 1df8503b602e275408d4a071de30a7ae, type: 2}
   allowedEngines: []
   allowedCanopies:
   - {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}
