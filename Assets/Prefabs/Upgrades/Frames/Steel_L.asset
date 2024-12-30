@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06ebe81e41ad7a347bd25b438b91576c, type: 3}
-  m_Name: Reinforced_L
+  m_Name: Steel_L
   m_EditorClassIdentifier: 
   spacing: {x: 8, y: -2}
   health: 0
@@ -18,8 +18,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: -1.85, z: 0}
   - {x: 0, y: 0, z: 0}
-  graphics: {fileID: 7103856775536955319, guid: c82dd11d9419ae0479eb2f6c6c75300a,
-    type: 3}
+  graphics: {fileID: 479927773674530344, guid: c511ba047d5278e4387b216a4edb40dd, type: 3}
   wheels:
   - {fileID: 11400000, guid: df483e81c276fb1468d7719bdd2fe679, type: 2}
   allowedEngines: []

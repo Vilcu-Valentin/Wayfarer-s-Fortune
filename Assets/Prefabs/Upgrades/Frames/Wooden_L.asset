@@ -26,3 +26,4 @@ MonoBehaviour:
   allowedCanopies:
   - {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}
   - {fileID: 11400000, guid: 4068cd4ad89d4ea488e56d5a18eb9c2b, type: 2}
+  - {fileID: 11400000, guid: 21442ca65acf9af41a481680a5ad3f5e, type: 2}

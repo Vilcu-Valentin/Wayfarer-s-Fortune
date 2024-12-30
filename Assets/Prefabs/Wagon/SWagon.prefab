@@ -162,9 +162,13 @@ MonoBehaviour:
   _currentCanopy: {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}
   frames:
   - {fileID: 11400000, guid: 71b009ed8d190814d8a400e488027302, type: 2}
+  - {fileID: 11400000, guid: 6d6a9b171355cab44a0447eab0796ca6, type: 2}
+  - {fileID: 11400000, guid: 0d9079c8e0a15fe44bfda4580d9da6ef, type: 2}
   engines: []
   canopies:
   - {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}
+  - {fileID: 11400000, guid: 6eaf94b1632d5144b8ffb9d594022262, type: 2}
+  - {fileID: 11400000, guid: 81fdc5389f34e004c867257a55c5b3a4, type: 2}
 --- !u!1 &831190698552745028
 GameObject:
   m_ObjectHideFlags: 0

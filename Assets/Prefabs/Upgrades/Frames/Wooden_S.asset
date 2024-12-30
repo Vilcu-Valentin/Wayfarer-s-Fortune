@@ -16,13 +16,14 @@ MonoBehaviour:
   health: 0
   position:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: -1.85, z: 0}
+  - {x: 0, y: -1.88, z: 0}
   - {x: 0, y: 0, z: 0}
-  graphics: {fileID: 5070072082232069307, guid: 102a1a4d99b478b4fa865d610ec4ec8d,
+  graphics: {fileID: 4069867286128765662, guid: ddc5f494350abc6419ed7b3c16bfc778,
     type: 3}
   wheels:
-  - {fileID: 11400000, guid: df483e81c276fb1468d7719bdd2fe679, type: 2}
+  - {fileID: 11400000, guid: 5d659a30dbcfd564285be4a36da8bae1, type: 2}
   allowedEngines: []
   allowedCanopies:
   - {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}
-  - {fileID: 11400000, guid: 4068cd4ad89d4ea488e56d5a18eb9c2b, type: 2}
+  - {fileID: 11400000, guid: 6eaf94b1632d5144b8ffb9d594022262, type: 2}
+  - {fileID: 11400000, guid: 81fdc5389f34e004c867257a55c5b3a4, type: 2}

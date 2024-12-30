@@ -652,12 +652,14 @@ MonoBehaviour:
   _currentEngine: {fileID: 0}
   _currentCanopy: {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}
   frames:
-  - {fileID: 11400000, guid: 656d3e78143e13047a70bad56880dee3, type: 2}
   - {fileID: 11400000, guid: 1bfb88e479984e245a825e203db3b375, type: 2}
+  - {fileID: 11400000, guid: 656d3e78143e13047a70bad56880dee3, type: 2}
+  - {fileID: 11400000, guid: 632109e7229be694bb43176a310926df, type: 2}
   engines: []
   canopies:
   - {fileID: 11400000, guid: a03fb42c43702e54682673f09f0ece82, type: 2}
   - {fileID: 11400000, guid: 4068cd4ad89d4ea488e56d5a18eb9c2b, type: 2}
+  - {fileID: 11400000, guid: 21442ca65acf9af41a481680a5ad3f5e, type: 2}
 --- !u!65 &3557497240428315912
 BoxCollider:
   m_ObjectHideFlags: 0
