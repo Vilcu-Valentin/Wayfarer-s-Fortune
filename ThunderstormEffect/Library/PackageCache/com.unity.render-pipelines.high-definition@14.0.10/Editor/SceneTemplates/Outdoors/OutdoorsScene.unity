@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD:ThunderstormEffect/Library/PackageCache/com.unity.render-pipelines.high-definition@14.0.10/Editor/SceneTemplates/Outdoors/OutdoorsScene.unity
   m_IndirectSpecularColor: {r: 2157.9375, g: 2261.3281, b: 3297.9805, a: 1}
-=======
-  m_IndirectSpecularColor: {r: 1834.5139, g: 1944.3167, b: 2834.9417, a: 1}
->>>>>>> 8825afa13660639bbd5983585d8e72966330aa69:Assets/OutdoorsScene.unity
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19907,7 +19903,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD:ThunderstormEffect/Library/PackageCache/com.unity.render-pipelines.high-definition@14.0.10/Editor/SceneTemplates/Outdoors/OutdoorsScene.unity
 --- !u!114 &432432460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19926,9 +19921,6 @@ MonoBehaviour:
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 274ed3d2d52027d4a96b38fff65dd32e, type: 2}
 --- !u!4 &432432461
-=======
---- !u!4 &1450777964
->>>>>>> 8825afa13660639bbd5983585d8e72966330aa69:Assets/OutdoorsScene.unity
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25080,10 +25072,6 @@ MonoBehaviour:
   taaMotionVectorRejection: 0
   taaAntiHistoryRinging: 0
   taaBaseBlendFactor: 0.875
-<<<<<<< HEAD:ThunderstormEffect/Library/PackageCache/com.unity.render-pipelines.high-definition@14.0.10/Editor/SceneTemplates/Outdoors/OutdoorsScene.unity
-=======
-  taaJitterScale: 1
->>>>>>> 8825afa13660639bbd5983585d8e72966330aa69:Assets/OutdoorsScene.unity
   physicalParameters:
     m_Iso: 200
     m_ShutterSpeed: 0.005

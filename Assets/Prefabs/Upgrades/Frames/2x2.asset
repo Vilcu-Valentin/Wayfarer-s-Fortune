@@ -15,9 +15,14 @@ MonoBehaviour:
   spacing: {x: 6, y: -2}
   health: 0
   position:
-  - {x: 0, y: -2.25, z: 0}
-  - {x: 0, y: -2.25, z: 0}
-  - {x: 0.1, y: -2.25, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.1, y: 0, z: 0}
   graphics: {fileID: 4587725035690528588, guid: 76f46634cba565a4eab305abbb9b82c0,
     type: 3}
-  wheels: []
+  wheels:
+  - {fileID: 11400000, guid: eafd6383b92576644bcd50aecd3c4dfd, type: 2}
+  - {fileID: 11400000, guid: 0bcf8e3f923d402468a1c23a49fc2c18, type: 2}
+  allowedEngines:
+  - {fileID: 11400000, guid: 4e059b1d96d376140b8b35cacef43164, type: 2}
+  allowedCanopies: []

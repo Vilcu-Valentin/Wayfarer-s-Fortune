@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ea591a7d945734aa622572b13ac0b9, type: 3}
+  m_Name: SWagon_ReinforcedW
+  m_EditorClassIdentifier: 
+  grip: 0
+  graphics: {fileID: 1166452914669512068, guid: 43e5b5a9cc3b9974aac5ba45efca6d61,
+    type: 3}
