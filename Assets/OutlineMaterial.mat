@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OutlineMaterial
-  m_Shader: {fileID: 4800000, guid: 509502f3cf2a6cc498a819a288b12643, type: 3}
+  m_Shader: {fileID: 4800000, guid: dcc7395779a71ff49b744aa899cd3983, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -26,7 +26,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableOutline: 0
+    - _Iterations: 1
     - _MaxDistance: 200
+    - _OutlineWidth: 10.3
     m_Colors:
-    - _ContourColor: {r: 0, g: 0.12187195, b: 1, a: 1}
+    - _ContourColor: {r: 0, g: 0.24316287, b: 1, a: 1}
+    - _InsideColor: {r: 1, g: 1, b: 0, a: 0.5}
   m_BuildTextureStacks: []
