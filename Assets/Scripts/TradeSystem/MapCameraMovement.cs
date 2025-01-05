@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
+using UnityEngine.Rendering;
 
 public class MapCameraMovement : MonoBehaviour
 {
@@ -11,25 +13,55 @@ public class MapCameraMovement : MonoBehaviour
     [Header("Zoom Settings")]
     public float minZoom = 10f;
     public float maxZoom = 50f;
+    public float zoomPadding = 10f;
 
-    [Header("Map Bounds")]
-    public float minX = -50f;
-    public float maxX = 50f;
-    public float minZ = -50f;
-    public float maxZ = 50f;
+    [Header("Zoom-In Bounds")]
+    public float minXZoomIn = -50f;
+    public float maxXZoomIn = 50f;
+    public float minZZoomIn = -50f;
+    public float maxZZoomIn = 50f;
+
+    [Header("Zoom-Out Bounds")]
+    public float minXZoomOut = -100f;
+    public float maxXZoomOut = 100f;
+    public float minZZoomOut = -100f;
+    public float maxZZoomOut = 100f;
 
     private float currentZoom;
 
+    [Header("Volume")]
+    public VolumeProfile profile;
+    private DepthOfField dof;
+    private Transform mainCamera;
+
+
     void Start()
     {
-
         currentZoom = Mathf.Clamp(transform.position.y, minZoom, maxZoom);
+        mainCamera = Camera.main.transform;
+        profile.TryGet<DepthOfField>(out dof);
     }
 
     void Update()
     {
         HandleMovement();
         HandleZoom();
+        HandleFocus();
+    }
+
+    void HandleFocus()
+    {
+        if (dof == null) return;
+
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
+        {
+            float dist = Vector3.Distance(mainCamera.position, hit.point);
+            dof.nearFocusStart.value = dist - 12f;
+            dof.nearFocusEnd.value = dist - 2f;
+            dof.farFocusStart.value = dist + 2.5f;
+            dof.farFocusEnd.value = dist + 12.5f;
+        }
     }
 
     void HandleMovement()
@@ -41,17 +73,23 @@ public class MapCameraMovement : MonoBehaviour
         Vector3 move = new Vector3(horizontal, 0, vertical) * moveSpeed * Time.deltaTime;
         transform.Translate(move, Space.World);
 
-        // Adjust bounds dynamically based on zoom level
-        float adjustedMinX = minX + currentZoom;
-        float adjustedMaxX = maxX - currentZoom;
-        float adjustedMinZ = minZ + currentZoom;
-        float adjustedMaxZ = maxZ - currentZoom;
+        // Calculate zoom factor (normalized)
+        float zoomFactor = (currentZoom - minZoom) / (maxZoom - minZoom); // Normalized zoom between 0 and 1
 
-        // Clamp position within bounds
+        // Lerp bounds based on zoom level
+        float adjustedMinX = Mathf.Lerp(minXZoomIn, minXZoomOut, zoomFactor);
+        float adjustedMaxX = Mathf.Lerp(maxXZoomIn, maxXZoomOut, zoomFactor);
+        float adjustedMinZ = Mathf.Lerp(minZZoomIn, minZZoomOut, zoomFactor);
+        float adjustedMaxZ = Mathf.Lerp(maxZZoomIn, maxZZoomOut, zoomFactor);
+
+        // Clamp position within dynamically adjusted bounds
         Vector3 clampedPosition = transform.position;
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, adjustedMinX, adjustedMaxX);
         clampedPosition.z = Mathf.Clamp(clampedPosition.z, adjustedMinZ, adjustedMaxZ);
         transform.position = clampedPosition;
+
+        // Optional: Debugging logs
+        Debug.Log($"Zoom Factor: {zoomFactor}, Bounds: X({adjustedMinX}, {adjustedMaxX}), Z({adjustedMinZ}, {adjustedMaxZ})");
     }
 
     void HandleZoom()
@@ -67,5 +105,9 @@ public class MapCameraMovement : MonoBehaviour
         Vector3 targetPosition = transform.position;
         targetPosition.y = currentZoom;
         transform.position = targetPosition;
+
+        // Optionally log zoom level for debugging
+        Debug.Log($"Zoom Level: {currentZoom}");
     }
+
 }

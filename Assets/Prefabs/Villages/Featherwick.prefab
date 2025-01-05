@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7286610240627551160}
   - component: {fileID: -3885321420472101716}
+  - component: {fileID: 9012653548058194359}
   m_Layer: 0
   m_Name: Featherwick
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -67.68304, y: -0.87, z: 67.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8392538601336847078}
@@ -37,6 +38,19 @@ Transform:
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-3885321420472101716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4144019834572787190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d2b17b92ae47c44a1fb3d0eb477239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 0
+--- !u!114 &9012653548058194359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,7 +79,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ba0558e435895934687d6c96d04b654a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9259771
+      value: 3.115206
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ba0558e435895934687d6c96d04b654a,
         type: 3}
@@ -139,12 +153,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5c2cfa9676a59ce499bf381f27c4664e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9157792
+      value: 3.113405
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c2cfa9676a59ce499bf381f27c4664e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.6844101
+      value: 0.68440247
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c2cfa9676a59ce499bf381f27c4664e,
         type: 3}
@@ -213,12 +227,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3c8907969c201a4b9f8009b9c146f90,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9462986
+      value: 3.1123514
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3c8907969c201a4b9f8009b9c146f90,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.3299942
+      value: -1.3300018
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3c8907969c201a4b9f8009b9c146f90,
         type: 3}
@@ -282,12 +296,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 28dc4d70d1fff504fb3f4771b4956a7c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.30397797
+      value: 0.30397034
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28dc4d70d1fff504fb3f4771b4956a7c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.93339896
+      value: 3.115206
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28dc4d70d1fff504fb3f4771b4956a7c,
         type: 3}

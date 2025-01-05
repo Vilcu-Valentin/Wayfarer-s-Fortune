@@ -10,6 +10,9 @@ public class AdjustChildrenToGround : MonoBehaviour
     [Tooltip("Offset added to the Y position after aligning to the terrain.")]
     public float yOffset = 0f;
 
+    [Tooltip("Taget terrain")]
+    public Terrain terrain;
+
     // Stores the last known position to detect changes
     private Vector3 lastPosition;
 
@@ -41,7 +44,6 @@ public class AdjustChildrenToGround : MonoBehaviour
     /// </summary>
     private void AdjustChildren()
     {
-        Terrain terrain = Terrain.activeTerrain;
 
         if (terrain == null)
         {
