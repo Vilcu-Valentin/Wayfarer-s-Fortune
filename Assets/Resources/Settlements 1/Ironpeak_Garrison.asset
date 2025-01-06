@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Ironpeak_Garrison
+  m_EditorClassIdentifier: 
+  name: Ironpeak Garrison
+  size: Town
+  occupation: Military
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: cda795b0eb5989c44a680eb95e257290, type: 2}
+    basePricePerUnit: 865
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f9d8630ead85d704bbeb8044f1ee23db, type: 2}
+    basePricePerUnit: 283
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 07b06e6f6371c0f4fb06d4f5e73c4f3c, type: 2}
+    basePricePerUnit: 201
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: e5951d9d59ba50c489886df549a3e8f8, type: 2}
+    basePricePerUnit: 193
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    basePricePerUnit: 26
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: d4dce35b24e18254c81d2345089de390, type: 2}
+    basePricePerUnit: 46
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    basePricePerUnit: 129
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 4e648d5708405424194ed01651a4fee0, type: 2}
+    basePricePerUnit: 264
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    basePricePerUnit: 22
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: eba6579cf674a70498fd0c278b1fb47f, type: 2}
+    basePricePerUnit: 33
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 054a308b02eff374282be147bed9f53d, type: 2}
+    basePricePerUnit: 24
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 55faf88a9646595468444479183aae77, type: 2}
+    basePricePerUnit: 36
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 21
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c089646285f921646be50698f49e6ccd, type: 2}
+    basePricePerUnit: 33
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 263a94279659d9e41b5b1d39a81cf6ce, type: 2}
+    basePricePerUnit: 24
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 2138036358d6ca247a8f11be300e499e, type: 2}
+    basePricePerUnit: 29
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b05bbe8a1c92ce54f8d87e3244db49f7, type: 2}
+    basePricePerUnit: 31
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c3d4adba22c25ad4e95f42f09772adf7, type: 2}
+    basePricePerUnit: 47
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b6612c5a1337c284db0915e3313128e2, type: 2}
+    basePricePerUnit: 36
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    basePricePerUnit: 40
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c362b58db132a68498282e76c703c68e, type: 2}
+    basePricePerUnit: 55
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: efaadd383bcd6dc4094cb710645d7557, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
+    basePricePerUnit: 26
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 913f686433896434e9f19bb27980f540, type: 2}
+    basePricePerUnit: 73000
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 876b624db4164e24598402c512657af9, type: 2}
+    basePricePerUnit: 76980
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

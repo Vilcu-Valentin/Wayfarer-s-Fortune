@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Hidemont
+  m_EditorClassIdentifier: 
+  name: Hidemont
+  size: Villages
+  occupation: Animal Husbandry
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 14
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed224b61210b06f4cb70ca083ab9cefc, type: 2}
+    basePricePerUnit: 12
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b05bbe8a1c92ce54f8d87e3244db49f7, type: 2}
+    basePricePerUnit: 38
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 6db344eccda02ef4cb6e559f5a332cbd, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 8
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f420cdcd3dd4daf46a4fcc14f786e3a2, type: 2}
+    basePricePerUnit: 100
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 011385f5f6e493a4b8063ef1c037a6ed, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c3d4adba22c25ad4e95f42f09772adf7, type: 2}
+    basePricePerUnit: 40
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    basePricePerUnit: 9
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

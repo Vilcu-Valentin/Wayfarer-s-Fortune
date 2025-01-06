@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Timberwood
+  m_EditorClassIdentifier: 
+  name: Timberwood
+  size: Villages
+  occupation: Woodland Harvesting
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: c089646285f921646be50698f49e6ccd, type: 2}
+    basePricePerUnit: 15
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 35349d8690d3a2e44bca7b9d1ff4f564, type: 2}
+    basePricePerUnit: 12
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c078ff6a4ff0d064da55bf1d5567552a, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 5
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 2ec4a6ad09cef6847b9a3efc1b10c5b6, type: 2}
+    basePricePerUnit: 7
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c70ccd88b88164b47809c18256e6668c, type: 2}
+    basePricePerUnit: 3
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 4b9fd2103c908864f8aaf28aa855e735, type: 2}
+    basePricePerUnit: 4
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7f39a81f41bf89b469cfb34301580aec, type: 2}
+    basePricePerUnit: 4
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 525e7b7318c10554fb874fab1fe20548, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 2138036358d6ca247a8f11be300e499e, type: 2}
+    basePricePerUnit: 22
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 65f9aa268dbf7bc4bb8405af0932120a, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 22
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

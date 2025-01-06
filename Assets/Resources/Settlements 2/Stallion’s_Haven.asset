@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: "Stallion\u2019s_Haven"
+  m_EditorClassIdentifier: 
+  name: "Stallion\u2019s Haven"
+  size: Villages
+  occupation: Animal Husbandry
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: e5951d9d59ba50c489886df549a3e8f8, type: 2}
+    basePricePerUnit: 140
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f420cdcd3dd4daf46a4fcc14f786e3a2, type: 2}
+    basePricePerUnit: 110
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 011385f5f6e493a4b8063ef1c037a6ed, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 4ba20f6d9f1dc3e44ae794ac86007297, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed224b61210b06f4cb70ca083ab9cefc, type: 2}
+    basePricePerUnit: 12
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 18
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 8
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 525e7b7318c10554fb874fab1fe20548, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c21b2c83f017b524695584d4e5788ac9, type: 2}
+    basePricePerUnit: 16
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 6db344eccda02ef4cb6e559f5a332cbd, type: 2}
+    basePricePerUnit: 13
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    basePricePerUnit: 13
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ebe0012f0a90b924b82ea8ff1ca8bb36, type: 2}
+    basePricePerUnit: 16
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

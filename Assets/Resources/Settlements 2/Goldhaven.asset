@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Goldhaven
+  m_EditorClassIdentifier: 
+  name: Goldhaven
+  size: Villages
+  occupation: Mining
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: 3c4e7e581f71865419f1c1ee887bffc9, type: 2}
+    basePricePerUnit: 120
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    basePricePerUnit: 60
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 263a94279659d9e41b5b1d39a81cf6ce, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b6612c5a1337c284db0915e3313128e2, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 6db344eccda02ef4cb6e559f5a332cbd, type: 2}
+    basePricePerUnit: 5
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b05bbe8a1c92ce54f8d87e3244db49f7, type: 2}
+    basePricePerUnit: 15
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    basePricePerUnit: 22
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed224b61210b06f4cb70ca083ab9cefc, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    basePricePerUnit: 18
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 32cc50b5c26be6c4e9938e53f805c9e6, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Arcanis
+  m_EditorClassIdentifier: 
+  name: Arcanis
+  size: City
+  occupation: Arcane Nexus
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: 970745d50c821614b8818552946982b6, type: 2}
+    basePricePerUnit: 890
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 43a13f6752787674f919404a3daf642f, type: 2}
+    basePricePerUnit: 6900
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 164dcab517693a5488a554c31a9efc47, type: 2}
+    basePricePerUnit: 11500
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b3145e335227def4fae52ea153439d35, type: 2}
+    basePricePerUnit: 7650
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7ef042a44c565aa47a6cff3202e11a9e, type: 2}
+    basePricePerUnit: 3050
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 6a4c79033a94067489407326056c74da, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 303abcf376ff8fa4c9c81eb0174ad00c, type: 2}
+    basePricePerUnit: 34
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 054a308b02eff374282be147bed9f53d, type: 2}
+    basePricePerUnit: 27
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: eba6579cf674a70498fd0c278b1fb47f, type: 2}
+    basePricePerUnit: 38
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b38102adec2749243bf67b689fbb6f8a, type: 2}
+    basePricePerUnit: 8
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 083f831f52fee134c8e7ef1ff3d2d853, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 356266c9ee5c18f46a4f6984b247723e, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a6aaeb05971b82d428081d712c4fd427, type: 2}
+    basePricePerUnit: 15
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 6db344eccda02ef4cb6e559f5a332cbd, type: 2}
+    basePricePerUnit: 24
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c21b2c83f017b524695584d4e5788ac9, type: 2}
+    basePricePerUnit: 31
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b05bbe8a1c92ce54f8d87e3244db49f7, type: 2}
+    basePricePerUnit: 33
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c3d4adba22c25ad4e95f42f09772adf7, type: 2}
+    basePricePerUnit: 49
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: acf7ac22fb08a3447be1bbcf02c83fcc, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ebe0012f0a90b924b82ea8ff1ca8bb36, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 32cc50b5c26be6c4e9938e53f805c9e6, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: bcbb6c359d6f0844bb7fb34cce73746e, type: 2}
+    basePricePerUnit: 12
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 669f10bc02cf9264681f06da326790a5, type: 2}
+    basePricePerUnit: 15
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b6116951e3303cc478f52682ac38b47c, type: 2}
+    basePricePerUnit: 11
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    basePricePerUnit: 13
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: bebbdf491468b70489c30254b403f1e7, type: 2}
+    basePricePerUnit: 14
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f2a4023db094061488bee9cf44498ebe, type: 2}
+    basePricePerUnit: 12
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 979f66eb7a0ed334690e1a89bdef80eb, type: 2}
+    basePricePerUnit: 11
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: cfebeb3a5927bd9479e0dc82026f207a, type: 2}
+    basePricePerUnit: 12
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 5dcb57b72a9ba914489cbf1d70a82db6, type: 2}
+    basePricePerUnit: 42
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c70ccd88b88164b47809c18256e6668c, type: 2}
+    basePricePerUnit: 9
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 2aed706e9bfbdf448bc3d993c8f6584f, type: 2}
+    basePricePerUnit: 8
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 4b9fd2103c908864f8aaf28aa855e735, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7f39a81f41bf89b469cfb34301580aec, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a83b94162c92e2c46bd71afc562b7045, type: 2}
+    basePricePerUnit: 16
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 2ec4a6ad09cef6847b9a3efc1b10c5b6, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: efe54b9ac885fc54cb7b7b5744909eb0, type: 2}
+    basePricePerUnit: 115
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 31be49fdfa3fe9e4f9f65bb8c7da1554, type: 2}
+    basePricePerUnit: 177
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 73c810d035e571346b76c2ace6d88962, type: 2}
+    basePricePerUnit: 24
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    basePricePerUnit: 22
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed224b61210b06f4cb70ca083ab9cefc, type: 2}
+    basePricePerUnit: 47
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 525e7b7318c10554fb874fab1fe20548, type: 2}
+    basePricePerUnit: 40
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 65f9aa268dbf7bc4bb8405af0932120a, type: 2}
+    basePricePerUnit: 29
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ea2fc74a98bec214386f1d5b10067a59, type: 2}
+    basePricePerUnit: 6700
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c089646285f921646be50698f49e6ccd, type: 2}
+    basePricePerUnit: 33
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 35349d8690d3a2e44bca7b9d1ff4f564, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c078ff6a4ff0d064da55bf1d5567552a, type: 2}
+    basePricePerUnit: 49
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 23
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 263a94279659d9e41b5b1d39a81cf6ce, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 3613b3d9eb662024e92773050ae3a6da, type: 2}
+    basePricePerUnit: 117
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 2138036358d6ca247a8f11be300e499e, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 55faf88a9646595468444479183aae77, type: 2}
+    basePricePerUnit: 39
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: e4780a1e54c3f5142b88c155aa9f7b87, type: 2}
+    basePricePerUnit: 6000
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    basePricePerUnit: 28
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: d4dce35b24e18254c81d2345089de390, type: 2}
+    basePricePerUnit: 49
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    basePricePerUnit: 131
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 3c4e7e581f71865419f1c1ee887bffc9, type: 2}
+    basePricePerUnit: 240
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 4e648d5708405424194ed01651a4fee0, type: 2}
+    basePricePerUnit: 300
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 634c4d566b374404c9286ad85369b3b3, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: cda795b0eb5989c44a680eb95e257290, type: 2}
+    basePricePerUnit: 1150
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b6612c5a1337c284db0915e3313128e2, type: 2}
+    basePricePerUnit: 38
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f9d8630ead85d704bbeb8044f1ee23db, type: 2}
+    basePricePerUnit: 372
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 07b06e6f6371c0f4fb06d4f5e73c4f3c, type: 2}
+    basePricePerUnit: 242
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    basePricePerUnit: 40
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c362b58db132a68498282e76c703c68e, type: 2}
+    basePricePerUnit: 58
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: efaadd383bcd6dc4094cb710645d7557, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
+    basePricePerUnit: 35
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

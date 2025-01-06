@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Valescar_Bastion
+  m_EditorClassIdentifier: 
+  name: Valescar Bastion
+  size: Town
+  occupation: Military
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: cda795b0eb5989c44a680eb95e257290, type: 2}
+    basePricePerUnit: 875
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f9d8630ead85d704bbeb8044f1ee23db, type: 2}
+    basePricePerUnit: 280
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 07b06e6f6371c0f4fb06d4f5e73c4f3c, type: 2}
+    basePricePerUnit: 200
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: e5951d9d59ba50c489886df549a3e8f8, type: 2}
+    basePricePerUnit: 232
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: d4dce35b24e18254c81d2345089de390, type: 2}
+    basePricePerUnit: 45
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    basePricePerUnit: 129
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 3c4e7e581f71865419f1c1ee887bffc9, type: 2}
+    basePricePerUnit: 230
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 4e648d5708405424194ed01651a4fee0, type: 2}
+    basePricePerUnit: 275
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 263a94279659d9e41b5b1d39a81cf6ce, type: 2}
+    basePricePerUnit: 24
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 2138036358d6ca247a8f11be300e499e, type: 2}
+    basePricePerUnit: 28
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 55faf88a9646595468444479183aae77, type: 2}
+    basePricePerUnit: 37
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 21
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c089646285f921646be50698f49e6ccd, type: 2}
+    basePricePerUnit: 32
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 35349d8690d3a2e44bca7b9d1ff4f564, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c078ff6a4ff0d064da55bf1d5567552a, type: 2}
+    basePricePerUnit: 49
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 29
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed224b61210b06f4cb70ca083ab9cefc, type: 2}
+    basePricePerUnit: 44
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 525e7b7318c10554fb874fab1fe20548, type: 2}
+    basePricePerUnit: 39
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    basePricePerUnit: 40
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c362b58db132a68498282e76c703c68e, type: 2}
+    basePricePerUnit: 55
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: efaadd383bcd6dc4094cb710645d7557, type: 2}
+    basePricePerUnit: 13
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
+    basePricePerUnit: 27
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

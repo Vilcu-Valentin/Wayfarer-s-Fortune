@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Rivermouth
+  m_EditorClassIdentifier: 
+  name: Rivermouth
+  size: Villages
+  occupation: Agriculture
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: b05bbe8a1c92ce54f8d87e3244db49f7, type: 2}
+    basePricePerUnit: 14
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: efaadd383bcd6dc4094cb710645d7557, type: 2}
+    basePricePerUnit: 8
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 6db344eccda02ef4cb6e559f5a332cbd, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 6
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    basePricePerUnit: 4
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f2a4023db094061488bee9cf44498ebe, type: 2}
+    basePricePerUnit: 5
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 16
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b6612c5a1337c284db0915e3313128e2, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    basePricePerUnit: 35
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c21b2c83f017b524695584d4e5788ac9, type: 2}
+    basePricePerUnit: 24
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    basePricePerUnit: 20
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

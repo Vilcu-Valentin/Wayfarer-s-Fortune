@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Redvale
+  m_EditorClassIdentifier: 
+  name: Redvale
+  size: Villages
+  occupation: Agriculture
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    basePricePerUnit: 4
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b6116951e3303cc478f52682ac38b47c, type: 2}
+    basePricePerUnit: 3
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: bebbdf491468b70489c30254b403f1e7, type: 2}
+    basePricePerUnit: 3
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f2a4023db094061488bee9cf44498ebe, type: 2}
+    basePricePerUnit: 5
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 32cc50b5c26be6c4e9938e53f805c9e6, type: 2}
+    basePricePerUnit: 8
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ebe0012f0a90b924b82ea8ff1ca8bb36, type: 2}
+    basePricePerUnit: 7
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c70ccd88b88164b47809c18256e6668c, type: 2}
+    basePricePerUnit: 3
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
+    basePricePerUnit: 15
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 6
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: bcbb6c359d6f0844bb7fb34cce73746e, type: 2}
+    basePricePerUnit: 8
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    basePricePerUnit: 16
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 25
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 5e89b16b1d755e24d8379549405a870e, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  localEvents: []
+  globalEvents: []
+  seasonalEvents: []

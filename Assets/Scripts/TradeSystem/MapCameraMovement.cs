@@ -27,52 +27,23 @@ public class MapCameraMovement : MonoBehaviour
     public float minZZoomOut = -100f;
     public float maxZZoomOut = 100f;
 
-    [Header("DOF Settings")]
-    [Tooltip("X value is the start offset from the focus distance, Y value is the end offset from the focus distance")]
-    public Vector2 nearRange;
-    [Tooltip("X value is the start offset from the focus distance, Y value is the end offset from the focus distance")]
-    public Vector2 farRange;
-
     private float currentZoom;
-
-    [Header("Volume")]
-    public VolumeProfile profile;
-    private DepthOfField dof;
-    private Transform mainCamera;
 
 
     void Start()
     {
         currentZoom = Mathf.Clamp(transform.position.y, minZoom, maxZoom);
-        mainCamera = Camera.main.transform;
-        profile.TryGet<DepthOfField>(out dof);
     }
 
     void Update()
     {
         HandleMovement();
         HandleZoom();
-        HandleFocus();
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
             moveSpeed = 20f;
         if (Input.GetKeyUp(KeyCode.LeftShift))
             moveSpeed = 10f;
-    }
-
-    void HandleFocus()
-    {
-        if (dof == null) return;
-
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
-        {
-            float dist = Vector3.Distance(mainCamera.position, hit.point);
-            dof.nearFocusStart.value = dist - nearRange.x;
-            dof.nearFocusEnd.value = dist - nearRange.y;
-            dof.farFocusStart.value = dist + farRange.x;
-            dof.farFocusEnd.value = dist + farRange.y;
-        }
     }
 
     void HandleMovement()
