@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
   m_Name: Greenmeadow_Pastures
   m_EditorClassIdentifier: 
-  name: Greenmeadow Pastures
+  name: Greenmeadow
   size: Town
   occupation: Agriculture & Animal Husbandry
   goodsPool:

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c719d6a66a4fc54ba5e6e4084f7a291, type: 3}
   m_Name: Dragon's_blood_(bottles_in_crates)
   m_EditorClassIdentifier: 
-  item_name: Dragon's blood (bottles in crates)
+  item_name: Dragon's Blood
   size: {x: 2, y: 1}
   weight: 15
   store_type: 0

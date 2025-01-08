@@ -57,36 +57,62 @@ public class MapMaster : MonoBehaviour
     /// </returns>
     public int GetDistanceBetween(SettlementData source, SettlementData destination)
     {
+        if (source == null || destination == null)
+        {
+            Debug.LogError("Source or destination is null.");
+            return -1;
+        }
+
+        if (!graphAdjList.ContainsKey(source) || !graphAdjList.ContainsKey(destination))
+        {
+            Debug.LogWarning("Source or destination settlement not found in the graph.");
+            return -1;
+        }
+
         if (source.Equals(destination))
             return 0;
 
-        List<SettlementData> currLvl = new List<SettlementData>();
-        List<SettlementData> nextLvl = new List<SettlementData>();
-        nextLvl.Add(source);
+        Queue<SettlementData> queue = new Queue<SettlementData>();
         HashSet<SettlementData> discovered = new HashSet<SettlementData>();
+
+        queue.Enqueue(source);
         discovered.Add(source);
         int distance = 0;
-        while (nextLvl.Count > 0)
+
+        while (queue.Count > 0)
         {
-            currLvl = nextLvl;
-            nextLvl.Clear();
+            int levelSize = queue.Count;
             distance++;
-            foreach (SettlementData settlement in currLvl)
+            Debug.Log($"Distance level {distance}: Processing {levelSize} settlements.");
+
+            for (int i = 0; i < levelSize; i++)
             {
-                foreach (SettlementData neighbour in graphAdjList[settlement])
+                SettlementData current = queue.Dequeue();
+                Debug.Log($"Processing settlement: {current.name}");
+
+                foreach (SettlementData neighbor in graphAdjList[current])
                 {
-                    if (neighbour.Equals(destination))
-                        return distance;
-                    else if (!discovered.Contains(neighbour))
+                    Debug.Log($" - Neighbor: {neighbor.name}");
+                    if (neighbor.Equals(destination))
                     {
-                        discovered.Add(neighbour);
-                        nextLvl.Add(neighbour);
+                        Debug.Log($"Destination '{destination.name}' found at distance {distance}.");
+                        return distance;
+                    }
+
+                    if (!discovered.Contains(neighbor))
+                    {
+                        discovered.Add(neighbor);
+                        queue.Enqueue(neighbor);
+                        Debug.Log($"   Enqueued neighbor: {neighbor.name}");
                     }
                 }
             }
         }
-        return -1; // a.k.a. not found
+
+        Debug.Log($"No path found from '{source.name}' to '{destination.name}'.");
+        return -1; // No path found.
     }
+
 
     /// <summary>
     /// Shorthand for GetDistanceBetween(playerLocation, settlement)

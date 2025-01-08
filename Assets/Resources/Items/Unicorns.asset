@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c719d6a66a4fc54ba5e6e4084f7a291, type: 3}
   m_Name: Unicorns
   m_EditorClassIdentifier: 
-  item_name: Unicorns
+  item_name: Unicorn
   size: {x: 0, y: 0}
   weight: 800
   store_type: 2

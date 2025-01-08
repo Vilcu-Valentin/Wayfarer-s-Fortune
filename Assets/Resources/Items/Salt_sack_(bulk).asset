@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c719d6a66a4fc54ba5e6e4084f7a291, type: 3}
   m_Name: Salt_sack_(bulk)
   m_EditorClassIdentifier: 
-  item_name: Salt sack (bulk)
+  item_name: Salt
   size: {x: 2, y: 3}
   weight: 67
   store_type: 0

@@ -50,6 +50,12 @@ public class TradeCameraFocus : MonoBehaviour
 
     public void FocusOnObject(Transform focus)
     {
+        StartCoroutine(lateObjectFocus(focus));
+    }
+
+    IEnumerator lateObjectFocus(Transform focus)
+    {
+        yield return new WaitForSeconds(1);
         autoFocus = false;
         float dist = Vector3.Distance(mainCamera.transform.position, focus.position);
         dof.nearFocusStart.value = dist - nearRange.x;
@@ -61,5 +67,6 @@ public class TradeCameraFocus : MonoBehaviour
     public void AutoFocus()
     {
         autoFocus = true;
+        StopAllCoroutines();
     }
 }

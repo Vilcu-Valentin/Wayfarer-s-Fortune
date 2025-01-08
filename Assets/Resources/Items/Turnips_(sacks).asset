@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c719d6a66a4fc54ba5e6e4084f7a291, type: 3}
   m_Name: Turnips_(sacks)
   m_EditorClassIdentifier: 
-  item_name: Turnips (sacks)
+  item_name: Turnips
   size: {x: 1, y: 2}
   weight: 3
   store_type: 0

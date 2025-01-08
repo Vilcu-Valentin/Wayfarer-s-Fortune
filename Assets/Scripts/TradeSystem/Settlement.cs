@@ -292,6 +292,7 @@ public class Settlement : MonoBehaviour
     {
         List<OutputPriceData> outPrices = new List<OutputPriceData>();
         int playerDistance = mapMaster.GetPlayerDistanceTo(data);
+        Debug.Log("The player is here: " + mapMaster.playerLocation + "Wants to go here: " + data + " with distance: " + playerDistance);
         foreach( ItemData item in pricesData.Keys )
         {
             if (permanentPerfectPriceInfoFlag || perfectPriceInfoFlag)
@@ -315,7 +316,7 @@ public class Settlement : MonoBehaviour
     {
         float scale_factor = Mathf.Pow((float)playerDistance, 2.5f) / (PlayerMaster.Instance().currentLvl*0.6f);
         float range_size = scale_factor * Mathf.Sqrt(truePrice);
-        if (range_size > 40) 
+        if (scale_factor > 40) 
             return (-1, -1);
         
         float half_range = range_size / 2;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c719d6a66a4fc54ba5e6e4084f7a291, type: 3}
   m_Name: Marble_Blocks
   m_EditorClassIdentifier: 
-  item_name: Marble Blocks
+  item_name: Marble Block
   size: {x: 5, y: 5}
   weight: 534
   store_type: 0
