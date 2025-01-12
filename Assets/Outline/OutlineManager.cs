@@ -59,28 +59,10 @@ public class OutlineManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Called when the mouse enters the collider attached to this GameObject.
-    /// Enables outlines on all child GameObjects.
-    /// </summary>
-    private void OnMouseEnter()
-    {
-        EnableOutlines(true);
-    }
-
-    /// <summary>
-    /// Called when the mouse exits the collider attached to this GameObject.
-    /// Disables outlines on all child GameObjects.
-    /// </summary>
-    private void OnMouseExit()
-    {
-        EnableOutlines(false);
-    }
-
-    /// <summary>
     /// Enables or disables outlines on all child GameObjects.
     /// </summary>
     /// <param name="enable">True to enable outlines, false to disable.</param>
-    private void EnableOutlines(bool enable)
+    public void EnableOutlines(bool enable)
     {
         foreach (var outline in outlineComponents)
         {

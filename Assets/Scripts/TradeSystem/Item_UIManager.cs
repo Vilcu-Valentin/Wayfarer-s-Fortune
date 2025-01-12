@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using TMPro.EditorUtilities;
 
 public class Item_UIManager : MonoBehaviour
 {
@@ -14,19 +15,51 @@ public class Item_UIManager : MonoBehaviour
     public Sprite down2Momentum;
 
     [Header("UI Elements")]
+    public Image mainPanel;
     public Image Momentum;
+    public Color[] colors;
     public TextMeshProUGUI itemName;
     public Image itemSprite;
     public TextMeshProUGUI priceRange;
+    public TextMeshProUGUI typeName;
+
+    private void Start()
+    {
+        colors[0] = mainPanel.color;
+    }
 
     // Update is called once per frame
     public void UpdateUI(OutputPriceData priceData)
     {
-        //For now we don't calculate momentum;
         Momentum.sprite = noMomentum;
+        mainPanel.color = colors[0];
+        if(priceData.minPrice != -1)
+        {
+            if (priceData.realPrice >= priceData.basePrice * 1.2)
+            {
+                Momentum.sprite = upMomentum;
+                mainPanel.color = colors[1];
+            }
+            if (priceData.realPrice >= priceData.basePrice * 2)
+            {
+                Momentum.sprite = up2Momentum;
+                mainPanel.color = colors[2];
+            }
+            if (priceData.realPrice < priceData.basePrice * 0.8)
+            {
+                Momentum.sprite = downMomentum;
+                mainPanel.color = colors[3];
+            }
+            if (priceData.realPrice < priceData.basePrice / 2)
+            {
+                Momentum.sprite = down2Momentum;
+                mainPanel.color = colors[4];
+            }
+        }
 
         itemName.text = priceData.itemData.item_name;
         itemSprite.sprite = priceData.itemData.icon;
+        typeName.text = priceData.itemData.store_type.ToString();
 
         if(priceData.minPrice == priceData.maxPrice)
             priceRange.text = FormatNumber(priceData.minPrice);

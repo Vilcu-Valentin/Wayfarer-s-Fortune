@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Featherwick
   size: Villages
-  occupation: Animal Husbandry
+  occupation: Ranching
   goodsPool:
   - itemData: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
     basePricePerUnit: 5

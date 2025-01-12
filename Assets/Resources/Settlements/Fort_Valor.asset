@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fort Valor
   size: City
-  occupation: Military Supply Center
+  occupation: Military
   goodsPool:
   - itemData: {fileID: 11400000, guid: b3145e335227def4fae52ea153439d35, type: 2}
     basePricePerUnit: 8250
@@ -204,6 +204,9 @@ MonoBehaviour:
     volatility: 0.05
   - itemData: {fileID: 11400000, guid: 634c4d566b374404c9286ad85369b3b3, type: 2}
     basePricePerUnit: 16
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 6d5e4d34cd0d8f14eb64d69ae50d7a3e, type: 2}
+    basePricePerUnit: 130000
     volatility: 0.05
   localEvents: []
   globalEvents: []

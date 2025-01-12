@@ -1,6 +1,6 @@
 public enum StorageType
 {
-    Goods,
+    Good,
     Fluid,
     Livestock
 };

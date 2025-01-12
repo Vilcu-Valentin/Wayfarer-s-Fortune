@@ -6,55 +6,93 @@ public class MapMaster : MonoBehaviour
 {
     public MapData data;
 
-    // This would ideally only have the getter public, but it will still need to be initialized somehow when loading a save,
-    // and it would seem constructors are a no-go.
-    public SettlementData playerLocation;
 
-    private Dictionary<SettlementData, Settlement> settlementObjDict = null;
-    private Dictionary<SettlementData, List<SettlementData>> graphAdjList = null;
+
+    // The roads that the player can see on the map 
+    [SerializeField] private List<GameObject> roadGraphics;
+    [Header("Player Location")]
+    // Ideally, only the getter should be public. It will need to be initialized when loading a save.
+    public SettlementData playerLocation;
+    [SerializeField] private GameObject playerMarker;
+    [SerializeField] private Vector3 playerMarkerOffset;
+    [Tooltip("This is used for position data, nothing else")]
+    [SerializeField] private List<GameObject> settlements;
+
+    // Color to use for highlighting roads
+    [SerializeField] private Color highlightColor = Color.yellow;
+
+    // Stores the original colors of the roads
+    private List<Color> originalRoadColors;
+
+    // Adjacency list now stores pairs of SettlementData and the distance to the neighbor
+    private Dictionary<SettlementData, List<(SettlementData neighbor, int distance)>> graphAdjList = null;
 
     private InputMaster inputMaster = null;
 
     void Awake()
     {
+        // Validate that roadGraphics matches data.roads count
+        if (roadGraphics.Count != data.roads.Count)
+        {
+            Debug.LogError("The number of roadGraphics does not match the number of roads in MapData.");
+            return;
+        }
+
         // Initialize the graph and link to existing settlements in the scene
-        settlementObjDict = new Dictionary<SettlementData, Settlement>();
-        graphAdjList = new Dictionary<SettlementData, List<SettlementData>>();
+        graphAdjList = new Dictionary<SettlementData, List<(SettlementData, int)>>();
 
         // Fetch all Settlement components already placed in the scene
         Settlement[] settlementsInScene = FindObjectsOfType<Settlement>();
         foreach (Settlement settlement in settlementsInScene)
         {
-            if (!settlementObjDict.ContainsKey(settlement.data))
+            if (!graphAdjList.ContainsKey(settlement.data))
             {
-                settlementObjDict.Add(settlement.data, settlement);
-                graphAdjList.Add(settlement.data, new List<SettlementData>());
+                graphAdjList.Add(settlement.data, new List<(SettlementData, int)>());
             }
         }
 
-        // Set up the adjacency list for roads
-        foreach (SerializablePair<SettlementData, SettlementData> road in data.roads)
+        // Set up the adjacency list for roads with distances
+        foreach (Roads road in data.roads)
         {
-            if (graphAdjList.ContainsKey(road.value1) && graphAdjList.ContainsKey(road.value2))
+            if (graphAdjList.ContainsKey(road.road1) && graphAdjList.ContainsKey(road.road2))
             {
-                graphAdjList[road.value1].Add(road.value2);
-                graphAdjList[road.value2].Add(road.value1);
+                graphAdjList[road.road1].Add((road.road2, road.distance));
+                graphAdjList[road.road2].Add((road.road1, road.distance));
             }
             else
             {
-                Debug.LogWarning($"One or both settlements for the road between {road.value1.name} and {road.value2.name} are missing.");
+                Debug.LogWarning($"One or both settlements for the road between {road.road1.name} and {road.road2.name} are missing.");
             }
         }
 
-        // Init input actions for testing
-        inputMaster = new InputMaster();
-        inputMaster.SettlementChange.Enable();
-        inputMaster.SettlementChange.MoveToFirstNeighbour.performed += _ => MoveToFirstNeighbour();
+        // Initialize and store the original colors of the roads
+        originalRoadColors = new List<Color>();
+        for (int i = 0; i < roadGraphics.Count; i++)
+        {
+            Renderer renderer = roadGraphics[i].GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                // Ensure each road has its own material instance to avoid shared material issues
+                renderer.material = new Material(renderer.material);
+                originalRoadColors.Add(renderer.material.color);
+            }
+            else
+            {
+                Debug.LogWarning($"Road graphic at index {i} does not have a Renderer component.");
+                originalRoadColors.Add(Color.white); // Default color if no renderer is found
+            }
+        }
+
+        MovePlayerMarker();
     }
 
-    /// <returns>
-    /// Returns the minimum distance measured in roads between source and destination or -1 if a path doesn't exist.
-    /// </returns>
+    /// <summary>
+    /// Returns the minimum total distance in hours between source and destination using road distances.
+    /// Returns -1 if a path doesn't exist.
+    /// </summary>
+    /// <param name="source">Starting settlement.</param>
+    /// <param name="destination">Destination settlement.</param>
+    /// <returns>Total distance in hours or -1 if no path exists.</returns>
     public int GetDistanceBetween(SettlementData source, SettlementData destination)
     {
         if (source == null || destination == null)
@@ -72,39 +110,45 @@ public class MapMaster : MonoBehaviour
         if (source.Equals(destination))
             return 0;
 
-        Queue<SettlementData> queue = new Queue<SettlementData>();
-        HashSet<SettlementData> discovered = new HashSet<SettlementData>();
+        // Dijkstra's algorithm implementation using custom PriorityQueue
+        Dictionary<SettlementData, int> distances = new Dictionary<SettlementData, int>();
+        HashSet<SettlementData> visited = new HashSet<SettlementData>();
+        PriorityQueue<SettlementData, int> priorityQueue = new PriorityQueue<SettlementData, int>();
 
-        queue.Enqueue(source);
-        discovered.Add(source);
-        int distance = 0;
-
-        while (queue.Count > 0)
+        // Initialize distances
+        foreach (var settlement in graphAdjList.Keys)
         {
-            int levelSize = queue.Count;
-            distance++;
-            Debug.Log($"Distance level {distance}: Processing {levelSize} settlements.");
+            distances[settlement] = int.MaxValue;
+        }
+        distances[source] = 0;
+        priorityQueue.Enqueue(source, 0);
 
-            for (int i = 0; i < levelSize; i++)
+        while (priorityQueue.Count > 0)
+        {
+            SettlementData current = priorityQueue.Dequeue();
+
+            if (visited.Contains(current))
+                continue;
+
+            visited.Add(current);
+
+            if (current.Equals(destination))
             {
-                SettlementData current = queue.Dequeue();
-                Debug.Log($"Processing settlement: {current.name}");
+                Debug.Log($"Shortest distance from '{source.name}' to '{destination.name}' is {distances[current]} hours.");
+                return distances[current];
+            }
 
-                foreach (SettlementData neighbor in graphAdjList[current])
+            foreach (var (neighbor, distance) in graphAdjList[current])
+            {
+                if (visited.Contains(neighbor))
+                    continue;
+
+                int newDistance = distances[current] + distance;
+                if (newDistance < distances[neighbor])
                 {
-                    Debug.Log($" - Neighbor: {neighbor.name}");
-                    if (neighbor.Equals(destination))
-                    {
-                        Debug.Log($"Destination '{destination.name}' found at distance {distance}.");
-                        return distance;
-                    }
-
-                    if (!discovered.Contains(neighbor))
-                    {
-                        discovered.Add(neighbor);
-                        queue.Enqueue(neighbor);
-                        Debug.Log($"   Enqueued neighbor: {neighbor.name}");
-                    }
+                    distances[neighbor] = newDistance;
+                    priorityQueue.Enqueue(neighbor, newDistance);
+                    Debug.Log($"Updated distance to '{neighbor.name}' as {newDistance} hours.");
                 }
             }
         }
@@ -113,36 +157,229 @@ public class MapMaster : MonoBehaviour
         return -1; // No path found.
     }
 
+    /// <summary>
+    /// Retrieves the shortest path between source and destination as a list of settlements.
+    /// Returns null if no path exists.
+    /// </summary>
+    /// <param name="source">Starting settlement.</param>
+    /// <param name="destination">Destination settlement.</param>
+    /// <returns>List of settlements representing the path or null.</returns>
+    public List<SettlementData> GetPathBetween(SettlementData source, SettlementData destination)
+    {
+        if (source == null || destination == null)
+        {
+            Debug.LogError("Source or destination is null.");
+            return null;
+        }
+
+        if (!graphAdjList.ContainsKey(source) || !graphAdjList.ContainsKey(destination))
+        {
+            Debug.LogWarning("Source or destination settlement not found in the graph.");
+            return null;
+        }
+
+        if (source.Equals(destination))
+        {
+            return new List<SettlementData> { source };
+        }
+
+        // Dijkstra's algorithm with predecessor tracking
+        Dictionary<SettlementData, int> distances = new Dictionary<SettlementData, int>();
+        Dictionary<SettlementData, SettlementData> predecessors = new Dictionary<SettlementData, SettlementData>();
+        HashSet<SettlementData> visited = new HashSet<SettlementData>();
+        PriorityQueue<SettlementData, int> priorityQueue = new PriorityQueue<SettlementData, int>();
+
+        foreach (var settlement in graphAdjList.Keys)
+        {
+            distances[settlement] = int.MaxValue;
+        }
+        distances[source] = 0;
+        priorityQueue.Enqueue(source, 0);
+
+        while (priorityQueue.Count > 0)
+        {
+            SettlementData current = priorityQueue.Dequeue();
+
+            if (visited.Contains(current))
+                continue;
+
+            visited.Add(current);
+
+            if (current.Equals(destination))
+            {
+                // Reconstruct path
+                List<SettlementData> path = new List<SettlementData>();
+                SettlementData step = destination;
+
+                while (step != null)
+                {
+                    path.Add(step);
+                    if (predecessors.ContainsKey(step))
+                        step = predecessors[step];
+                    else
+                        step = null;
+                }
+
+                path.Reverse();
+                return path;
+            }
+
+            foreach (var (neighbor, distance) in graphAdjList[current])
+            {
+                if (visited.Contains(neighbor))
+                    continue;
+
+                int newDistance = distances[current] + distance;
+                if (newDistance < distances[neighbor])
+                {
+                    distances[neighbor] = newDistance;
+                    predecessors[neighbor] = current;
+                    priorityQueue.Enqueue(neighbor, newDistance);
+                }
+            }
+        }
+
+        // No path found
+        return null;
+    }
 
     /// <summary>
     /// Shorthand for GetDistanceBetween(playerLocation, settlement)
     /// </summary>
-    /// <returns>
-    /// Returns the minimum distance measured in roads between player location and given settlement or -1 if a path doesn't exist.
-    /// </returns>
-    public int GetPlayerDistanceTo(SettlementData settlement) { return GetDistanceBetween(playerLocation, settlement); }
+    /// <param name="settlement">Destination settlement.</param>
+    /// <returns>Total distance in hours or -1 if no path exists.</returns>
+    public int GetPlayerDistanceTo(SettlementData settlement)
+    {
+        return GetDistanceBetween(playerLocation, settlement);
+    }
 
     /// <summary>
-    /// Moves the player to a settlement adjacent to its current location.
+    /// Moves the player to a settlement.
     /// </summary>
-    /// <param name="destination"></param>
+    /// <param name="destination">Destination settlement.</param>
     /// <returns>True for success and false for failure.</returns>
     public bool MovePlayer(SettlementData destination)
     {
-        if (!graphAdjList[playerLocation].Contains(destination))
-            return false;
         playerLocation = destination;
+        Debug.Log($"Player moved to '{destination.name}'.");
+        ResetRoadColors();
+        MovePlayerMarker();
         return true;
     }
 
     /// <summary>
-    /// Testing only.
+    /// Moves the player marker to a specified city
     /// </summary>
-    public void MoveToFirstNeighbour()
+    /// <param name="location">The city in which the player is located</param>
+    private void MovePlayerMarker()
     {
-        if (graphAdjList[playerLocation].Count >= 1)
-            playerLocation = graphAdjList[playerLocation][0];
-        else
-            Debug.Log("Neighbour not found");
+        foreach(var settlement in settlements)
+        {
+            if (settlement.GetComponent<Settlement>().data == playerLocation)
+            {
+                playerMarker.transform.position = settlement.transform.position + playerMarkerOffset;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Highlights the path the player will take from its location to the destination.
+    /// If the destination is the same as the player location, it will not highlight any road.
+    /// </summary>
+    /// <param name="destination">The destination settlement.</param>
+    /// <returns>True if roads were highlighted successfully; false otherwise.</returns>
+    public bool HighlighRoads(SettlementData destination)
+    {
+        // Reset all roads to their original colors
+        ResetRoadColors();
+
+        // Get the path from playerLocation to destination
+        List<SettlementData> path = GetPathBetween(playerLocation, destination);
+
+        if (path == null)
+        {
+            Debug.LogWarning("No path found. No roads to highlight.");
+            return false;
+        }
+
+        if (path.Count < 2)
+        {
+            Debug.Log("Destination is the same as the player location. No roads to highlight.");
+            return false;
+        }
+
+        // Iterate through the path and highlight the corresponding roads
+        for (int i = 0; i < path.Count - 1; i++)
+        {
+            SettlementData current = path[i];
+            SettlementData next = path[i + 1];
+
+            // Find the road that connects current and next settlements
+            int roadIndex = FindRoadIndex(current, next);
+            if (roadIndex != -1)
+            {
+                HighlightRoad(roadIndex);
+            }
+            else
+            {
+                Debug.LogWarning($"Road between '{current.name}' and '{next.name}' not found in data.roads.");
+            }
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Resets all road graphics to their original colors.
+    /// </summary>
+    private void ResetRoadColors()
+    {
+        for (int i = 0; i < roadGraphics.Count; i++)
+        {
+            Renderer renderer = roadGraphics[i].GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material.color = originalRoadColors[i];
+            }
+        }
+    }
+
+    /// <summary>
+    /// Finds the index of the road connecting two settlements.
+    /// </summary>
+    /// <param name="settlement1">First settlement.</param>
+    /// <param name="settlement2">Second settlement.</param>
+    /// <returns>Index of the road in data.roads list or -1 if not found.</returns>
+    private int FindRoadIndex(SettlementData settlement1, SettlementData settlement2)
+    {
+        for (int i = 0; i < data.roads.Count; i++)
+        {
+            Roads road = data.roads[i];
+            if ((road.road1 == settlement1 && road.road2 == settlement2) ||
+                (road.road1 == settlement2 && road.road2 == settlement1))
+            {
+                return i;
+            }
+        }
+        return -1; // Road not found
+    }
+
+    /// <summary>
+    /// Highlights a specific road by its index in roadGraphics.
+    /// </summary>
+    /// <param name="roadIndex">Index of the road to highlight.</param>
+    private void HighlightRoad(int roadIndex)
+    {
+        if (roadIndex < 0 || roadIndex >= roadGraphics.Count)
+        {
+            Debug.LogWarning($"Road index {roadIndex} is out of bounds.");
+            return;
+        }
+
+        Renderer renderer = roadGraphics[roadIndex].GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = highlightColor;
+        }
     }
 }

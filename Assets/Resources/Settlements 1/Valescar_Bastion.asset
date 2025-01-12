@@ -91,6 +91,9 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
     basePricePerUnit: 27
     volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 913f686433896434e9f19bb27980f540, type: 2}
+    basePricePerUnit: 60000
+    volatility: 0.05
   localEvents: []
   globalEvents: []
   seasonalEvents: []

@@ -48,12 +48,16 @@ public struct OutputPriceData
     public ItemData itemData;
     public float minPrice;
     public float maxPrice;
+    public float realPrice;
+    public float basePrice;
 
-    public OutputPriceData(ItemData itemData, float minPrice, float maxPrice)
+    public OutputPriceData(ItemData itemData, float minPrice, float maxPrice, float realPrice, float basePrice)
     {
         this.itemData = itemData;
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
+        this.realPrice = realPrice;
+        this.basePrice = basePrice;
     }
 }
 
@@ -296,11 +300,11 @@ public class Settlement : MonoBehaviour
         foreach( ItemData item in pricesData.Keys )
         {
             if (permanentPerfectPriceInfoFlag || perfectPriceInfoFlag)
-                outPrices.Add(new OutputPriceData(item, pricesData[item].value.pricePerUnit, pricesData[item].value.pricePerUnit));
+                outPrices.Add(new OutputPriceData(item, pricesData[item].value.pricePerUnit, pricesData[item].value.pricePerUnit, pricesData[item].value.pricePerUnit, pricesData[item].value.basePricePerUnit));
             else
             {
                 (float, float) bounds = getPriceRange(pricesData[item].value.pricePerUnit, playerDistance);
-                outPrices.Add(new OutputPriceData(item, bounds.Item1, bounds.Item2));
+                outPrices.Add(new OutputPriceData(item, bounds.Item1, bounds.Item2, pricesData[item].value.pricePerUnit, pricesData[item].value.basePricePerUnit));
             }
         }
         return outPrices;
@@ -314,7 +318,7 @@ public class Settlement : MonoBehaviour
     /// <returns></returns>
     private (float, float) getPriceRange(float truePrice, int playerDistance)
     {
-        float scale_factor = Mathf.Pow((float)playerDistance, 2.5f) / (PlayerMaster.Instance().currentLvl*0.6f);
+        float scale_factor = Mathf.Pow((float)playerDistance / 4, 2f) / (PlayerMaster.Instance().currentLvl*0.55f);
         float range_size = scale_factor * Mathf.Sqrt(truePrice);
         if (scale_factor > 40) 
             return (-1, -1);
@@ -322,7 +326,7 @@ public class Settlement : MonoBehaviour
         float half_range = range_size / 2;
         float random_offset = Random.Range(-half_range, half_range);
         
-        float lower_bound = Mathf.Max(0, truePrice-half_range+random_offset);
+        float lower_bound = Mathf.Max(0.01f, truePrice-half_range+random_offset);
         float upper_bound = truePrice + half_range + random_offset;
         return (lower_bound, upper_bound);
     }

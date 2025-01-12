@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Greenmeadow
   size: Town
-  occupation: Agriculture & Animal Husbandry
+  occupation: Agriculture & Ranching
   goodsPool:
   - itemData: {fileID: 11400000, guid: b38102adec2749243bf67b689fbb6f8a, type: 2}
     basePricePerUnit: 7

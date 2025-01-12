@@ -41,10 +41,10 @@ public class TradeCameraFocus : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
         {
             float dist = Vector3.Distance(mainCamera.position, hit.point);
-            dof.nearFocusStart.value = dist - nearRange.x;
-            dof.nearFocusEnd.value = dist - nearRange.y;
-            dof.farFocusStart.value = dist + farRange.x;
-            dof.farFocusEnd.value = dist + farRange.y;
+            dof.nearFocusStart.value = dist - nearRange.x * dist / 40;
+            dof.nearFocusEnd.value = dist - nearRange.y * dist / 40;
+            dof.farFocusStart.value = dist + farRange.x * dist / 40;
+            dof.farFocusEnd.value = dist + farRange.y * dist / 40;
         }
     }
 

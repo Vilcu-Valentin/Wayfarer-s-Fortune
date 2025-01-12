@@ -72,12 +72,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 9122091044685722220}
   m_SourcePrefab: {fileID: 100100000, guid: 9e3cd013234df11418d67fa7f88932b7, type: 3}
---- !u!23 &5259844504553044716 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9e3cd013234df11418d67fa7f88932b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 6863253922418402920}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6052350565168651065 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9e3cd013234df11418d67fa7f88932b7,
@@ -98,8 +92,19 @@ LODGroup:
   m_AnimateCrossFading: 1
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0
+  - screenRelativeHeight: 0.78
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 5259844504553044716}
+    - renderer: {fileID: -7511558181221131132, guid: 5d37f67884f396140b9ec9a5f8bb7600,
+        type: 3}
+  - screenRelativeHeight: 0.55
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -7511558181221131132, guid: 52aecb087c8d4654eaa9fa5eef5b7dee,
+        type: 3}
+  - screenRelativeHeight: 0.02
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: -7511558181221131132, guid: a332e06399ca0af4ebfa592c4e0e3db8,
+        type: 3}
   m_Enabled: 1

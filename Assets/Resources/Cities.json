@@ -71,7 +71,8 @@
             "Wine barrels": 40,
             "Ale barrels": 58,
             "Oil barrels (lamp oil)": 20,
-            "Honey barrels": 35
+            "Honey barrels": 35,
+            "Unicorns": 85400
         }
     },
     
@@ -287,7 +288,7 @@
     
     {
         "Name": "Fort Valor",
-        "Occupation": "Military Supply Center",
+        "Occupation": "Military",
         "Goods": {
             "Tears of the Fae (bottles in crates)": 8250,
             "Flour sacks": 27,
@@ -352,7 +353,8 @@
             "Wool (bundles or bales)": 55,
             "Eggs (chicken, crates)": 28,
             "Goose Feathers (crates)": 35,
-            "Runestone bricks": 16
+            "Runestone bricks": 16,
+            "Dragons" : 130000
         }
     }
 ]

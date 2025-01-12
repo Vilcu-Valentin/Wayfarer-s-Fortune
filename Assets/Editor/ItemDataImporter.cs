@@ -97,7 +97,7 @@ public class ItemDataImporter : EditorWindow
             }
 
 
-            if (category == "Goods") itemData.store_type = StorageType.Goods;
+            if (category == "Good") itemData.store_type = StorageType.Good;
             else if (category == "Fluids") itemData.store_type = StorageType.Fluid;
             else if (category == "Livestock") itemData.store_type = StorageType.Livestock;
 

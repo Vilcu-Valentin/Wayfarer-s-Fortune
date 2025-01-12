@@ -91,7 +91,8 @@
       "Honey barrels": 25,
       "Stone blocks": 23,
       "Oak Planks": 31,
-      "Bricks (bundles)": 29
+      "Bricks (bundles)": 29,
+      "Phoenixes": 65000
     }
   },
   {
@@ -123,7 +124,8 @@
       "Wine barrels": 40,
       "Ale barrels": 55,
       "Oil barrels (lamp oil)": 13,
-      "Honey barrels": 27
+      "Honey barrels": 27,
+      "Shadow steeds": 60000
     }
   },
   {
@@ -221,7 +223,8 @@
       "Oil barrels (lamp oil)": 10,
       "Honey barrels": 26,
       "Shadow steeds": 73000,
-      "Drakehounds": 76980
+      "Drakehounds": 76980,
+      "Dragons" : 250000
     }
   },
   {
@@ -285,7 +288,9 @@
       "Clothes": 34,
       "Wool (bundles or bales)": 44,
       "Eggs (chicken, crates)": 21,
-      "Meat": 29
+      "Meat": 29,
+      "Unicorns": 89000,
+      "Phoenixes": 100000
     }
   },
   {

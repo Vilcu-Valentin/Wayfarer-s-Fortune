@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36c3d927068b4a4fbc149a83366d5fb, type: 3}
+  m_Name: Natural_Disaster
+  m_EditorClassIdentifier: 
+  name: Natural Disaster
+  description: A catastrophic earthquake followed by severe floods devastates the
+    region. Infrastructure crumbles, crops are destroyed, and survivors scramble
+    to rebuild and secure supplies. Construction materials and staple foods soar
+    in demand, while luxury goods lose significance.
+  leadTime: 48
+  duration: 420
+  deathTime: 72
+  seasonalModifiers:
+  - 0.1
+  - 0.3
+  - 0.4
+  - 0.2
+  affectedGoods:
+  - item: {fileID: 11400000, guid: 263a94279659d9e41b5b1d39a81cf6ce, type: 2}
+    strength: 7
+  - item: {fileID: 11400000, guid: 2138036358d6ca247a8f11be300e499e, type: 2}
+    strength: 6
+  - item: {fileID: 11400000, guid: 35349d8690d3a2e44bca7b9d1ff4f564, type: 2}
+    strength: 6
+  - item: {fileID: 11400000, guid: c089646285f921646be50698f49e6ccd, type: 2}
+    strength: 5
+  - item: {fileID: 11400000, guid: c078ff6a4ff0d064da55bf1d5567552a, type: 2}
+    strength: 5
+  - item: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    strength: 4
+  - item: {fileID: 11400000, guid: b6612c5a1337c284db0915e3313128e2, type: 2}
+    strength: 5
+  - item: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    strength: 4
+  - item: {fileID: 11400000, guid: b05bbe8a1c92ce54f8d87e3244db49f7, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 6db344eccda02ef4cb6e559f5a332cbd, type: 2}
+    strength: -3
+  - item: {fileID: 11400000, guid: c21b2c83f017b524695584d4e5788ac9, type: 2}
+    strength: -3
+  - item: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    strength: -4
+  - item: {fileID: 11400000, guid: bebbdf491468b70489c30254b403f1e7, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: cfebeb3a5927bd9479e0dc82026f207a, type: 2}
+    strength: 4
+  - item: {fileID: 11400000, guid: b6116951e3303cc478f52682ac38b47c, type: 2}
+    strength: -3
+  - item: {fileID: 11400000, guid: b38102adec2749243bf67b689fbb6f8a, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 083f831f52fee134c8e7ef1ff3d2d853, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 43a13f6752787674f919404a3daf642f, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: ed224b61210b06f4cb70ca083ab9cefc, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: eba6579cf674a70498fd0c278b1fb47f, type: 2}
+    strength: -3
+  - item: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    strength: -4
+  - item: {fileID: 11400000, guid: c362b58db132a68498282e76c703c68e, type: 2}
+    strength: -4
+  - item: {fileID: 11400000, guid: 5dcb57b72a9ba914489cbf1d70a82db6, type: 2}
+    strength: -3
+  - item: {fileID: 11400000, guid: a83b94162c92e2c46bd71afc562b7045, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 2ec4a6ad09cef6847b9a3efc1b10c5b6, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 164dcab517693a5488a554c31a9efc47, type: 2}
+    strength: -3
+  - item: {fileID: 11400000, guid: 3c4e7e581f71865419f1c1ee887bffc9, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: f9d8630ead85d704bbeb8044f1ee23db, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 07b06e6f6371c0f4fb06d4f5e73c4f3c, type: 2}
+    strength: 2

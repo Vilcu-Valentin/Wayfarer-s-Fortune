@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c719d6a66a4fc54ba5e6e4084f7a291, type: 3}
   m_Name: Phoenixes
   m_EditorClassIdentifier: 
-  item_name: Phoenixe
+  item_name: Phoenix
   size: {x: 0, y: 0}
   weight: 30
   store_type: 2
   graphics: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 70fe0753ea8ca8a468187f40c97dd326, type: 3}

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c719d6a66a4fc54ba5e6e4084f7a291, type: 3}
   m_Name: Cows
   m_EditorClassIdentifier: 
-  item_name: Cows
+  item_name: Cow
   size: {x: 0, y: 0}
   weight: 1000
   store_type: 2
   graphics: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f61a1c28f37fe3e42ad02023944165a7, type: 3}

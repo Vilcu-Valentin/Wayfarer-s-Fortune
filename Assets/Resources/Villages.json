@@ -163,10 +163,12 @@
         "Size": "Village",
         "Occupation": "Animal Husbandry",
         "Goods": {
+            "Shadow steeds": 45800,
             "Horses": 140,
             "Cows": 110,
             "Goats": 20,
             "Sheep": 25,
+            "Unicorns": 50300,
             "Wool (bundles or bales)": 12,
             "Meat": 18,
             "Firewood": 8,
@@ -335,7 +337,8 @@
             "Cows": 120,
             "Goats": 45,
             "Sheep": 35,
-            "Horses": 170
+            "Horses": 170,
+            "Slime": 8500
         }
     }
 ]

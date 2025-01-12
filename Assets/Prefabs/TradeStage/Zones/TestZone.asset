@@ -18,5 +18,4 @@ MonoBehaviour:
     frequency: 5
   - eventData: {fileID: 11400000, guid: 33b44c808cb9d87468771cfae88077ca, type: 2}
     frequency: 49.9
-  settlements:
-  - {fileID: 11400000, guid: 9f412bb24007ec148bb1e6c9903928db, type: 2}
+  settlements: []

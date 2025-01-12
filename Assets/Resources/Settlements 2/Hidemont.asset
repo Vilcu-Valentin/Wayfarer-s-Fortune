@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hidemont
   size: Villages
-  occupation: Animal Husbandry
+  occupation: Ranching
   goodsPool:
   - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
     basePricePerUnit: 14

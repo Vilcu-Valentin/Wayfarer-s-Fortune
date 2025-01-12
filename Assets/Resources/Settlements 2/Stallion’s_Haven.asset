@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "Stallion\u2019s Haven"
   size: Villages
-  occupation: Animal Husbandry
+  occupation: Ranching
   goodsPool:
   - itemData: {fileID: 11400000, guid: e5951d9d59ba50c489886df549a3e8f8, type: 2}
     basePricePerUnit: 140
@@ -51,6 +51,12 @@ MonoBehaviour:
     volatility: 0.05
   - itemData: {fileID: 11400000, guid: ebe0012f0a90b924b82ea8ff1ca8bb36, type: 2}
     basePricePerUnit: 16
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 913f686433896434e9f19bb27980f540, type: 2}
+    basePricePerUnit: 45800
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 26851640af88b9f47b4fcbd2607a31ab, type: 2}
+    basePricePerUnit: 50300
     volatility: 0.05
   localEvents: []
   globalEvents: []

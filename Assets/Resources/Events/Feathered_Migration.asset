@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36c3d927068b4a4fbc149a83366d5fb, type: 3}
+  m_Name: Feathered_Migration
+  m_EditorClassIdentifier: 
+  name: Feathered Migration
+  description: As the winds change, vast flocks of birds sweep across the sky, drawing
+    merchants and travelers alike to witness the spectacle. Farmers and hunters capitalize
+    on fresh eggs, feathers, and meat, while local tailors craft warm garments from
+    new materials. Though the air buzzes with avian life, other goods see a dip in
+    demand, reminding all of the shifting balance each season brings.
+  leadTime: 6
+  duration: 48
+  deathTime: 6
+  seasonalModifiers:
+  - 0
+  - 0
+  - 0
+  - 0
+  affectedGoods:
+  - item: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 65f9aa268dbf7bc4bb8405af0932120a, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: ea2fc74a98bec214386f1d5b10067a59, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 525e7b7318c10554fb874fab1fe20548, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: bebbdf491468b70489c30254b403f1e7, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: b38102adec2749243bf67b689fbb6f8a, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 083f831f52fee134c8e7ef1ff3d2d853, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 6db344eccda02ef4cb6e559f5a332cbd, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: e5951d9d59ba50c489886df549a3e8f8, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: f420cdcd3dd4daf46a4fcc14f786e3a2, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 31be49fdfa3fe9e4f9f65bb8c7da1554, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: ebe0012f0a90b924b82ea8ff1ca8bb36, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: c28f0ea2ff3deb9418e9095495f580ab, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 32cc50b5c26be6c4e9938e53f805c9e6, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: bcbb6c359d6f0844bb7fb34cce73746e, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 669f10bc02cf9264681f06da326790a5, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 356266c9ee5c18f46a4f6984b247723e, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: a6aaeb05971b82d428081d712c4fd427, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 970745d50c821614b8818552946982b6, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 43a13f6752787674f919404a3daf642f, type: 2}
+    strength: -3
+  - item: {fileID: 11400000, guid: 164dcab517693a5488a554c31a9efc47, type: 2}
+    strength: -3
+  - item: {fileID: 11400000, guid: 3613b3d9eb662024e92773050ae3a6da, type: 2}
+    strength: -1

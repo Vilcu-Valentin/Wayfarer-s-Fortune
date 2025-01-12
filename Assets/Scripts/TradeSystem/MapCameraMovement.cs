@@ -69,9 +69,6 @@ public class MapCameraMovement : MonoBehaviour
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, adjustedMinX, adjustedMaxX);
         clampedPosition.z = Mathf.Clamp(clampedPosition.z, adjustedMinZ, adjustedMaxZ);
         transform.position = clampedPosition;
-
-        // Optional: Debugging logs
-        Debug.Log($"Zoom Factor: {zoomFactor}, Bounds: X({adjustedMinX}, {adjustedMaxX}), Z({adjustedMinZ}, {adjustedMaxZ})");
     }
 
     void HandleZoom()
@@ -87,9 +84,6 @@ public class MapCameraMovement : MonoBehaviour
         Vector3 targetPosition = transform.position;
         targetPosition.y = currentZoom;
         transform.position = targetPosition;
-
-        // Optionally log zoom level for debugging
-        Debug.Log($"Zoom Level: {currentZoom}");
     }
 
 }

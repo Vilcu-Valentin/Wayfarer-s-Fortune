@@ -17,4 +17,4 @@ MonoBehaviour:
   weight: 15
   store_type: 0
   graphics: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: e0b3760764bd9d44ab4fbcfb5a951546, type: 3}
