@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -30,30 +32,134 @@ public class Inventory : MonoBehaviour
     public Inventory_UI_Manager UiManager;
     public TradeManager tradeManager;
 
+    // Reference to the WagonIconDatabase
+    [SerializeField] private WagonIconDatabase wagonIconDatabase;
+
+    // Reference to the StorageModuleDatabase
+    [SerializeField] private StorageModuleDatabase storageModuleDatabase;
+
     // Events
     public event Action OnInventoryUpdated;
+
+    // Save file details
+    [SerializeField] private string saveFileName = "caravan_save.json";
+    private string SavePath => Path.Combine(Application.persistentDataPath, saveFileName);
 
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
             Destroy(this);
+            return;
+        }
+        Instance = this;
+
+        // Initialize the WagonIconDatabase
+        if (wagonIconDatabase != null)
+        {
+            wagonIconDatabase.Initialize();
         }
         else
         {
-            Instance = this;
+            Debug.LogError("WagonIconDatabase reference is missing!");
         }
     }
 
     private void Start()
     {
-        if (Wagons.Count > 0)
-            if (Wagons[0].Modules.Count > 0)
-            {
-                SelectedWagon = Wagons[0];
-                SelectedModule = SelectedWagon.Modules[0];
-            }
+        LoadInventoryWagons();
+
+        if (Wagons.Count > 0 && Wagons[0].Modules.Count > 0)
+        {
+            SelectedWagon = Wagons[0];
+            SelectedModule = SelectedWagon.Modules[0];
+        }
+
+        // Optionally, notify UI of the loaded data
+        NotifyInventoryUpdated();
     }
+
+    private void LoadInventoryWagons()
+    {
+        if (!File.Exists(SavePath))
+        {
+            Debug.LogWarning($"No save file found at {SavePath}!");
+            return;
+        }
+
+        try
+        {
+            string json = File.ReadAllText(SavePath);
+            CaravanSaveData saveData = JsonUtility.FromJson<CaravanSaveData>(json);
+
+            if (saveData == null || saveData.wagons == null)
+            {
+                Debug.LogError("Failed to parse save data.");
+                return;
+            }
+
+            foreach (var wagonData in saveData.wagons.OrderBy(w => w.wagonIndex))
+            {
+                // Get the icon from the database
+                Sprite wagonIcon = wagonIconDatabase.GetIcon(wagonData.wagonPrefabPath);
+                if (wagonIcon == null)
+                {
+                    Debug.LogError($"Icon not found for prefab path: {wagonData.wagonPrefabPath}");
+                    continue;
+                }
+
+                // Create InventoryWagon instance
+                InventoryWagon inventoryWagon = new InventoryWagon
+                {
+                    Modules = new List<StorageModule>(),
+                    icon = wagonIcon
+                };
+
+                // Populate modules
+                foreach (var moduleData in wagonData.modules)
+                {
+                    StorageModule module = CreateStorageModuleFromSaveData(moduleData);
+                    if (module != null)
+                    {
+                        inventoryWagon.Modules.Add(module);
+                    }
+                }
+
+                Wagons.Add(inventoryWagon);
+            }
+
+            Debug.Log("Inventory wagons loaded successfully.");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error loading caravan save data: {e.Message}");
+        }
+    }
+
+    private StorageModule CreateStorageModuleFromSaveData(StorageModuleSaveData moduleData)
+    {
+        // Retrieve the module data from the database
+        StorageModuleData moduleDefinition = storageModuleDatabase.GetModuleById(moduleData.moduleId);
+        if (moduleDefinition == null)
+        {
+            Debug.LogError($"Module definition not found for module ID: {moduleData.moduleId}");
+            return null;
+        }
+
+        // Create a new StorageModule instance
+        StorageModule module = new StorageModule
+        {
+            moduleData = moduleDefinition,
+            currentPosition = moduleData.position,
+            rotated = moduleData.isRotated,
+            rotation = moduleData.rotation,
+            items = new List<Item>(), // Assuming no items are loaded here
+            objectRef = null // Assuming objectRef is not needed in Inventory
+        };
+
+        return module;
+    }
+
 
     public void Update()
     {
