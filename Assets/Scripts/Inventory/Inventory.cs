@@ -2,19 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [System.Serializable]
-public struct InventoryWagon
+public class InventoryWagon
 {
     public List<StorageModule> Modules;
     public Sprite icon;
 }
 
 [System.Serializable]
-public struct CaravanStatistics
+public class CaravanStatistics
 {
     public float speedModifier;
+    public Sprite locomotiveIcon;
 }
 
 public class Inventory : MonoBehaviour
@@ -148,6 +148,7 @@ public class Inventory : MonoBehaviour
             if (availableSize <= 0)
             {
                 Debug.LogWarning("Module has no available capacity.");
+                FloatingTextManager.Show("This module has no capacity left!", 2f);
                 return false;
             }
 
@@ -306,7 +307,7 @@ public class Inventory : MonoBehaviour
 
     public void BuyItem(Item item, float currentPrice)
     {
-        if(PlayerMaster.Instance().removeMoney(currentPrice))
+        if (PlayerMaster.Instance().removeMoney(currentPrice))
         {
             AddToPendingItems(item);
             Debug.Log("Bought: " + item.ItemData.item_name + " for: " + currentPrice);
@@ -319,11 +320,11 @@ public class Inventory : MonoBehaviour
         int removeAmount = Mathf.Max(Mathf.Min(_item.Count, amount), 1);
 
         float itemPrice = tradeManager.getCurrentSettlement().getPrices().Find(i => i.itemData == item.ItemData).realPrice;
-        if(itemPrice <= 0)
+        if (itemPrice <= 0)
         {
             FloatingTextManager.Show("You can't sell this item here!", 2f);
             return;
-        }    
+        }
         Debug.Log("Sold: " + item.ItemData.item_name + " for: " + itemPrice);
         Debug.Log("Player trading location is in: " + tradeManager.getCurrentSettlement());
 
@@ -349,8 +350,8 @@ public class Inventory : MonoBehaviour
     }
 
     public void DropItem(Item item, int amount)
-    { 
-         RemoveFromPendingItems(new Item(item.ItemData, amount));
+    {
+        RemoveFromPendingItems(new Item(item.ItemData, amount));
     }
 
 

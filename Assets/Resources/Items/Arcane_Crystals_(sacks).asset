@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Arcane_Crystals_(sacks)
   m_EditorClassIdentifier: 
   item_name: Arcane Crystals
-  size: 3
+  size: 2
   weight: 40
   store_type: 0
   icon: {fileID: 21300000, guid: 063e9cfffd2373a42b1176b3d1601bed, type: 3}

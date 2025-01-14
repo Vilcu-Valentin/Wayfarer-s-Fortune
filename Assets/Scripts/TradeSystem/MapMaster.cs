@@ -8,6 +8,7 @@ public class MapMaster : MonoBehaviour
 {
     public MapData data;
     public TravelManager travelManager;
+    public MapCameraMovement cameraMovement;
 
     // The roads that the player can see on the map 
     [SerializeField] private List<GameObject> roadGraphics;
@@ -299,6 +300,7 @@ public class MapMaster : MonoBehaviour
             if (settlement.GetComponent<Settlement>().data == playerLocation)
             {
                 playerMarker.transform.position = settlement.transform.position + playerMarkerOffset;
+                cameraMovement.MoveCamereTo(playerMarker.transform.position);
             }
         }
     }

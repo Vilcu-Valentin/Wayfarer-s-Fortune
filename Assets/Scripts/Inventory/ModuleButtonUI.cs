@@ -18,15 +18,11 @@ public class ModuleButtonUI : MonoBehaviour
         ModuleName.text = moduleData.moduleData.name;
         icon.sprite = moduleData.moduleData.icon;
 
-        if (highlight)
-            icon.color = new Color(100, 65, 65, 100);
-
         Button.onClick.AddListener(OnSelectModule);
     }
 
     private void OnSelectModule()
     {
         Inventory.Instance.SelectModule(module);
-        Setup(module, true);
     }
 }

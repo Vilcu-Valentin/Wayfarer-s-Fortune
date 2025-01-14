@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cows
   m_EditorClassIdentifier: 
   item_name: Cow
-  size: 1
+  size: 6
   weight: 1000
   store_type: 2
   icon: {fileID: 21300000, guid: f61a1c28f37fe3e42ad02023944165a7, type: 3}

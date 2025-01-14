@@ -19,6 +19,7 @@ public class Inventory_UI_Manager : MonoBehaviour
     public GameObject CaravanPrefab;
     public GameObject ModulePrefab;
     public GameObject ModuleItemPrefab; // Prefab for items inside modules
+    public GameObject LocomotivePrefab;
 
     [Header("Misc")]
     public TextMeshProUGUI currentlySelectedModuleName;
@@ -36,7 +37,7 @@ public class Inventory_UI_Manager : MonoBehaviour
         if (inventory != null)
         {
             inventory.OnInventoryUpdated += RefreshUI;
-            UpdateUI(inventory.Wagons, inventory.PendingItems);
+            //UpdateUI(inventory.Wagons, inventory.PendingItems);
         }
     }
 
@@ -89,6 +90,9 @@ public class Inventory_UI_Manager : MonoBehaviour
     private void PopulateCaravans(List<InventoryWagon> wagons)
     {
         ClearChildren(CaravanListParent);
+        Image locomotive = Instantiate(LocomotivePrefab, CaravanListParent).GetComponent<Image>();
+        locomotive.sprite = Inventory.Instance.caravanStatistics.locomotiveIcon;
+
         foreach (var wagon in wagons)
         {
             GameObject go = Instantiate(CaravanPrefab, CaravanListParent);

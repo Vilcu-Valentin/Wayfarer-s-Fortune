@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Copper_ingots
   m_EditorClassIdentifier: 
   item_name: Copper
-  size: 1
+  size: 4
   weight: 96
   store_type: 0
   icon: {fileID: 21300000, guid: eb2f66aac141a704998053a0818e06c6, type: 3}

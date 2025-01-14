@@ -18,15 +18,11 @@ public class CaravanButtonUI : MonoBehaviour
         // For simplicity, let's assume you have a reference
         WagonImage.sprite = wagon.icon;
 
-        if (highlight)
-            WagonImage.color = new Color(65, 65, 65, 100);
-
         Button.onClick.AddListener(OnSelectWagon);
     }
 
     private void OnSelectWagon()
     {
         Inventory.Instance.SelectWagon(wagon);
-        Setup(wagon, true);
     }
 }

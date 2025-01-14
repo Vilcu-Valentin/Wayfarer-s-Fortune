@@ -86,4 +86,23 @@ public class MapCameraMovement : MonoBehaviour
         transform.position = targetPosition;
     }
 
+    public void MoveCamereTo(Vector3 position)
+    {
+        position.z -= 5f;
+        // Calculate zoom factor (normalized)
+        float zoomFactor = (currentZoom - minZoom) / (maxZoom - minZoom); // Normalized zoom between 0 and 1
+
+        // Lerp bounds based on zoom level
+        float adjustedMinX = Mathf.Lerp(minXZoomIn, minXZoomOut, zoomFactor);
+        float adjustedMaxX = Mathf.Lerp(maxXZoomIn, maxXZoomOut, zoomFactor);
+        float adjustedMinZ = Mathf.Lerp(minZZoomIn, minZZoomOut, zoomFactor);
+        float adjustedMaxZ = Mathf.Lerp(maxZZoomIn, maxZZoomOut, zoomFactor);
+
+        // Clamp position within dynamically adjusted bounds
+        Vector3 clampedPosition = position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, adjustedMinX, adjustedMaxX);
+        clampedPosition.z = Mathf.Clamp(clampedPosition.z, adjustedMinZ, adjustedMaxZ);
+        transform.position = clampedPosition;
+    }
+
 }

@@ -10,17 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
-  m_Name: BaseTravelEvent
+  m_Name: Stormy_Skies
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  event_name: 
-  description: 
+  event_name: Stormy_Skies
+  description: 'A torrential downpour slows your progress and makes your journey
+    treacherous.
+
+'
   ticket: 1
   effects:
-  - rid: 4077543597332758534
+  - rid: 4077543597332758536
   references:
     version: 2
     RefIds:
-    - rid: 4077543597332758534
-      type: {class: NoEffect, ns: , asm: Assembly-CSharp}
-      data: 
+    - rid: 4077543597332758536
+      type: {class: DurationEffect, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 6
+        randomness: 3
