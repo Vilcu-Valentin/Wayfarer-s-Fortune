@@ -8,8 +8,8 @@ public class Locomotive : CaravanBody
     // Start is called before the first frame update
     void Start()
     {
-        upgradesManager.UpdateVehicleUpgrades();
-        spacing = upgradesManager.GetCurrentFrame().spacing;
+        //upgradesManager.UpdateVehicleUpgrades();
+        //spacing = upgradesManager.GetCurrentFrame().spacing;
     }
 
 }
