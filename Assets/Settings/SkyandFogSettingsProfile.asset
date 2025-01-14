@@ -93,7 +93,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   groundEmissionTexture:
     m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 8900000, guid: 1af0f278c65ef6745a47e1871c8c7e1a, type: 3}
   groundEmissionMultiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -102,7 +102,7 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0, z: 0}
   spaceEmissionTexture:
     m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_Value: {fileID: 8900000, guid: 1af0f278c65ef6745a47e1871c8c7e1a, type: 3}
   spaceEmissionMultiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -455,7 +455,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {x: 0.24966978, y: 0.3410131, z: 0.5}
   desiredLuxValue:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 20000
   updateMode:
     m_OverrideState: 0
