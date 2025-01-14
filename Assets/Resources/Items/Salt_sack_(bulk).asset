@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Salt_sack_(bulk)
   m_EditorClassIdentifier: 
   item_name: Salt
-  size: {x: 2, y: 3}
+  size: 1
   weight: 67
   store_type: 0
-  graphics: {fileID: 0}
-  icon: {fileID: 21300000, guid: 7bb3c830062300041a1925756cd27d3f, type: 3}
+  icon: {fileID: 21300000, guid: 14ad58799477d7e41a542bf7abd71819, type: 3}

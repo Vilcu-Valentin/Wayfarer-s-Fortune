@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Sacks_of_basil
   m_EditorClassIdentifier: 
   item_name: Basil
-  size: {x: 1, y: 2}
+  size: 1
   weight: 1
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 930d4ed894280224d831488398500126, type: 3}

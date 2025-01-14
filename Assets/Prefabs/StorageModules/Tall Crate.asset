@@ -15,7 +15,7 @@ MonoBehaviour:
   id: tall_crate
   size: {x: 1, y: 2, z: 1}
   storage_type: 0
-  inventorySize: {x: 3, y: 3}
+  capacity: 25
   graphics: {fileID: 1199165440997740135, guid: 78f19f0031a3fc64eb28aec81c033189,
     type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 69914aff12a1fa04aa40766be598084b, type: 3}

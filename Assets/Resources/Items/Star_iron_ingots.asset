@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Star_iron_ingots
   m_EditorClassIdentifier: 
   item_name: Star Iron
-  size: {x: 1, y: 1}
+  size: 1
   weight: 1000
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: a21b1ed6a0b557346b096ba3f508c143, type: 3}

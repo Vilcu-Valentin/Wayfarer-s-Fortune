@@ -15,7 +15,7 @@ MonoBehaviour:
   id: large_cage
   size: {x: 5, y: 4, z: 6}
   storage_type: 2
-  inventorySize: {x: 0, y: 0}
+  capacity: 45
   graphics: {fileID: 3526883222715287658, guid: a3224d942196d9d4985713a81c7174ee,
     type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a0436824e32bf094ba5d7618dcd10e2c, type: 3}

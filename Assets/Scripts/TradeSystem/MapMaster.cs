@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class MapMaster : MonoBehaviour
 {
     public MapData data;
-
-
+    public TravelManager travelManager;
 
     // The roads that the player can see on the map 
     [SerializeField] private List<GameObject> roadGraphics;
     [Header("Player Location")]
     // Ideally, only the getter should be public. It will need to be initialized when loading a save.
     public SettlementData playerLocation;
+    [Tooltip("A list of all the real settlements")]
+    public List<Settlement> all_settlements;
     [SerializeField] private GameObject playerMarker;
     [SerializeField] private Vector3 playerMarkerOffset;
     [Tooltip("This is used for position data, nothing else")]
@@ -27,7 +30,9 @@ public class MapMaster : MonoBehaviour
     // Adjacency list now stores pairs of SettlementData and the distance to the neighbor
     private Dictionary<SettlementData, List<(SettlementData neighbor, int distance)>> graphAdjList = null;
 
-    private InputMaster inputMaster = null;
+    private List<SettlementData> currentPath;
+
+    private int timeDifference = 0;
 
     void Awake()
     {
@@ -243,6 +248,12 @@ public class MapMaster : MonoBehaviour
         return null;
     }
 
+    public Settlement getPlayerLocation() 
+    {
+        var location = all_settlements.Find(i => i.data == playerLocation);
+        return location;
+    }
+
     /// <summary>
     /// Shorthand for GetDistanceBetween(playerLocation, settlement)
     /// </summary>
@@ -260,10 +271,20 @@ public class MapMaster : MonoBehaviour
     /// <returns>True for success and false for failure.</returns>
     public bool MovePlayer(SettlementData destination)
     {
+        int distance = GetPlayerDistanceTo(destination);
+
         playerLocation = destination;
         Debug.Log($"Player moved to '{destination.name}'.");
+        RollTravelEvents();
+
+        Debug.Log("Time has been advanced by: " + distance + " but we also have a difference off: " + timeDifference + " final: " + (distance + timeDifference));
+
+        distance = Mathf.RoundToInt(distance / Inventory.Instance.caravanStatistics.speedModifier);
+        distance += timeDifference;
+        distance = Mathf.Max(distance, 1);
+        TimeMaster.Instance().advanceTime(distance);
+
         ResetRoadColors();
-        MovePlayerMarker();
         return true;
     }
 
@@ -271,7 +292,7 @@ public class MapMaster : MonoBehaviour
     /// Moves the player marker to a specified city
     /// </summary>
     /// <param name="location">The city in which the player is located</param>
-    private void MovePlayerMarker()
+    public void MovePlayerMarker()
     {
         foreach(var settlement in settlements)
         {
@@ -294,25 +315,25 @@ public class MapMaster : MonoBehaviour
         ResetRoadColors();
 
         // Get the path from playerLocation to destination
-        List<SettlementData> path = GetPathBetween(playerLocation, destination);
+        currentPath = GetPathBetween(playerLocation, destination);
 
-        if (path == null)
+        if (currentPath == null)
         {
             Debug.LogWarning("No path found. No roads to highlight.");
             return false;
         }
 
-        if (path.Count < 2)
+        if (currentPath.Count < 2)
         {
             Debug.Log("Destination is the same as the player location. No roads to highlight.");
             return false;
         }
 
         // Iterate through the path and highlight the corresponding roads
-        for (int i = 0; i < path.Count - 1; i++)
+        for (int i = 0; i < currentPath.Count - 1; i++)
         {
-            SettlementData current = path[i];
-            SettlementData next = path[i + 1];
+            SettlementData current = currentPath[i];
+            SettlementData next = currentPath[i + 1];
 
             // Find the road that connects current and next settlements
             int roadIndex = FindRoadIndex(current, next);
@@ -382,4 +403,95 @@ public class MapMaster : MonoBehaviour
             renderer.material.color = highlightColor;
         }
     }
+
+    public void RollTravelEvents()
+    {
+        var allResults = new List<List<EffectResult>>();
+        var allEvents = new List<TravelEvents>();
+
+        timeDifference = 0;
+
+        for (int i = 0; i < currentPath.Count - 1; i++)
+        {
+            SettlementData current = currentPath[i];
+            SettlementData next = currentPath[i + 1];
+
+            // Find the road that connects the current and next settlements
+            int roadIndex = FindRoadIndex(current, next);
+
+            if (roadIndex == -1)
+            {
+                Debug.LogWarning($"Road between '{current.name}' and '{next.name}' not found in data.roads.");
+                continue;
+            }
+
+            if (!IsValidRoadIndex(roadIndex))
+            {
+                Debug.LogWarning($"Road index {roadIndex} is out of bounds.");
+                return;
+            }
+
+            var road = data.roads[roadIndex];
+            var selectedEvent = GetRandomTravelEvent(road);
+
+            if (selectedEvent != null)
+            {
+                var result = selectedEvent.TriggerEvent();
+
+                foreach (var effect in result)
+                {
+                    if (effect.EffectType == typeof(DurationEffect))
+                    {
+                        int durationResult = (int)effect.Value;
+                        timeDifference += durationResult;
+                    }
+                }
+
+                allResults.Add(result);
+                allEvents.Add(selectedEvent);
+            }
+        }
+
+        if (allResults.Count > 0)
+        {
+            travelManager.UseEffects(allResults, allEvents);
+        }
+    }
+
+    private bool IsValidRoadIndex(int index)
+    {
+        return index >= 0 && index < roadGraphics.Count;
+    }
+
+    private TravelEvents GetRandomTravelEvent(Roads road)
+    {
+        if (road.travelEvents == null || road.travelEvents.Count == 0)
+        {
+            Debug.LogWarning("No travel events found for the road.");
+            return null;
+        }
+
+        int ticketCount = 1;
+        var tickets = new List<Vector2>();
+
+        foreach (var travelEvent in road.travelEvents)
+        {
+            tickets.Add(new Vector2(ticketCount, ticketCount + travelEvent.ticket));
+            ticketCount += travelEvent.ticket + 1;
+        }
+
+        int drawnTicket = Random.Range(1, ticketCount);
+
+        for (int i = 0; i < tickets.Count; i++)
+        {
+            if (drawnTicket >= tickets[i].x && drawnTicket <= tickets[i].y)
+            {
+                return road.travelEvents[i];
+            }
+        }
+
+        Debug.LogWarning("No travel event matched the drawn ticket.");
+        return null;
+    }
+
 }

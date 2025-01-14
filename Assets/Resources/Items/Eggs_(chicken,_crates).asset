@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Eggs_(chicken,_crates)
   m_EditorClassIdentifier: 
   item_name: Chicken Egg
-  size: {x: 1, y: 2}
+  size: 1
   weight: 5
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: e30d5f6976b9d734cb45bdb1d873c2bd, type: 3}

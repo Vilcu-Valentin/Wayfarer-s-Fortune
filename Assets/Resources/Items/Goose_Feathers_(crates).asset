@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Goose_Feathers_(crates)
   m_EditorClassIdentifier: 
   item_name: Goose Feathers
-  size: {x: 2, y: 2}
+  size: 1
   weight: 10
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: a68479a06a975614db4bb5f06b9b0076, type: 3}

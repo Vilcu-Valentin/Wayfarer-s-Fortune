@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Rice_sacks
   m_EditorClassIdentifier: 
   item_name: Rice
-  size: {x: 2, y: 2}
+  size: 1
   weight: 12
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 7044f1bf9086047438c66c30bf8f215a, type: 3}

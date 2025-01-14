@@ -23,6 +23,8 @@ public class Item_UIManager : MonoBehaviour
     public TextMeshProUGUI priceRange;
     public TextMeshProUGUI typeName;
 
+    private OutputPriceData priceData;
+
     private void Start()
     {
         colors[0] = mainPanel.color;
@@ -31,6 +33,8 @@ public class Item_UIManager : MonoBehaviour
     // Update is called once per frame
     public void UpdateUI(OutputPriceData priceData)
     {
+        this.priceData = priceData;
+
         Momentum.sprite = noMomentum;
         mainPanel.color = colors[0];
         if(priceData.minPrice != -1)
@@ -67,6 +71,11 @@ public class Item_UIManager : MonoBehaviour
             priceRange.text = FormatNumber(priceData.minPrice) + " - " + FormatNumber(priceData.maxPrice);
     }
 
+    public float getPriceData()
+    {
+        return priceData.realPrice;
+    }
+
     public static string FormatNumber(float number)
     {
         if (number == -1)
@@ -74,8 +83,12 @@ public class Item_UIManager : MonoBehaviour
 
         if (number >= 1000000) // For numbers in the millions
             return (number / 1000000).ToString("0.#") + "M";
+        else if (number >= 100000)
+            return (number / 1000).ToString("0") + "k";
         else if (number >= 1000) // For numbers in the thousands
             return (number / 1000).ToString("0.#") + "k";
+        else if (number >= 100)
+            return number.ToString("0");
         else
             return number.ToString("0.##"); // For numbers less than 1000
     }

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Unicorns
   m_EditorClassIdentifier: 
   item_name: Unicorn
-  size: {x: 0, y: 0}
+  size: 1
   weight: 800
   store_type: 2
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 1c66e03b5f0ac484fa7b49a6ab44e6f3, type: 3}

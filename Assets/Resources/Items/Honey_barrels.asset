@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Honey_barrels
   m_EditorClassIdentifier: 
   item_name: Honey
-  size: {x: 0, y: 0}
+  size: 1
   weight: 12
   store_type: 1
-  graphics: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 11270732ae4cdde44815327730e28bdc, type: 3}

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Silver_ingots
   m_EditorClassIdentifier: 
   item_name: Silver
-  size: {x: 2, y: 2}
+  size: 1
   weight: 216
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 83aa77faa3882b04990b5299574f378f, type: 3}

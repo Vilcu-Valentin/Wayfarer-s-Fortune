@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Oil_barrels_(lamp_oil)
   m_EditorClassIdentifier: 
   item_name: Oil
-  size: {x: 0, y: 0}
+  size: 1
   weight: 6
   store_type: 1
-  graphics: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ca58e01d706ca4b4bbaa5f46cfc5bfab, type: 3}

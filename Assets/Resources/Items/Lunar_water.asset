@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Lunar_water
   m_EditorClassIdentifier: 
   item_name: Lunar Water
-  size: {x: 0, y: 0}
+  size: 1
   weight: 8
   store_type: 1
-  graphics: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2474ab047285e7740b6e0ae3a041c30c, type: 3}

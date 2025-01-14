@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Pelts
   m_EditorClassIdentifier: 
   item_name: Pelts
-  size: {x: 3, y: 4}
+  size: 1
   weight: 22
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 66f1958988f904d47a79b2af9da48018, type: 3}

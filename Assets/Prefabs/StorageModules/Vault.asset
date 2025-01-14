@@ -15,7 +15,7 @@ MonoBehaviour:
   id: vault
   size: {x: 3, y: 3, z: 2}
   storage_type: 0
-  inventorySize: {x: 7, y: 7}
+  capacity: 100
   graphics: {fileID: 2343466634624659578, guid: 8ab7b8c3a2ee842439707f22436aff04,
     type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a1799daf616a2e4419fc4bc675942a63, type: 3}

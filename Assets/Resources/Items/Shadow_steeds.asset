@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Shadow_steeds
   m_EditorClassIdentifier: 
   item_name: Shadow Steed
-  size: {x: 0, y: 0}
+  size: 1
   weight: 10
   store_type: 2
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: a346d804eb500fa45a037bd40aecf760, type: 3}

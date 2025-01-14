@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Grapes_(baskets)
   m_EditorClassIdentifier: 
   item_name: Grapes
-  size: {x: 2, y: 2}
+  size: 1
   weight: 4
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: aa0779c9f3ac4d3469e067758a4925fd, type: 3}

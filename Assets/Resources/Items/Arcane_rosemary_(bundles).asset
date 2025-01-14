@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Arcane_rosemary_(bundles)
   m_EditorClassIdentifier: 
   item_name: Arcane Rosemary
-  size: {x: 2, y: 2}
+  size: 1
   weight: 18
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 76c4edc849bebd34785ca565919eb2cc, type: 3}

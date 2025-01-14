@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36c3d927068b4a4fbc149a83366d5fb, type: 3}
+  m_Name: Sky_Lantern_Festival
+  m_EditorClassIdentifier: 
+  name: Sky Lantern Festival
+  description: At twilight, the heavens glow with thousands of lanterns lifted by
+    eager hands, each carrying wishes and prayers into the night sky. Merchants hawk
+    colorful paper, lantern oil, and decorative fabrics, while alchemists sell special
+    flames that shift through enchanting hues. Families share sweet pastries and
+    milky teas in a moment of unity, as the entire region pauses to marvel at this
+    luminous spectacle.
+  icon: {fileID: 21300000, guid: 19152968467c0404ab30c13e83d5acf7, type: 3}
+  leadTime: 6
+  duration: 48
+  deathTime: 6
+  seasonalModifiers:
+  - 0
+  - 1
+  - 0
+  - 0
+  affectedGoods:
+  - item: {fileID: 11400000, guid: efaadd383bcd6dc4094cb710645d7557, type: 2}
+    strength: 4
+  - item: {fileID: 11400000, guid: 054a308b02eff374282be147bed9f53d, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: eba6579cf674a70498fd0c278b1fb47f, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: faf5855bebd5b2545b6854ce854c0b56, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 7ef042a44c565aa47a6cff3202e11a9e, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: c3d4adba22c25ad4e95f42f09772adf7, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: c70ccd88b88164b47809c18256e6668c, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 4b9fd2103c908864f8aaf28aa855e735, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 2aed706e9bfbdf448bc3d993c8f6584f, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 7f39a81f41bf89b469cfb34301580aec, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 43a13f6752787674f919404a3daf642f, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: d4fdf05a2db10334d8230904b255dcd0, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 80112714ef01dd549ad9e0fefce2cd37, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 73c810d035e571346b76c2ace6d88962, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 31be49fdfa3fe9e4f9f65bb8c7da1554, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: c362b58db132a68498282e76c703c68e, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 6a4c79033a94067489407326056c74da, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 303abcf376ff8fa4c9c81eb0174ad00c, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: bebbdf491468b70489c30254b403f1e7, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: b6116951e3303cc478f52682ac38b47c, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: d4dce35b24e18254c81d2345089de390, type: 2}
+    strength: -2

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36c3d927068b4a4fbc149a83366d5fb, type: 3}
+  m_Name: Solar_Eclipse
+  m_EditorClassIdentifier: 
+  name: Solar Eclipse
+  description: A sudden darkness blankets the land in midday, unsettling both superstitious
+    villagers and learned scholars. Many citizens rush to secure supplies, fearing
+    ominous portents and disruptions to daily life. Mystics seize the opportunity
+    to harvest rare eclipse energies, driving demand for arcane reagents and protective
+    talismans.
+  icon: {fileID: 21300000, guid: 41bca04b0c6da5947887fca33ecbf1f3, type: 3}
+  leadTime: 6
+  duration: 24
+  deathTime: 6
+  seasonalModifiers:
+  - 1
+  - 1
+  - 1
+  - 1
+  affectedGoods:
+  - item: {fileID: 11400000, guid: 970745d50c821614b8818552946982b6, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 634c4d566b374404c9286ad85369b3b3, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 43a13f6752787674f919404a3daf642f, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 7ef042a44c565aa47a6cff3202e11a9e, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 164dcab517693a5488a554c31a9efc47, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: b3145e335227def4fae52ea153439d35, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 73c810d035e571346b76c2ace6d88962, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 31be49fdfa3fe9e4f9f65bb8c7da1554, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: efe54b9ac885fc54cb7b7b5744909eb0, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: d4fdf05a2db10334d8230904b255dcd0, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 80112714ef01dd549ad9e0fefce2cd37, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 054a308b02eff374282be147bed9f53d, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: c70ccd88b88164b47809c18256e6668c, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: b05bbe8a1c92ce54f8d87e3244db49f7, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: c3d4adba22c25ad4e95f42f09772adf7, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: b6116951e3303cc478f52682ac38b47c, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: b38102adec2749243bf67b689fbb6f8a, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 083f831f52fee134c8e7ef1ff3d2d853, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: d4dce35b24e18254c81d2345089de390, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    strength: -2

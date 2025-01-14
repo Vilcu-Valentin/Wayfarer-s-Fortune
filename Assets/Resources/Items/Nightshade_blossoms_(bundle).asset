@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Nightshade_blossoms_(bundle)
   m_EditorClassIdentifier: 
   item_name: Nightshade
-  size: {x: 1, y: 2}
+  size: 1
   weight: 4
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 93d76756051ae6c489a0de99b4c07e84, type: 3}

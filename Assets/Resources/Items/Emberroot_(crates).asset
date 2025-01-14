@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Emberroot_(crates)
   m_EditorClassIdentifier: 
   item_name: Emberroot
-  size: {x: 3, y: 3}
+  size: 1
   weight: 68
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 3833154e895efbe47a8a51976642b386, type: 3}

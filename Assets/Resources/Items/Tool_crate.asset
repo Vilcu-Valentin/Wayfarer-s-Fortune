@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Tool_crate
   m_EditorClassIdentifier: 
   item_name: Tools
-  size: {x: 1, y: 2}
+  size: 1
   weight: 15
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 3dce0be89eedb63429a1a7055106b435, type: 3}

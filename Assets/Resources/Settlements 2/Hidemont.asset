@@ -52,6 +52,41 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
     basePricePerUnit: 9
     volatility: 0.05
-  localEvents: []
-  globalEvents: []
-  seasonalEvents: []
+  localEvents:
+  - eventData: {fileID: 11400000, guid: faec85f10c68f0243af0dafceebb3199, type: 2}
+    frequency: 0.2
+  - eventData: {fileID: 11400000, guid: 121090b4160ca364dacb020f14a67634, type: 2}
+    frequency: 0.2
+  - eventData: {fileID: 11400000, guid: c6ceeae293430474495963e2e12842ad, type: 2}
+    frequency: 0.25
+  - eventData: {fileID: 11400000, guid: 700a4da10b0d04c46a4ee58929dd63eb, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: 4ecab8d7a6d7f6547a6fcc13d5dd1b11, type: 2}
+    frequency: 2
+  - eventData: {fileID: 11400000, guid: bb8f23d9bc6f5804aa006e14c305a0cd, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: 2a2cd76b71df42f4bb4f620b390a8d29, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: 45e062735b8541e42b547c560b486c44, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: e94b5449b6094304ebd7d82bddb83215, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: 6aa42d60c2285174383e394d886c1c20, type: 2}
+    frequency: 0.3
+  - eventData: {fileID: 11400000, guid: f0f72d8996d0269479674b39bbda39ee, type: 2}
+    frequency: 0.15
+  globalEvents:
+  - {fileID: 11400000, guid: c0ac9faf53fbfac45a154fc86013ebe8, type: 2}
+  - {fileID: 11400000, guid: 19d832ee05e90af43a39c7e597802116, type: 2}
+  - {fileID: 11400000, guid: c7d318db5a913654996daed8135f88d6, type: 2}
+  - {fileID: 11400000, guid: 9f3368d0d40b71c4590f8f1feb870032, type: 2}
+  - {fileID: 11400000, guid: 9f464c223b262f74a9e8ffebd3f211b2, type: 2}
+  - {fileID: 11400000, guid: e8b8e0cb76e52664ebbf43db4f2e65ec, type: 2}
+  - {fileID: 11400000, guid: 97979282ba92d9f42bfe095f12a67bc2, type: 2}
+  - {fileID: 11400000, guid: ba486debd2ffd064ba3daa086606645c, type: 2}
+  - {fileID: 11400000, guid: 2b21604c3497ee148a1b6064d26456e6, type: 2}
+  seasonalEvents:
+  - {fileID: 11400000, guid: 4ea60f6d91660cf428c22ae8ecf0fc08, type: 2}
+  - {fileID: 11400000, guid: 540896970bec52a4e8ff6e588ecaf78a, type: 2}
+  - {fileID: 11400000, guid: 3c4a0dde036052b44a5e317639a6b1f5, type: 2}
+  - {fileID: 11400000, guid: 1b562413405d7114f88dc6881ff37aff, type: 2}

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Healing_elixir
   m_EditorClassIdentifier: 
   item_name: Healing Elixir
-  size: {x: 0, y: 0}
+  size: 1
   weight: 10
   store_type: 1
-  graphics: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 181d654a1dfb68548892d285e8a13b5e, type: 3}

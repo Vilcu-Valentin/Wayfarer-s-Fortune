@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Oak_Planks
   m_EditorClassIdentifier: 
   item_name: Oak Planks
-  size: {x: 1, y: 8}
+  size: 1
   weight: 30
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 24e84dc6765730a4c8d5cb24a94d79a6, type: 3}

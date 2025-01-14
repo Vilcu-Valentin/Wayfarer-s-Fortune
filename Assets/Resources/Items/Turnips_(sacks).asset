@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Turnips_(sacks)
   m_EditorClassIdentifier: 
   item_name: Turnips
-  size: {x: 1, y: 2}
+  size: 1
   weight: 3
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 1163c449e0455cd48a99b65c852f911f, type: 3}

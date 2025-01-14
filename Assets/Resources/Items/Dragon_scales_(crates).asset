@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Dragon_scales_(crates)
   m_EditorClassIdentifier: 
   item_name: Dragon Scales
-  size: {x: 3, y: 2}
+  size: 1
   weight: 50
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 46e96c4acd359274c9d68a0d110a13df, type: 3}

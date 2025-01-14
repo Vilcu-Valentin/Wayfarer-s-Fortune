@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Leather_hides_(rolls)
   m_EditorClassIdentifier: 
   item_name: Leather Hide
-  size: {x: 1, y: 3}
+  size: 1
   weight: 8
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 868b1acdb3f5fec4194ce2c0d7697cd9, type: 3}

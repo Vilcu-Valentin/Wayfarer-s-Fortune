@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Birch_Planks
   m_EditorClassIdentifier: 
   item_name: Birch Planks
-  size: {x: 1, y: 10}
+  size: 1
   weight: 16
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 82a6875603db0984e860e474e2bded29, type: 3}

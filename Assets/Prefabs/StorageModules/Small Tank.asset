@@ -15,7 +15,7 @@ MonoBehaviour:
   id: small_tank
   size: {x: 3, y: 2, z: 2}
   storage_type: 1
-  inventorySize: {x: 0, y: 0}
+  capacity: 100
   graphics: {fileID: 2168544437283366940, guid: 9e05b9bda4f122e4693bf0570bafffac,
     type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 41382a291b03498429e2af5136e200b1, type: 3}

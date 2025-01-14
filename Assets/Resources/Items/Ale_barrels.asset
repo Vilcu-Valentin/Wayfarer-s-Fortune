@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Ale_barrels
   m_EditorClassIdentifier: 
   item_name: Ale
-  size: {x: 0, y: 0}
+  size: 1
   weight: 8
   store_type: 1
-  graphics: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 26acfccfb1ecc924bbb67f628fa626ce, type: 3}

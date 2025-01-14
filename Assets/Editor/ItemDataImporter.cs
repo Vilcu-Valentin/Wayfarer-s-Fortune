@@ -8,17 +8,16 @@ using UnityEngine;
 [Serializable]
 public class ItemList
 {
-    public List<Item> Goods;
-    public List<Item> Fluids;
-    public List<Item> Livestock;
+    public List<SerializedItem> Goods;
+    public List<SerializedItem> Fluids;
+    public List<SerializedItem> Livestock;
 }
 
 [Serializable]
-public class Item
+public class SerializedItem
 {
     public string name;
-    public int size_x;
-    public int size_y;
+    public int size;
     public int weight;
 }
 
@@ -28,15 +27,15 @@ public class ItemDataImporter : EditorWindow
     private string jsonFilePath = "Assets/Resources/ItemData.json";
     private string outputFolder = "Assets/Resources/Items";
 
-    [MenuItem("Tools/Import Item Data")]
+    [MenuItem("Tools/Import SerializedItem Data")]
     public static void ShowWindow()
     {
-        GetWindow<ItemDataImporter>("Import Item Data");
+        GetWindow<ItemDataImporter>("Import SerializedItem Data");
     }
 
     private void OnGUI()
     {
-        GUILayout.Label("Import Item Data from JSON", EditorStyles.boldLabel);
+        GUILayout.Label("Import SerializedItem Data from JSON", EditorStyles.boldLabel);
 
         jsonFilePath = EditorGUILayout.TextField("JSON File Path", jsonFilePath);
         outputFolder = EditorGUILayout.TextField("Output Folder", outputFolder);
@@ -75,10 +74,10 @@ public class ItemDataImporter : EditorWindow
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
-        EditorUtility.DisplayDialog("Import Complete", "Item data imported successfully!", "OK");
+        EditorUtility.DisplayDialog("Import Complete", "SerializedItem data imported successfully!", "OK");
     }
 
-    private void ProcessCategory(List<Item> items, string category)
+    private void ProcessCategory(List<SerializedItem> items, string category)
     {
         foreach (var item in items)
         {
@@ -87,13 +86,13 @@ public class ItemDataImporter : EditorWindow
             itemData.item_name = item.name;
             itemData.weight = item.weight;
 
-            if (item.size_x > 0 && item.size_y > 0)
+            if (item.size > 0)
             {
-                itemData.size = new Vector2Int(item.size_x, item.size_y);
+                itemData.size = item.size;
             }
             else
             {
-                itemData.size = Vector2Int.zero;
+                itemData.size = 0;
             }
 
 

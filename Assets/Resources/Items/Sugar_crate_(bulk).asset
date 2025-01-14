@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Sugar_crate_(bulk)
   m_EditorClassIdentifier: 
   item_name: Sugar
-  size: {x: 3, y: 2}
+  size: 1
   weight: 50
   store_type: 0
-  graphics: {fileID: 0}
   icon: {fileID: 21300000, guid: 9cbd71f061b88c144bf3df73e32e5514, type: 3}

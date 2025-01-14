@@ -15,6 +15,9 @@ public struct Roads
     [Tooltip("Distance between 2 cities, measured in hours")]
     public int distance;
 
+    [Tooltip("List of events that can happen while passing over these roads")]
+    public List<TravelEvents> travelEvents;
+
     public override string ToString()
     {
         return "Road: " + road1 + " <-> " + road2 + " (Distance: " + distance + " hours)";

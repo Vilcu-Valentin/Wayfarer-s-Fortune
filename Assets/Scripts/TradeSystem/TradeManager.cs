@@ -12,6 +12,7 @@ public class TradeManager : MonoBehaviour
     private SettlementData currentDestination;
 
     private OutlineManager cachedOutliner;
+
     // Update is called once per frame
     void Update()
     {
@@ -43,10 +44,6 @@ public class TradeManager : MonoBehaviour
                 }
             }
         }
-
-        // FOR TESTING PURPOSES ONLY. TO BE REMOVED IN THE FINAL VERSION
-        if (Input.GetKeyDown(KeyCode.Space))
-            mapManger.MovePlayer(currentDestination);
     }
 
     public void ChangePlayerDestination()
@@ -57,5 +54,14 @@ public class TradeManager : MonoBehaviour
             currentDestination = mapManger.playerLocation;
 
         mapManger.HighlighRoads(currentDestination);
+
+        mapManger.MovePlayer(currentDestination);
+
+        Debug.LogWarning("Player changed location --- remember, we don't advance the time yet");
+    }
+
+    public Settlement getCurrentSettlement()
+    {
+        return mapManger.getPlayerLocation();
     }
 }
