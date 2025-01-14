@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36c3d927068b4a4fbc149a83366d5fb, type: 3}
+  m_Name: Grand_Hunting_Season
+  m_EditorClassIdentifier: 
+  name: Grand Hunting Season
+  description: 'A decree echoes through the land: the hunting season has officially
+    begun, and nobles, rangers, and thrill-seekers set out into the wild. Pelts,
+    hides, and exotic trophies soar in value as skilled archers and trappers showcase
+    their best catches. While hunters rejoice, local fauna faces mounting pressure,
+    and farmers note a dip in attention toward grains and produce.'
+  icon: {fileID: 21300000, guid: 59a44985ac885b3408c4af199e1711fb, type: 3}
+  leadTime: 24
+  duration: 72
+  deathTime: 24
+  seasonalModifiers:
+  - 1
+  - 0.5
+  - 0
+  - 0
+  affectedGoods:
+  - item: {fileID: 11400000, guid: 525e7b7318c10554fb874fab1fe20548, type: 2}
+    strength: 4
+  - item: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    strength: 4
+  - item: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 65f9aa268dbf7bc4bb8405af0932120a, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: ea2fc74a98bec214386f1d5b10067a59, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: e4780a1e54c3f5142b88c155aa9f7b87, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: ed224b61210b06f4cb70ca083ab9cefc, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 43a13f6752787674f919404a3daf642f, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: d4fdf05a2db10334d8230904b255dcd0, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 7ef042a44c565aa47a6cff3202e11a9e, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: bebbdf491468b70489c30254b403f1e7, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: b6116951e3303cc478f52682ac38b47c, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: a6aaeb05971b82d428081d712c4fd427, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: b38102adec2749243bf67b689fbb6f8a, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 083f831f52fee134c8e7ef1ff3d2d853, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 356266c9ee5c18f46a4f6984b247723e, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 32cc50b5c26be6c4e9938e53f805c9e6, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: bcbb6c359d6f0844bb7fb34cce73746e, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 669f10bc02cf9264681f06da326790a5, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: d4dce35b24e18254c81d2345089de390, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 3c4e7e581f71865419f1c1ee887bffc9, type: 2}
+    strength: -2

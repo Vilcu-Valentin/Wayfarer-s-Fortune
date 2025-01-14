@@ -29,39 +29,21 @@ public class MapCameraMovement : MonoBehaviour
 
     private float currentZoom;
 
-    [Header("Volume")]
-    public VolumeProfile profile;
-    private DepthOfField dof;
-    private Transform mainCamera;
-
 
     void Start()
     {
         currentZoom = Mathf.Clamp(transform.position.y, minZoom, maxZoom);
-        mainCamera = Camera.main.transform;
-        profile.TryGet<DepthOfField>(out dof);
     }
 
     void Update()
     {
         HandleMovement();
         HandleZoom();
-        HandleFocus();
-    }
 
-    void HandleFocus()
-    {
-        if (dof == null) return;
-
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
-        {
-            float dist = Vector3.Distance(mainCamera.position, hit.point);
-            dof.nearFocusStart.value = dist - 12f;
-            dof.nearFocusEnd.value = dist - 2f;
-            dof.farFocusStart.value = dist + 2.5f;
-            dof.farFocusEnd.value = dist + 12.5f;
-        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            moveSpeed = 20f;
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+            moveSpeed = 10f;
     }
 
     void HandleMovement()
@@ -87,9 +69,6 @@ public class MapCameraMovement : MonoBehaviour
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, adjustedMinX, adjustedMaxX);
         clampedPosition.z = Mathf.Clamp(clampedPosition.z, adjustedMinZ, adjustedMaxZ);
         transform.position = clampedPosition;
-
-        // Optional: Debugging logs
-        Debug.Log($"Zoom Factor: {zoomFactor}, Bounds: X({adjustedMinX}, {adjustedMaxX}), Z({adjustedMinZ}, {adjustedMaxZ})");
     }
 
     void HandleZoom()
@@ -105,9 +84,25 @@ public class MapCameraMovement : MonoBehaviour
         Vector3 targetPosition = transform.position;
         targetPosition.y = currentZoom;
         transform.position = targetPosition;
+    }
 
-        // Optionally log zoom level for debugging
-        Debug.Log($"Zoom Level: {currentZoom}");
+    public void MoveCamereTo(Vector3 position)
+    {
+        position.z -= 5f;
+        // Calculate zoom factor (normalized)
+        float zoomFactor = (currentZoom - minZoom) / (maxZoom - minZoom); // Normalized zoom between 0 and 1
+
+        // Lerp bounds based on zoom level
+        float adjustedMinX = Mathf.Lerp(minXZoomIn, minXZoomOut, zoomFactor);
+        float adjustedMaxX = Mathf.Lerp(maxXZoomIn, maxXZoomOut, zoomFactor);
+        float adjustedMinZ = Mathf.Lerp(minZZoomIn, minZZoomOut, zoomFactor);
+        float adjustedMaxZ = Mathf.Lerp(maxZZoomIn, maxZZoomOut, zoomFactor);
+
+        // Clamp position within dynamically adjusted bounds
+        Vector3 clampedPosition = position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, adjustedMinX, adjustedMaxX);
+        clampedPosition.z = Mathf.Clamp(clampedPosition.z, adjustedMinZ, adjustedMaxZ);
+        transform.position = clampedPosition;
     }
 
 }

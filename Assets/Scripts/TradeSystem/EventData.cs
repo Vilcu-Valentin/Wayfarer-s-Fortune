@@ -17,6 +17,7 @@ public class EventData : ScriptableObject, IEquatable<EventData>
 {
     public new string name;
     public string description;
+    public Sprite icon;
 
     [Tooltip("Measured in hours.")]
     public int leadTime;

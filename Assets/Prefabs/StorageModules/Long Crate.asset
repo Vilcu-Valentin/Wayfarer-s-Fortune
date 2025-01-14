@@ -15,7 +15,7 @@ MonoBehaviour:
   id: long_crate
   size: {x: 4, y: 1, z: 1}
   storage_type: 0
-  inventorySize: {x: 10, y: 2}
+  capacity: 50
   graphics: {fileID: 4183671476866197469, guid: bc0bf073c36a6f24fbf9f4708b828ef0,
     type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5905a68a0c2b5ef45bfe5cb186b78470, type: 3}

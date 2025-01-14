@@ -1,0 +1,473 @@
+{
+    "Goods": [
+      {
+        "name": "Small Package",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 20
+      },
+      {
+        "name": "Large Package",
+        "size_x": 4,
+        "size_y": 3,
+        "weight": 60
+      },
+      {
+        "name": "Fabric",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 0
+      },
+      {
+        "name": "Clothes",
+        "size_x": 1,
+        "size_y": 1,
+        "weight": 0
+      },
+      {
+        "name": "Wheat bundles",
+        "size_x": 1,
+        "size_y": 1,
+        "weight": 5
+      },
+      {
+        "name": "Barley bundles",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 6
+      },
+      {
+        "name": "Rye crate",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 5
+      },
+      {
+        "name": "Sacks of corn",
+        "size_x": 2,
+        "size_y": 3,
+        "weight": 4
+      },
+      {
+        "name": "Flour sacks",
+        "size_x": 2,
+        "size_y": 1,
+        "weight": 8
+      },
+      {
+        "name": "Rice sacks",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 12
+      },
+      {
+        "name": "Salt sack (bulk)",
+        "size_x": 2,
+        "size_y": 3,
+        "weight": 67
+      },
+      {
+        "name": "Sugar crate (bulk)",
+        "size_x": 3,
+        "size_y": 2,
+        "weight": 50
+      },
+      {
+        "name": "Moongrain sacks",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 10
+      },
+      {
+        "name": "Sacks of apples",
+        "size_x": 1,
+        "size_y": 1,
+        "weight": 4
+      },
+      {
+        "name": "Grapes (baskets)",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 4
+      },
+      {
+        "name": "Oranges (sacks)",
+        "size_x": 2,
+        "size_y": 1,
+        "weight": 4
+      },
+      {
+        "name": "Pears (baskets)",
+        "size_x": 2,
+        "size_y": 3,
+        "weight": 2
+      },
+      {
+        "name": "Onions (sacks)",
+        "size_x": 2,
+        "size_y": 1,
+        "weight": 2
+      },
+      {
+        "name": "Potatoes (sacks)",
+        "size_x": 3,
+        "size_y": 2,
+        "weight": 24
+      },
+      {
+        "name": "Carrots (bundles)",
+        "size_x": 1,
+        "size_y": 1,
+        "weight": 3
+      },
+      {
+        "name": "Tomatoes (crates)",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 5
+      },
+      {
+        "name": "Turnips (sacks)",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 3
+      },
+      {
+        "name": "Cabbages (crate)",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 4
+      },
+      {
+        "name": "Crystal berries (crates)",
+        "size_x": 3,
+        "size_y": 3,
+        "weight": 20
+      },
+      {
+        "name": "Sacks of basil",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 1
+      },
+      {
+        "name": "Sage bundles",
+        "size_x": 1,
+        "size_y": 1,
+        "weight": 1
+      },
+      {
+        "name": "Mint bundles",
+        "size_x": 1,
+        "size_y": 1,
+        "weight": 1
+      },
+      {
+        "name": "Thyme sacks",
+        "size_x": 2,
+        "size_y": 1,
+        "weight": 1
+      },
+      {
+        "name": "Peppercorn sacks",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 6
+      },
+      {
+        "name": "Cinnamon sticks (bundles)",
+        "size_x": 1,
+        "size_y": 1,
+        "weight": 1
+      },
+      {
+        "name": "Arcane rosemary (bundles)",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 18
+      },
+      {
+        "name": "Emberroot (crates)",
+        "size_x": 3,
+        "size_y": 3,
+        "weight": 68
+      },
+      {
+        "name": "Nightshade blossoms (bundle)",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 4
+      },
+      {
+        "name": "Meat",
+        "size_x": 3,
+        "size_y": 2,
+        "weight": 5
+      },
+      {
+        "name": "Eggs (chicken, crates)",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 5
+      },
+      {
+        "name": "Eggs (duck, crates)",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 10
+      },
+      {
+        "name": "Wool (bundles or bales)",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 30
+      },
+      {
+        "name": "Leather hides (rolls)",
+        "size_x": 1,
+        "size_y": 3,
+        "weight": 8
+      },
+      {
+        "name": "Pelts",
+        "size_x": 3,
+        "size_y": 4,
+        "weight": 22
+      },
+      {
+        "name": "Goose Feathers (crates)",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 10
+      },
+      {
+        "name": "Phoenix Feathers (crates)",
+        "size_x": 3,
+        "size_y": 2,
+        "weight": 5
+      },
+      {
+        "name": "Oak Planks",
+        "size_x": 1,
+        "size_y": 8,
+        "weight": 30
+      },
+      {
+        "name": "Birch Planks",
+        "size_x": 1,
+        "size_y": 10,
+        "weight": 16
+      },
+      {
+        "name": "Mahogany planks",
+        "size_x": 2,
+        "size_y": 6,
+        "weight": 40
+      },
+      {
+        "name": "Firewood",
+        "size_x": 3,
+        "size_y": 5,
+        "weight": 75
+      },
+      {
+        "name": "Stone blocks",
+        "size_x": 4,
+        "size_y": 4,
+        "weight": 200
+      },
+      {
+        "name": "Marble Blocks",
+        "size_x": 5,
+        "size_y": 5,
+        "weight": 534
+      },
+      {
+        "name": "Bricks (bundles)",
+        "size_x": 4,
+        "size_y": 2,
+        "weight": 27
+      },
+      {
+        "name": "Nail box",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 22
+      },
+      {
+        "name": "Mana potions (bottles in crates)",
+        "size_x": 2,
+        "size_y": 3,
+        "weight": 8
+      },
+      {
+        "name": "Dragon's blood (bottles in crates)",
+        "size_x": 2,
+        "size_y": 1,
+        "weight": 15
+      },
+      {
+        "name": "Tears of the Fae (bottles in crates)",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 10
+      },
+      {
+        "name": "Arcane Crystals (sacks)",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 40
+      },
+      {
+        "name": "Dragon scales (crates)",
+        "size_x": 3,
+        "size_y": 2,
+        "weight": 50
+      },
+      {
+        "name": "Iron ore (crates)",
+        "size_x": 3,
+        "size_y": 4,
+        "weight": 240
+      },
+      {
+        "name": "Copper ingots",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 96
+      },
+      {
+        "name": "Silver ingots",
+        "size_x": 2,
+        "size_y": 2,
+        "weight": 216
+      },
+      {
+        "name": "Gold ingot",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 100
+      },
+      {
+        "name": "Star iron ingots",
+        "size_x": 1,
+        "size_y": 1,
+        "weight": 1000
+      },
+      {
+        "name": "Runestone bricks",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 5
+      },
+      {
+        "name": "Armour set (crates)",
+        "size_x": 2,
+        "size_y": 4,
+        "weight": 45
+      },
+      {
+        "name": "Tool crate",
+        "size_x": 1,
+        "size_y": 2,
+        "weight": 15
+      },
+      {
+        "name": "Weapon crate",
+        "size_x": 4,
+        "size_y": 1,
+        "weight": 20
+      },
+      {
+        "name": "Shields bundle",
+        "size_x": 5,
+        "size_y": 3,
+        "weight": 24
+      }
+    ],
+    "Fluids": [
+      {
+        "name": "Wine barrels",
+        "weight": 13
+      },
+      {
+        "name": "Ale barrels",
+        "weight": 8
+      },
+      {
+        "name": "Oil barrels (lamp oil)",
+        "weight": 6
+      },
+      {
+        "name": "Honey barrels",
+        "weight": 12
+      },
+      {
+        "name": "Ether oil",
+        "weight": 2
+      },
+      {
+        "name": "Healing elixir",
+        "weight": 10
+      },
+      {
+        "name": "Lunar water",
+        "weight": 8
+      },
+      {
+        "name": "Arcane ichor",
+        "weight": 20
+      }
+    ],
+    "Livestock": [
+      {
+        "name": "Chickens",
+        "weight": 8
+      },
+      {
+        "name": "Pigs",
+        "weight": 420
+      },
+      {
+        "name": "Cows",
+        "weight": 1000
+      },
+      {
+        "name": "Sheep",
+        "weight": 150
+      },
+      {
+        "name": "Goats",
+        "weight": 50
+      },
+      {
+        "name": "Horses",
+        "weight": 1200
+      },
+      {
+        "name": "Phoenixes",
+        "weight": 30
+      },
+      {
+        "name": "Slime",
+        "weight": 1500
+      },
+      {
+        "name": "Unicorns",
+        "weight": 800
+      },
+      {
+        "name": "Drakehounds",
+        "weight": 275
+      },
+      {
+        "name": "Shadow steeds",
+        "weight": 10
+      },
+      {
+        "name": "Dragons",
+        "weight": 4000
+      }
+    ]
+  }
+  

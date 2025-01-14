@@ -32,8 +32,13 @@ public class GlobalEventManager : MonoBehaviour
                     {
                         foreach (SettlementData settlementData in zone.settlements)
                             if (settlementObjDict.ContainsKey(settlementData))
+                            {
                                 settlementObjDict[settlementData].activateGolbalEvent(eventContext.eventData);
+                            }
+                        Debug.Log(eventContext.eventData.name + " has started in zone " + zone.name);
                     }
+
+                    Debug.Log("Rolling event for " + zone.name);
                 }
             }
         }
@@ -47,6 +52,7 @@ public class GlobalEventManager : MonoBehaviour
         if (settlementObjDict.ContainsKey(settlement.data))
             return;
         settlementObjDict.Add(settlement.data, settlement);
+        Debug.Log(settlement + " has been registered in the GlobalEventManager");
     }
 
     public void unregisterSettlement(Settlement settlement) { settlementObjDict.Remove(settlement.data); }

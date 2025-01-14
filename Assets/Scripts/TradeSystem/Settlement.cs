@@ -48,12 +48,16 @@ public struct OutputPriceData
     public ItemData itemData;
     public float minPrice;
     public float maxPrice;
+    public float realPrice;
+    public float basePrice;
 
-    public OutputPriceData(ItemData itemData, float minPrice, float maxPrice)
+    public OutputPriceData(ItemData itemData, float minPrice, float maxPrice, float realPrice, float basePrice)
     {
         this.itemData = itemData;
         this.minPrice = minPrice;
         this.maxPrice = maxPrice;
+        this.realPrice = realPrice;
+        this.basePrice = basePrice;
     }
 }
 
@@ -238,6 +242,24 @@ public class Settlement : MonoBehaviour
         if(perfectEventInfoFlag && (newDay > perfectEventInfoEndDay || (newDay == perfectEventInfoEndDay && newHour >= perfectEventInfoEndHour)) )
             perfectEventInfoFlag = false;
 
+        // Update event visibility
+        for (int i = 0; i < activeEventsData.Count; i++)
+        {
+            var eventKey = activeEventsData.ElementAt(i).Key;
+            var eventValue = activeEventsData.ElementAt(i).Value.value;
+
+            // Skip seasonal events
+            if (data.seasonalEvents.Contains(eventKey))
+                continue;
+
+            if (activeEventsData.ElementAt(i).Value.value.startHour + activeEventsData.ElementAt(i).Key.leadTime % 24 >= 0 &&
+        activeEventsData.ElementAt(i).Value.value.startDay + activeEventsData.ElementAt(i).Key.leadTime / 24 >= 0)
+            {
+                activeEventsData.ElementAt(i).Value.value.visible = true;
+            }
+        }
+
+
         // Update day and hour
         currentDay = newDay;
         currentHour = newHour;
@@ -250,7 +272,12 @@ public class Settlement : MonoBehaviour
                                            * pricesData[item].value.eventsMultiplier * pricesData[item].value.basePricePerUnit;
         }
     }
+    
 
+    /// <summary>
+    /// Activates an event from the settlement's global event list
+    /// </summary>
+    /// <param name="globalEvent"></param>
     public void activateGolbalEvent(EventData globalEvent)
     {
         if (activeEventsData.ContainsKey(globalEvent))
@@ -268,8 +295,11 @@ public class Settlement : MonoBehaviour
         activeEventsData.Add(globalEvent, 
             new MutableHolder<ActiveEventData>(new ActiveEventData(TimeMaster.Instance().day)));
     }
-    
 
+    /// <summary>
+    /// This method makes all priced inside a settlement return the perfect price for the duration
+    /// </summary>
+    /// <param name="duration"></param>
     public void setPerfectInfo(int duration)
     {
         if (duration < 0) return; // Invalid input.
@@ -292,14 +322,15 @@ public class Settlement : MonoBehaviour
     {
         List<OutputPriceData> outPrices = new List<OutputPriceData>();
         int playerDistance = mapMaster.GetPlayerDistanceTo(data);
+        Debug.Log("The player is here: " + mapMaster.playerLocation + "Wants to go here: " + data + " with distance: " + playerDistance);
         foreach( ItemData item in pricesData.Keys )
         {
             if (permanentPerfectPriceInfoFlag || perfectPriceInfoFlag)
-                outPrices.Add(new OutputPriceData(item, pricesData[item].value.pricePerUnit, pricesData[item].value.pricePerUnit));
+                outPrices.Add(new OutputPriceData(item, pricesData[item].value.pricePerUnit, pricesData[item].value.pricePerUnit, pricesData[item].value.pricePerUnit, pricesData[item].value.basePricePerUnit));
             else
             {
                 (float, float) bounds = getPriceRange(pricesData[item].value.pricePerUnit, playerDistance);
-                outPrices.Add(new OutputPriceData(item, bounds.Item1, bounds.Item2));
+                outPrices.Add(new OutputPriceData(item, bounds.Item1, bounds.Item2, pricesData[item].value.pricePerUnit, pricesData[item].value.basePricePerUnit));
             }
         }
         return outPrices;
@@ -313,20 +344,23 @@ public class Settlement : MonoBehaviour
     /// <returns></returns>
     private (float, float) getPriceRange(float truePrice, int playerDistance)
     {
-        float scale_factor = Mathf.Pow((float)playerDistance, 2.5f) / (PlayerMaster.Instance().currentLvl*0.6f);
+        float scale_factor = Mathf.Pow((float)playerDistance / 4, 2f) / (PlayerMaster.Instance().currentLvl*0.55f);
         float range_size = scale_factor * Mathf.Sqrt(truePrice);
-        if (range_size > 40) 
+        if (scale_factor > 40) 
             return (-1, -1);
         
         float half_range = range_size / 2;
         float random_offset = Random.Range(-half_range, half_range);
         
-        float lower_bound = Mathf.Max(0, truePrice-half_range+random_offset);
+        float lower_bound = Mathf.Max(0.01f, truePrice-half_range+random_offset);
         float upper_bound = truePrice + half_range + random_offset;
         return (lower_bound, upper_bound);
     }
 
-
+    /// <summary>
+    /// Checks if we have a perfect event info flag, or if the event is visible
+    /// </summary>
+    /// <returns>All events that have the visible flag set to true</returns>
     public Dictionary<EventData, ActiveEventData> getVisibleEvents()
     {
         Dictionary<EventData, ActiveEventData> visibles = new Dictionary<EventData, ActiveEventData>();
@@ -338,7 +372,10 @@ public class Settlement : MonoBehaviour
         return visibles;
     }
 
-
+    /// <summary>
+    /// This is used in the information network to make an event visible during it's lead time
+    /// </summary>
+    /// <param name="eventData"></param>
     public void makeEventVisible(EventData eventData = null)
     {
         if( eventData == null )
@@ -354,6 +391,10 @@ public class Settlement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method makes all events inside a settlement visible for the duration
+    /// </summary>
+    /// <param name="duration"></param>
     public void setPerfectEventDataInfo(int duration)
     {
         if (duration < 0) return; // Invalid data

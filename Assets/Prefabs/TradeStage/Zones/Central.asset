@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5309ff8a0eb07914780af8644b936310, type: 3}
+  m_Name: Central
+  m_EditorClassIdentifier: 
+  name: Central
+  eventContexts:
+  - eventData: {fileID: 11400000, guid: c0ac9faf53fbfac45a154fc86013ebe8, type: 2}
+    frequency: 0.05
+  - eventData: {fileID: 11400000, guid: 19d832ee05e90af43a39c7e597802116, type: 2}
+    frequency: 0.45
+  - eventData: {fileID: 11400000, guid: c7d318db5a913654996daed8135f88d6, type: 2}
+    frequency: 0.8
+  - eventData: {fileID: 11400000, guid: 9f3368d0d40b71c4590f8f1feb870032, type: 2}
+    frequency: 0.3
+  - eventData: {fileID: 11400000, guid: 9f464c223b262f74a9e8ffebd3f211b2, type: 2}
+    frequency: 0.35
+  - eventData: {fileID: 11400000, guid: e8b8e0cb76e52664ebbf43db4f2e65ec, type: 2}
+    frequency: 0.6
+  - eventData: {fileID: 11400000, guid: 97979282ba92d9f42bfe095f12a67bc2, type: 2}
+    frequency: 0.12
+  - eventData: {fileID: 11400000, guid: ba486debd2ffd064ba3daa086606645c, type: 2}
+    frequency: 0.35
+  - eventData: {fileID: 11400000, guid: 2b21604c3497ee148a1b6064d26456e6, type: 2}
+    frequency: 0.33
+  settlements:
+  - {fileID: 11400000, guid: 38c93623aa1658e4889a08e710d925d3, type: 2}
+  - {fileID: 11400000, guid: f6184ac695646f84094cb403209b4955, type: 2}
+  - {fileID: 11400000, guid: a81c102b57421834fb18a13341793107, type: 2}
+  - {fileID: 11400000, guid: 353771df8d6d51a4c94861cc3e55c67a, type: 2}
+  - {fileID: 11400000, guid: d23f2c7d87c6a4e49bbc097566b686b5, type: 2}
+  - {fileID: 11400000, guid: 15cae957b0ed8fc42a6b25e11fb881bd, type: 2}
+  - {fileID: 11400000, guid: 000568628753bfd4cbe66fd07a3bfdc3, type: 2}

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
+  m_Name: Travel Event
+  m_EditorClassIdentifier: 
+  event_name: PositiveEvent
+  description: 
+  ticket: 5
+  effects:
+  - rid: 4077543585952301082
+  - rid: 4077543585952301083
+  - rid: 4077543585952301084
+  references:
+    version: 2
+    RefIds:
+    - rid: 4077543585952301082
+      type: {class: ItemEffect, ns: , asm: Assembly-CSharp}
+      data:
+        isAddingItems: 1
+        items:
+        - {fileID: 11400000, guid: cfebeb3a5927bd9479e0dc82026f207a, type: 2}
+        - {fileID: 11400000, guid: 2138036358d6ca247a8f11be300e499e, type: 2}
+        itemRange: {x: 1, y: 2}
+        itemCountRange: {x: 1, y: 5}
+    - rid: 4077543585952301083
+      type: {class: DurationEffect, ns: , asm: Assembly-CSharp}
+      data:
+        duration: 4
+        randomness: 1
+    - rid: 4077543585952301084
+      type: {class: CoinEffect, ns: , asm: Assembly-CSharp}
+      data:
+        coin: 1.05
