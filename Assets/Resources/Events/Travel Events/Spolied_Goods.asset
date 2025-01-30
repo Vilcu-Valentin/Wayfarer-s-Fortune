@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
+  m_Name: Spolied_Goods
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: df24ebfdc02a7384c890a4dbea56d58b, type: 3}
+  event_name: Spoiled Goods
+  description: A portion of your supplies has gone bad, leaving them unusable.
+  ticket: 1
+  effects:
+  - rid: 7054772597579055115
+  references:
+    version: 2
+    RefIds:
+    - rid: 7054772597579055115
+      type: {class: ItemEffect, ns: , asm: Assembly-CSharp}
+      data:
+        isAddingItems: 0
+        items: []
+        itemRange: {x: 1, y: 4}
+        itemCountRange: {x: 3, y: 5}

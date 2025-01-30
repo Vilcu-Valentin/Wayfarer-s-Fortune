@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Runestone_bricks
   m_EditorClassIdentifier: 
   item_name: Runestone Bricks
-  size: 1
+  size: 2
   weight: 5
   store_type: 0
   icon: {fileID: 21300000, guid: c193577fe74e323418d33099e287cd1b, type: 3}

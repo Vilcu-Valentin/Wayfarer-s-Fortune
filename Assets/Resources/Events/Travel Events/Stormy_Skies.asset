@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
   m_Name: Stormy_Skies
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a690f6f97350dac4593a929b29f46cae, type: 3}
   event_name: Stormy_Skies
   description: 'A torrential downpour slows your progress and makes your journey
     treacherous.

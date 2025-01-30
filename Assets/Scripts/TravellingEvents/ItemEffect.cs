@@ -81,18 +81,12 @@ public class ItemEffect : EventEffect<List<Item>>
             bool itemAdded = false;
             foreach (InventoryWagon wagon in Inventory.Instance.Wagons)
             {
-                foreach (StorageModule module in wagon.Modules)
+                bool added = Inventory.Instance.AddToPendingItems(newItem);
+                if (added)
                 {
-                    if (module.moduleData.storage_type == itemData.store_type)
-                    {
-                        bool added = Inventory.Instance.AddItemToModule(module, newItem);
-                        if (added)
-                        {
-                            addedItems.Add(newItem);
-                            itemAdded = true;
-                            break; // Move to the next item
-                        }
-                    }
+                    addedItems.Add(newItem);
+                    itemAdded = true;
+                    break; // Move to the next item
                 }
 
                 if (itemAdded)

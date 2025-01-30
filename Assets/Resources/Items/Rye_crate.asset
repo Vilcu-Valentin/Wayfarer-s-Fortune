@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rye_crate
   m_EditorClassIdentifier: 
   item_name: Rye
-  size: 1
+  size: 4
   weight: 5
   store_type: 0
   icon: {fileID: 21300000, guid: a99cc45cbe6df094cb6f703a1d21ff98, type: 3}

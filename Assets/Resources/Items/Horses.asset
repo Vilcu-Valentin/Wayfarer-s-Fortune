@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Horses
   m_EditorClassIdentifier: 
   item_name: Horse
-  size: 1
+  size: 12
   weight: 1200
   store_type: 2
   icon: {fileID: 21300000, guid: 148dde2771141574f804b0a8cfe1e025, type: 3}

@@ -38,7 +38,6 @@ public class FloatingTextManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
 
             if (canvas == null)
             {

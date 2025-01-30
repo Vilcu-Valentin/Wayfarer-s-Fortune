@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Eggs_(duck,_crates)
   m_EditorClassIdentifier: 
   item_name: Duck Egg
-  size: 1
+  size: 4
   weight: 10
   store_type: 0
   icon: {fileID: 21300000, guid: 3954b5035748fb943827ab246145ee09, type: 3}

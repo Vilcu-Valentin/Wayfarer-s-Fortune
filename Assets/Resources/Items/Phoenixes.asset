@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Phoenixes
   m_EditorClassIdentifier: 
   item_name: Phoenix
-  size: 1
+  size: 3
   weight: 30
   store_type: 2
   icon: {fileID: 21300000, guid: 70fe0753ea8ca8a468187f40c97dd326, type: 3}

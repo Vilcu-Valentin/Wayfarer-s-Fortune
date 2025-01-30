@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
   m_Name: Helpful_Stranger
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3a4f885ea8e2f0f4599f74fe799745e5, type: 3}
   event_name: Helpful Stranger
   description: A friendly local offers to show you a shortcut, saving you precious
     time.

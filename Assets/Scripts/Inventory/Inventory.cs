@@ -365,7 +365,7 @@ public class Inventory : MonoBehaviour
         UiManager.DisplayModuleItems(module);
     }
 
-    public void AddToPendingItems(Item item)
+    public bool AddToPendingItems(Item item)
     {
         var existingItem = PendingItems.Find(i => i.ItemData == item.ItemData);
         if (existingItem != null)
@@ -380,6 +380,7 @@ public class Inventory : MonoBehaviour
         }
 
         NotifyInventoryUpdated();
+        return true;
     }
 
     private void RemoveFromPendingItems(Item item)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using TMPro.EditorUtilities;
 
 public class Item_UIManager : MonoBehaviour
 {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wool_(bundles_or_bales)
   m_EditorClassIdentifier: 
   item_name: Wool
-  size: 1
+  size: 4
   weight: 30
   store_type: 0
   icon: {fileID: 21300000, guid: b1198dad18b8a0b4e943c74f0056de19, type: 3}

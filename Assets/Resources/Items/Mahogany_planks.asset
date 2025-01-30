@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mahogany_planks
   m_EditorClassIdentifier: 
   item_name: Mahogany Planks
-  size: 1
+  size: 12
   weight: 40
   store_type: 0
   icon: {fileID: 21300000, guid: 65ed3154866694942b02bf7c246abf75, type: 3}

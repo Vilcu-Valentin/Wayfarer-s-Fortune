@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
+  m_Name: Lucky_Loot
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: aca9bbc6233a7a74ca0042abdcfe88a5, type: 3}
+  event_name: Lucky Loot
+  description: You come across an abandoned wagon filled with valuable goods.
+  ticket: 1
+  effects:
+  - rid: 7054772597579055109
+  references:
+    version: 2
+    RefIds:
+    - rid: 7054772597579055109
+      type: {class: ItemEffect, ns: , asm: Assembly-CSharp}
+      data:
+        isAddingItems: 1
+        items:
+        - {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+        - {fileID: 11400000, guid: 525e7b7318c10554fb874fab1fe20548, type: 2}
+        - {fileID: 11400000, guid: 35349d8690d3a2e44bca7b9d1ff4f564, type: 2}
+        - {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+        - {fileID: 11400000, guid: b6612c5a1337c284db0915e3313128e2, type: 2}
+        - {fileID: 11400000, guid: 65f9aa268dbf7bc4bb8405af0932120a, type: 2}
+        - {fileID: 11400000, guid: 5dcb57b72a9ba914489cbf1d70a82db6, type: 2}
+        - {fileID: 11400000, guid: 634c4d566b374404c9286ad85369b3b3, type: 2}
+        - {fileID: 11400000, guid: c21b2c83f017b524695584d4e5788ac9, type: 2}
+        - {fileID: 11400000, guid: 2138036358d6ca247a8f11be300e499e, type: 2}
+        - {fileID: 11400000, guid: eba6579cf674a70498fd0c278b1fb47f, type: 2}
+        - {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+        - {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+        itemRange: {x: 2, y: 4}
+        itemCountRange: {x: 3, y: 10}

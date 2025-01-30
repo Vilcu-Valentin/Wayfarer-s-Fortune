@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dragons
   m_EditorClassIdentifier: 
   item_name: Dragon
-  size: 1
+  size: 45
   weight: 4000
   store_type: 2
   icon: {fileID: 21300000, guid: 6fde4d99c6e10944db67bb7dac6e783c, type: 3}
