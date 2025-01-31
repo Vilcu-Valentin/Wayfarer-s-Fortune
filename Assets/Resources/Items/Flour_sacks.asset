@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flour_sacks
   m_EditorClassIdentifier: 
   item_name: Flour Sack
-  size: 1
+  size: 2
   weight: 8
   store_type: 0
   icon: {fileID: 21300000, guid: c3a9e0e94f10cac499f58b3c62abd390, type: 3}

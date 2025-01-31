@@ -8,7 +8,7 @@ public class PlayerMaster
 
     public float money { get; private set; }
     public int currentExp { get; private set; } = 0;
-    public int currentLvl { get; private set; } = 1;
+    public int currentLvl { get; private set; } = 4;
 
     [Tooltip("The amount of money you need to win the level")]
     public int moneyGoal { get; private set; }

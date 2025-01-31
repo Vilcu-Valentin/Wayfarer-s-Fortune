@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tears_of_the_Fae_(bottles_in_crates)
   m_EditorClassIdentifier: 
   item_name: Tears of The Fae
-  size: 1
+  size: 4
   weight: 10
   store_type: 0
   icon: {fileID: 21300000, guid: 2a1acad9871fffd42bd551571830c1d8, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sheep
   m_EditorClassIdentifier: 
   item_name: Sheep
-  size: 1
+  size: 4
   weight: 150
   store_type: 2
   icon: {fileID: 21300000, guid: 0f0c436540914444096dc0be2c476650, type: 3}

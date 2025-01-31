@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Onions_(sacks)
   m_EditorClassIdentifier: 
   item_name: Onions
-  size: 1
+  size: 2
   weight: 2
   store_type: 0
   icon: {fileID: 21300000, guid: 03b1a261091a6cf4ba3a5fe4173461d4, type: 3}

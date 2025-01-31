@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
+  m_Name: Mimic's_Deception
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: d55d4ef1a9a5da9408562481ff5bbc42, type: 3}
+  event_name: Mimic's Deception
+  description: A treasure chest turns out to be a mimic, swallowing both your coin
+    pouch and your pride.
+  ticket: 1
+  effects:
+  - rid: 7054772597579055107
+  references:
+    version: 2
+    RefIds:
+    - rid: 7054772597579055107
+      type: {class: CoinEffect, ns: , asm: Assembly-CSharp}
+      data:
+        coin: 0.6

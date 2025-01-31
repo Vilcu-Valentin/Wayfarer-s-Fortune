@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nail_box
   m_EditorClassIdentifier: 
   item_name: Nails
-  size: 1
+  size: 2
   weight: 22
   store_type: 0
   icon: {fileID: 21300000, guid: 23b2a78a0048d914da92d30905f745f0, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mana_potions_(bottles_in_crates)
   m_EditorClassIdentifier: 
   item_name: Mana Potions
-  size: 1
+  size: 6
   weight: 8
   store_type: 0
   icon: {fileID: 21300000, guid: 6bd1c893a07da064088e1c817bdc27cb, type: 3}

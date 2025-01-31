@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
   m_Name: Landslide
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d858b7558e1212446a347158b4bc9079, type: 3}
   event_name: Landslide
   description: A sudden landslide blocks the road ahead, forcing you to find another
     route.

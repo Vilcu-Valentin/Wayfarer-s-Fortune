@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stone_blocks
   m_EditorClassIdentifier: 
   item_name: Stone Block
-  size: 1
+  size: 16
   weight: 200
   store_type: 0
   icon: {fileID: 21300000, guid: 5a5e09f1b56aa96499c133a40e394190, type: 3}

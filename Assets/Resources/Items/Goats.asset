@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Goats
   m_EditorClassIdentifier: 
   item_name: Goat
-  size: 1
+  size: 3
   weight: 50
   store_type: 2
   icon: {fileID: 21300000, guid: d9b088fd481ca6a4abd564428fc4417c, type: 3}

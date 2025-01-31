@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using static UnityEditor.Progress;
 
 public class TravelEvent_UI : MonoBehaviour
 {
@@ -58,6 +57,7 @@ public class TravelEvent_UI : MonoBehaviour
                 ItemEffect_UI spawnedResult = Instantiate(effectsPrefab, effectsSpawn.transform).GetComponent<ItemEffect_UI>();
                 bool noEffectValue = (bool)result.Value;
                 spawnedResult.Initialize(nothingHappened, 0, false);
+                Destroy(this.gameObject);
             }
         }
     }

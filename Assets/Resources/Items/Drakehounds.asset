@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Drakehounds
   m_EditorClassIdentifier: 
   item_name: Drakehound
-  size: 1
+  size: 8
   weight: 275
   store_type: 2
   icon: {fileID: 21300000, guid: c2bca53c627d2644fa23ddf1fe0605e7, type: 3}

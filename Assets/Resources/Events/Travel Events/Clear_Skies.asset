@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
   m_Name: Clear_Skies
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: feed346a87b10bf4182bd770521a752b, type: 3}
   event_name: Clear Skies
   description: Perfect weather helps you make excellent progress on your journey.
   ticket: 1
