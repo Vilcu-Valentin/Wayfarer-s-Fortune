@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc923ec7184d7554ab1cb36bd937a2ee, type: 3}
+  m_Name: ManaFurnace
+  m_EditorClassIdentifier: 
+  power: 160
+  torqueCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: -0.041967876
+      outSlope: -0.041967876
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.14146285
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: -0.047419097
+      outSlope: -0.047419097
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.14372133
+      outWeight: 0.07379181
+    - serializedVersion: 3
+      time: 1
+      value: 0.7
+      inSlope: -0.15386689
+      outSlope: -0.15386689
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12015704
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  graphics: {fileID: 685298353291965139, guid: 6b54cdb1edc73b345bb093407fe7cd81, type: 3}

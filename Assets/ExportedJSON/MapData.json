@@ -1,0 +1,194 @@
+{
+    "roads": [
+        {
+            "road1Name": "Silverport Market",
+            "road2Name": "GoldRush",
+            "distance": 20
+        },
+        {
+            "road1Name": "GoldRush",
+            "road2Name": "Valescar Bastion",
+            "distance": 3
+        },
+        {
+            "road1Name": "GoldRush",
+            "road2Name": "Harborhaven",
+            "distance": 10
+        },
+        {
+            "road1Name": "GoldRush",
+            "road2Name": "Oakencask Crossing",
+            "distance": 21
+        },
+        {
+            "road1Name": "GoldRush",
+            "road2Name": "Harverstone",
+            "distance": 8
+        },
+        {
+            "road1Name": "Harborhaven",
+            "road2Name": "Riverside Bazaar",
+            "distance": 7
+        },
+        {
+            "road1Name": "Riverside Bazaar",
+            "road2Name": "Oakencask Crossing",
+            "distance": 24
+        },
+        {
+            "road1Name": "Harverstone",
+            "road2Name": "Arcanis",
+            "distance": 6
+        },
+        {
+            "road1Name": "Arcanis",
+            "road2Name": "Redvale",
+            "distance": 4
+        },
+        {
+            "road1Name": "Redvale",
+            "road2Name": "Oakencask Crossing",
+            "distance": 6
+        },
+        {
+            "road1Name": "Arcanis",
+            "road2Name": "Honeybrook",
+            "distance": 6
+        },
+        {
+            "road1Name": "Arcanis",
+            "road2Name": "Timberwood",
+            "distance": 5
+        },
+        {
+            "road1Name": "Timberwood",
+            "road2Name": "Honeybrook",
+            "distance": 7
+        },
+        {
+            "road1Name": "Greenwood Fields",
+            "road2Name": "Timberwood",
+            "distance": 8
+        },
+        {
+            "road1Name": "Greenwood Fields",
+            "road2Name": "Pinehaven",
+            "distance": 6
+        },
+        {
+            "road1Name": "Greenwood Fields",
+            "road2Name": "Featherwick",
+            "distance": 19
+        },
+        {
+            "road1Name": "Featherwick",
+            "road2Name": "Oakencask Crossing",
+            "distance": 7
+        },
+        {
+            "road1Name": "Featherwick",
+            "road2Name": "Luminaire",
+            "distance": 6
+        },
+        {
+            "road1Name": "Luminaire",
+            "road2Name": "MoonShadow Market",
+            "distance": 8
+        },
+        {
+            "road1Name": "MoonShadow Market",
+            "road2Name": "Oakencask Crossing",
+            "distance": 9
+        },
+        {
+            "road1Name": "MoonShadow Market",
+            "road2Name": "Ironhold",
+            "distance": 11
+        },
+        {
+            "road1Name": "Ironhold",
+            "road2Name": "Ironpeak Garrison",
+            "distance": 5
+        },
+        {
+            "road1Name": "MoonShadow Market",
+            "road2Name": "Rockridge",
+            "distance": 9
+        },
+        {
+            "road1Name": "Rockridge",
+            "road2Name": "Goldhaven",
+            "distance": 6
+        },
+        {
+            "road1Name": "Goldhaven",
+            "road2Name": "Luminaire",
+            "distance": 13
+        },
+        {
+            "road1Name": "Luminaire",
+            "road2Name": "Highspire University",
+            "distance": 12
+        },
+        {
+            "road1Name": "Highspire University",
+            "road2Name": "Hidemont",
+            "distance": 12
+        },
+        {
+            "road1Name": "Hidemont",
+            "road2Name": "Rivermouth",
+            "distance": 7
+        },
+        {
+            "road1Name": "Rivermouth",
+            "road2Name": "Highspire University",
+            "distance": 16
+        },
+        {
+            "road1Name": "Rivermouth",
+            "road2Name": "Stallion’s Haven",
+            "distance": 15
+        },
+        {
+            "road1Name": "Stallion’s Haven",
+            "road2Name": "Greenmeadow Pastures",
+            "distance": 8
+        },
+        {
+            "road1Name": "Greenmeadow Pastures",
+            "road2Name": "Highspire University",
+            "distance": 20
+        },
+        {
+            "road1Name": "Goldhaven",
+            "road2Name": "Thundercliff",
+            "distance": 10
+        },
+        {
+            "road1Name": "Thundercliff",
+            "road2Name": "Seastone",
+            "distance": 14
+        },
+        {
+            "road1Name": "Thundercliff",
+            "road2Name": "Meadowfair Market",
+            "distance": 13
+        },
+        {
+            "road1Name": "Meadowfair Market",
+            "road2Name": "Greenmeadow Pastures",
+            "distance": 10
+        },
+        {
+            "road1Name": "Meadowfair Market",
+            "road2Name": "Fort Valor",
+            "distance": 15
+        },
+        {
+            "road1Name": "Fort Valor",
+            "road2Name": "Astralhaven",
+            "distance": 14
+        }
+    ]
+}

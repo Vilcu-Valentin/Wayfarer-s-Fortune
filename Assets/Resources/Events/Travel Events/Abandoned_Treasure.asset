@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb443039fb006f43bc3176d342aa5e7, type: 3}
+  m_Name: Abandoned_Treasure
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 6d93083ff01f6d4429c3063aac161395, type: 3}
+  event_name: Abandoned Treasure
+  description: "You spot an old, rusted chest by the roadside. Inside, there\u2019s
+    a surprising amount of coins!"
+  ticket: 1
+  effects:
+  - rid: 7054772597579055104
+  references:
+    version: 2
+    RefIds:
+    - rid: 7054772597579055104
+      type: {class: CoinEffect, ns: , asm: Assembly-CSharp}
+      data:
+        coin: 1.4

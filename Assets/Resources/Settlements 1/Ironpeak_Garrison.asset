@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41624af22c23d1448637bba0cb1103a, type: 3}
+  m_Name: Ironpeak_Garrison
+  m_EditorClassIdentifier: 
+  name: Ironpeak Garrison
+  size: Town
+  occupation: Military
+  goodsPool:
+  - itemData: {fileID: 11400000, guid: cda795b0eb5989c44a680eb95e257290, type: 2}
+    basePricePerUnit: 865
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: f9d8630ead85d704bbeb8044f1ee23db, type: 2}
+    basePricePerUnit: 283
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 07b06e6f6371c0f4fb06d4f5e73c4f3c, type: 2}
+    basePricePerUnit: 201
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: e5951d9d59ba50c489886df549a3e8f8, type: 2}
+    basePricePerUnit: 193
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    basePricePerUnit: 26
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: d4dce35b24e18254c81d2345089de390, type: 2}
+    basePricePerUnit: 46
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    basePricePerUnit: 129
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 4e648d5708405424194ed01651a4fee0, type: 2}
+    basePricePerUnit: 264
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    basePricePerUnit: 22
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    basePricePerUnit: 30
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: eba6579cf674a70498fd0c278b1fb47f, type: 2}
+    basePricePerUnit: 33
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 054a308b02eff374282be147bed9f53d, type: 2}
+    basePricePerUnit: 24
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 55faf88a9646595468444479183aae77, type: 2}
+    basePricePerUnit: 36
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: ed1ad2a29f2e7504ca9f909088f3f422, type: 2}
+    basePricePerUnit: 21
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c089646285f921646be50698f49e6ccd, type: 2}
+    basePricePerUnit: 33
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 263a94279659d9e41b5b1d39a81cf6ce, type: 2}
+    basePricePerUnit: 24
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 2138036358d6ca247a8f11be300e499e, type: 2}
+    basePricePerUnit: 29
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b05bbe8a1c92ce54f8d87e3244db49f7, type: 2}
+    basePricePerUnit: 31
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c3d4adba22c25ad4e95f42f09772adf7, type: 2}
+    basePricePerUnit: 47
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: b6612c5a1337c284db0915e3313128e2, type: 2}
+    basePricePerUnit: 36
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 917f7ac27d455d84ba795c35b584dc14, type: 2}
+    basePricePerUnit: 40
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: c362b58db132a68498282e76c703c68e, type: 2}
+    basePricePerUnit: 55
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: efaadd383bcd6dc4094cb710645d7557, type: 2}
+    basePricePerUnit: 10
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
+    basePricePerUnit: 26
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 913f686433896434e9f19bb27980f540, type: 2}
+    basePricePerUnit: 73000
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 876b624db4164e24598402c512657af9, type: 2}
+    basePricePerUnit: 76980
+    volatility: 0.05
+  - itemData: {fileID: 11400000, guid: 6d5e4d34cd0d8f14eb64d69ae50d7a3e, type: 2}
+    basePricePerUnit: 250000
+    volatility: 0.05
+  localEvents:
+  - eventData: {fileID: 11400000, guid: faec85f10c68f0243af0dafceebb3199, type: 2}
+    frequency: 0.2
+  - eventData: {fileID: 11400000, guid: 121090b4160ca364dacb020f14a67634, type: 2}
+    frequency: 0.2
+  - eventData: {fileID: 11400000, guid: c6ceeae293430474495963e2e12842ad, type: 2}
+    frequency: 0.25
+  - eventData: {fileID: 11400000, guid: 700a4da10b0d04c46a4ee58929dd63eb, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: 4ecab8d7a6d7f6547a6fcc13d5dd1b11, type: 2}
+    frequency: 2
+  - eventData: {fileID: 11400000, guid: bb8f23d9bc6f5804aa006e14c305a0cd, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: 2a2cd76b71df42f4bb4f620b390a8d29, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: 45e062735b8541e42b547c560b486c44, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: e94b5449b6094304ebd7d82bddb83215, type: 2}
+    frequency: 1
+  - eventData: {fileID: 11400000, guid: 5a37a5908efd725498a1ce3c3c37c90b, type: 2}
+    frequency: 0.3
+  - eventData: {fileID: 11400000, guid: 05702483e509a354a8648b5694816975, type: 2}
+    frequency: 0.15
+  globalEvents:
+  - {fileID: 11400000, guid: c0ac9faf53fbfac45a154fc86013ebe8, type: 2}
+  - {fileID: 11400000, guid: 19d832ee05e90af43a39c7e597802116, type: 2}
+  - {fileID: 11400000, guid: c7d318db5a913654996daed8135f88d6, type: 2}
+  - {fileID: 11400000, guid: 9f3368d0d40b71c4590f8f1feb870032, type: 2}
+  - {fileID: 11400000, guid: 9f464c223b262f74a9e8ffebd3f211b2, type: 2}
+  - {fileID: 11400000, guid: e8b8e0cb76e52664ebbf43db4f2e65ec, type: 2}
+  - {fileID: 11400000, guid: 97979282ba92d9f42bfe095f12a67bc2, type: 2}
+  - {fileID: 11400000, guid: ba486debd2ffd064ba3daa086606645c, type: 2}
+  - {fileID: 11400000, guid: 2b21604c3497ee148a1b6064d26456e6, type: 2}
+  seasonalEvents:
+  - {fileID: 11400000, guid: 4ea60f6d91660cf428c22ae8ecf0fc08, type: 2}
+  - {fileID: 11400000, guid: 540896970bec52a4e8ff6e588ecaf78a, type: 2}
+  - {fileID: 11400000, guid: 3c4a0dde036052b44a5e317639a6b1f5, type: 2}
+  - {fileID: 11400000, guid: 1b562413405d7114f88dc6881ff37aff, type: 2}

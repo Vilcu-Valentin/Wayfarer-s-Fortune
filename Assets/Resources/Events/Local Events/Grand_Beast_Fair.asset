@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36c3d927068b4a4fbc149a83366d5fb, type: 3}
+  m_Name: Grand_Beast_Fair
+  m_EditorClassIdentifier: 
+  name: Grand Beast Fair
+  description: When rare creatures from distant lands gather in one place, excitement
+    and potential profit sweep through the region. Traders, ranchers, and breeders
+    proudly display everything from rugged farm livestock to majestic magical beasts,
+    captivating travelers and nobles alike. While animal-related goods flourish,
+    many metal and crop trades slow, as crowds flock to observe taming shows and
+    adoption events.
+  icon: {fileID: 21300000, guid: 280641cf2b49bde40bc770c7322cb4bf, type: 3}
+  leadTime: 12
+  duration: 72
+  deathTime: 12
+  seasonalModifiers:
+  - 0.3
+  - 1
+  - 0.3
+  - 0
+  affectedGoods:
+  - item: {fileID: 11400000, guid: 5e89b16b1d755e24d8379549405a870e, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: f55419e237ccf6646b0114636fcc89af, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: f420cdcd3dd4daf46a4fcc14f786e3a2, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 4ba20f6d9f1dc3e44ae794ac86007297, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 011385f5f6e493a4b8063ef1c037a6ed, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: e5951d9d59ba50c489886df549a3e8f8, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: 90288fcd54125bc468ef261ac523d12e, type: 2}
+    strength: 3
+  - item: {fileID: 11400000, guid: c28f0ea2ff3deb9418e9095495f580ab, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 26851640af88b9f47b4fcbd2607a31ab, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 876b624db4164e24598402c512657af9, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 913f686433896434e9f19bb27980f540, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 6d5e4d34cd0d8f14eb64d69ae50d7a3e, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 65f9aa268dbf7bc4bb8405af0932120a, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: ea2fc74a98bec214386f1d5b10067a59, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 8bcdf178fd0e24143bcda6f03878d30d, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 525e7b7318c10554fb874fab1fe20548, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: ab9a72aa5c7810644a40826fcfa89c3e, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: a3df26397cf44c7418f9b90606284dbe, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: 7b09ebc5c4087a8499cc998bba9e3020, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: ed224b61210b06f4cb70ca083ab9cefc, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 054a308b02eff374282be147bed9f53d, type: 2}
+    strength: 2
+  - item: {fileID: 11400000, guid: a71bff3974cf9e94a9589a08edbc180f, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: bebbdf491468b70489c30254b403f1e7, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 337c7cb4b4e928746be5601e8fe42795, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: b6116951e3303cc478f52682ac38b47c, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: d4fdf05a2db10334d8230904b255dcd0, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 43a13f6752787674f919404a3daf642f, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: faf5855bebd5b2545b6854ce854c0b56, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 80112714ef01dd549ad9e0fefce2cd37, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 7ef042a44c565aa47a6cff3202e11a9e, type: 2}
+    strength: 1
+  - item: {fileID: 11400000, guid: 970745d50c821614b8818552946982b6, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 164dcab517693a5488a554c31a9efc47, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: c089646285f921646be50698f49e6ccd, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 263a94279659d9e41b5b1d39a81cf6ce, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: c21b2c83f017b524695584d4e5788ac9, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 6db344eccda02ef4cb6e559f5a332cbd, type: 2}
+    strength: -1
+  - item: {fileID: 11400000, guid: 4e648d5708405424194ed01651a4fee0, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: 154c83a16dfc6044f9f1a8cc856cf2f8, type: 2}
+    strength: -2
+  - item: {fileID: 11400000, guid: b81dafefce6770046b551214142a1ab1, type: 2}
+    strength: -2
